@@ -130,26 +130,26 @@ $( "#generateNetworkConfig" ).click(function() {
 	 
 	var settings = new Object();  
 	settings.networkConfigured = true;
-	settings.useDHCP = true;
-	settings.ipAddress = null;
-	settings.subnetMask = null;
-	settings.defaultGateway = null;
+	settings.use_dhcp = true;
+	settings.ipv4_address = null;
+	settings.subnet_mask = null;
+	settings.default_gateway = null;
 	settings.dns1 = null;
 	settings.dns2 = null;
-	settings.useWifi = false;
-	settings.proxy = null;
-	settings.wifiSSID = null;
-	settings.wifiPassphrase = null;
-	settings.wifiSecurityType = null;
+	settings.use_wifi = false;
+	settings.proxy_server = null;
+	settings.wifi_network_name = null;
+	settings.wifi_pass_phrase = null;
+	settings.wifi_security_type = null;
   
     var selectedItem = $('#mode')[0].selectedIndex;
 
     if(selectedItem == 1)
     { 
-		settings.useDHCP = false;
-		settings.ipAddress = $('#ipAddress').val();
-		settings.subnetMask = $('#subnet').val();
-		settings.defaultGateway = $('#defaultGateway').val();
+		settings.use_dhcp = false;
+		settings.ipv4_address = $('#ipAddress').val();
+		settings.subnet_mask = $('#subnet').val();
+		settings.default_gateway = $('#defaultGateway').val();
 		settings.dns1 = $('#dns1').val();
 		settings.dns2 = $('#dns2').val();
 	}
@@ -157,9 +157,9 @@ $( "#generateNetworkConfig" ).click(function() {
 	selectedItem = $('#connection')[0].selectedIndex;
 	if(selectedItem == 1)
     { 
-		settings.useWifi = true;
-		settings.wifiSSID = $('#ssid').val();
-		settings.wifiPassphrase = $('#passphrase').val();
+		settings.use_wifi = true;
+		settings.wifi_network_name = $('#ssid').val();
+		settings.wifi_pass_phrase = $('#passphrase').val();
 	}
 
     download('network.json', JSON.stringify(settings));
