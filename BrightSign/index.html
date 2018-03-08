@@ -20,6 +20,10 @@
 					 </select>
 				  </p>
 				  <p>
+					 <label>Audio Enabled:</label>
+					<input type="checkbox" id="audioEnabled" checked><br/>  
+				  </p>
+				  <p>
 					<input id="generate" type="button" value="Generate">
 				  </p>
 			   </fieldset>
@@ -170,7 +174,7 @@ $( "#generate" ).click(function() {
   var selectedTz = $('#timezoneList')[0].selectedIndex;
   
   var settings = new Object();  
-  settings.isMuted = false;
+  settings.isMuted = $('#audioEnabled').is(":checked");
   settings.showTrace = false;
   settings.rotation = new Object();
   settings.rotation.displayName = "No rotation";
