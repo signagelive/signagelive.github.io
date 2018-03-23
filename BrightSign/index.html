@@ -174,7 +174,7 @@ $( "#generate" ).click(function() {
   var selectedTz = $('#timezoneList')[0].selectedIndex;
   
   var settings = new Object();  
-  settings.isMuted = $('#audioEnabled').is(":checked");
+  settings.isMuted = !$('#audioEnabled').is(":checked");
   settings.showTrace = false;
   settings.rotation = new Object();
   settings.rotation.displayName = "No rotation";
