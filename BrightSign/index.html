@@ -76,7 +76,14 @@
 				  <p>
 					<input id="generateNetworkConfig" type="button" value="Generate">
 				  </p>
-				  
+				  <p>
+					 <label>Proxy Server:</label>
+				     <input type="text" id="proxy" value=""><br/>  
+				  </p>
+				  <p>
+					 <label>Time Server:</label>
+				     <input type="text" id="timeserver" value="ntp://time.brightsignnetwork.com"><br/>  
+				  </p>
 			   </fieldset>
 			</form>
 
@@ -145,6 +152,8 @@ $( "#generateNetworkConfig" ).click(function() {
 	settings.wifi_network_name = null;
 	settings.wifi_pass_phrase = null;
 	settings.wifi_security_type = null;
+	settings.proxy_server = null;
+	settings.time_server = null;
   
     var selectedItem = $('#mode')[0].selectedIndex;
 
@@ -165,7 +174,24 @@ $( "#generateNetworkConfig" ).click(function() {
 		settings.wifi_network_name = $('#ssid').val();
 		settings.wifi_pass_phrase = $('#passphrase').val();
 	}
-
+	
+	var proxy = $('#proxy').val();
+	
+	if(proxy && proxy != "")
+	{
+		settings.proxy_server = proxy;
+	}
+	
+	var timeserver = $('#timeserver').val();
+	
+	if(timeserver && timeserver != "")
+	{
+		settings.time_server = timeserver;
+	} else 
+	{
+		settings.time_server = "ntp://time.brightsignnetwork.com";
+	}
+	
     download('network.json', JSON.stringify(settings));
   
 });
