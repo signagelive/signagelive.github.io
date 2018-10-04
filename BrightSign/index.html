@@ -129,10 +129,29 @@
 
 					<br/>  
 				  </p>
+				  <p>
+					 <label>Screen Rotation:</label>
+					 <select id="rotation">
+						<option value="0">Landscape</option>
+						<option value="90">Portrait</option>
+						<option value="270">Portrait (270)</option>
+					</select>
+					<br/>  
+				  </p>	
 				   <p>
 					 <label>Video Transparency (XT3/XT4 Series only):</label>
 					<input type="checkbox" id="transparencyEnabled"><br/>  
+				  </p> 
+				  <!--
+				   <p>
+					 <label>Kiosk Mode:</label>
+					<input type="checkbox" id="kioskModeEnabled"><br/>  
 				  </p>
+				   <p>
+					 <label>Kiosk Inactivity Timeout (seconds):</label>
+				     <input type="number" id="inactivityTimeout" value="15" disabled><br/>  
+				  </p>
+				  -->
 				  <p>
 					<input id="generate" type="button" value="Generate">
 				  </p>
@@ -209,6 +228,14 @@ $(document).ready(function() {
 	$('#timezoneList > option').eq(32).attr('selected','selected');
 	
 
+});
+
+$("#kioskModeEnabled").change(function(){
+
+	if($('#kioskModeEnabled').is(":checked"))
+		$('#inactivityTimeout').prop('disabled', false);
+	else
+		$('#inactivityTimeout').prop('disabled', true);
 });
 
 $("#mode").change(function(){
@@ -332,6 +359,20 @@ $( "#generate" ).click(function() {
   settings.rotation.angle = 0;
   settings.rotation.id = 0;
   
+  var rotation = $('#rotation').val();
+  
+  if(rotation == 90)
+  {
+    settings.rotation.displayName = "Portrait";
+	settings.rotation.angle = 90;
+	settings.rotation.id = 90;
+  } else if (rotation == 270)
+  {
+    settings.rotation.displayName = "'Portrait (270)";
+	settings.rotation.angle = 270;
+	settings.rotation.id = 270;
+  }
+   
   settings.timeZone = new Object();
   settings.timeZone.displayName = timezones[selectedTz].displayName;
   settings.timeZone.bsid  = timezones[selectedTz].bsid ;
@@ -356,6 +397,24 @@ $( "#generate" ).click(function() {
 	settings.videoMode.colorSpace = $('#colorspace').val();
 	settings.videoMode.bitDepth = parseInt($('#bitdepth').val());
   } 
+/*
+	if($('#kioskModeEnabled').is(":checked"))
+		$('#inactivityTimeout').prop('disabled', false);
+	else
+		$('#inactivityTimeout').prop('disabled', true);
+		
+		
+  settings.interactiveKiosk = new Object();
+  settings.interactiveKiosk.enabled = $('#kioskModeEnabled').is(":checked");
+  settings.interactiveKiosk.idleIntervalInSeconds = parseInt($('#inactivityTimeout').val());
+  
+  if(isNaN(settings.interactiveKiosk.idleIntervalInSeconds) || settings.interactiveKiosk.idleIntervalInSeconds < 1)
+	settings.interactiveKiosk.idleIntervalInSeconds = 15;
+
+  settings.interactiveKiosk.trigger = new Object();
+  settings.interactiveKiosk.trigger.key = "t";
+  settings.interactiveKiosk.trigger.type = "KeyboardEvent";
+*/
 
   download('settings.json', JSON.stringify(settings));
   
