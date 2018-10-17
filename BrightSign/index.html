@@ -142,7 +142,7 @@
 					 <label>Video Transparency (XT3/XT4 Series only):</label>
 					<input type="checkbox" id="transparencyEnabled"><br/>  
 				  </p> 
-				  <!--
+	
 				   <p>
 					 <label>Kiosk Mode:</label>
 					<input type="checkbox" id="kioskModeEnabled"><br/>  
@@ -151,7 +151,7 @@
 					 <label>Kiosk Inactivity Timeout (seconds):</label>
 				     <input type="number" id="inactivityTimeout" value="15" disabled><br/>  
 				  </p>
-				  -->
+			
 				  <p>
 					<input id="generate" type="button" value="Generate">
 				  </p>
@@ -397,7 +397,7 @@ $( "#generate" ).click(function() {
 	settings.videoMode.colorSpace = $('#colorspace').val();
 	settings.videoMode.bitDepth = parseInt($('#bitdepth').val());
   } 
-/*
+
 	if($('#kioskModeEnabled').is(":checked"))
 		$('#inactivityTimeout').prop('disabled', false);
 	else
@@ -414,7 +414,7 @@ $( "#generate" ).click(function() {
   settings.interactiveKiosk.trigger = new Object();
   settings.interactiveKiosk.trigger.key = "t";
   settings.interactiveKiosk.trigger.type = "KeyboardEvent";
-*/
+
 
   download('settings.json', JSON.stringify(settings));
   
