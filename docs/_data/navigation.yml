@@ -14,11 +14,11 @@
   # - text: Tag - Education
   #   url: /tag/education
 - text: Network API
-  url: /docs/network-api/
+  url: /network-api/
 - text: Web Triggers
-  url: /docs/web-triggers/
+  url: /web-triggers/
 - text: Widget Development Framework
-  url: /docs/widget-development-framework/
+  url: /widget-development-framework/
 # - text: Docs
 #   url: /explore-topics
 #   submenu:
