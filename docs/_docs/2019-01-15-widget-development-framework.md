@@ -47,8 +47,8 @@ It is also possible to set the widget to not download to clients and always run 
 
 ## Configuration File Elements
 
-| Element (XPath)     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Required                                                                          |
-|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| Element (XPath)     | Description | Required |
+|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
 | /widget             | This is the root element of the document and contains several optional attributes: id – an IRI which acts as an identifier for the widget version – The version of the widget. Note that in the specification this attribute is an arbitrary string – “2.0” is not ‘greater’ than “1.0”, it is just different. width – The width that the widget should be displayed at. height – The height that the widget should be displayed at.                                                                                                                                                                                                                                                                                                                                                   | Yes                                                                               |
 | /widget/name        | The name of the widget that will be displayed in the Signagelive CMS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Yes                                                                               |
 | /widget/description | The description of the widget that will be displayed in future versions of the Signagelive CMS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | No                                                                                |
@@ -254,21 +254,21 @@ Using the Signagelive Widget SDK it is possible to:
 Read and write application data to local storage
 Tell the Signagelive media player when the application has loaded and is ready to display
 
-## Using the SDK
+### Using the SDK
 
-### Get the SDK Javascript File
+<h4 class="no_toc"> Get the SDK Javascript File </h4>
 
 You can get the latest SDK javascript file from <a href="https://drive.google.com/open?id=1XQS49mZvDYGn9dOF4xHFHNOeqXK8JSyo">here</a>.
 
-### Include the Javascript File
+<h4 class="no_toc"> Include the Javascript File </h4>
 
 Copy the javascript file into your project and include it in your HTML page as shown in the example below:
 
-{% highlight javscript %}
+{% highlight javascript %}
 <script src=“js/signagelive.js”></script>
 {% endhighlight %}
 
-### SDK Methods
+<h4 class="no_toc"> SDK Methods </h4>
 
 | **Signagelive.sendReadyToDisplay()**                                                    |                                                                                                                                                                                                                                                            |
 |---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -276,7 +276,10 @@ Copy the javascript file into your project and include it in your HTML page as s
 | **Parameters**                                                                                  | None                                                                                                                                                                                                                                                       |
 | **Return**                                                                                      | Empty Promise                                                                                                                                                                                                                                              |
 | **Example**                                                                                     |                                                                                                                                                                                                                                                            |
-| Signagelive.sendReadyToDisplay().then(function() {    console.log(‘Displaying widget’); }); |                                                                                                                                                                                                                                                            |
+|
+{% highlight javascript %}
+Signagelive.sendReadyToDisplay().then(function() {    console.log(‘Displaying widget’); }); 
+{% endhighlight %} 
 
 | **Signagelive.setData(key, value, shared)**                                                                                                           |                                                                                                                                                      |
 |---------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -286,7 +289,10 @@ Copy the javascript file into your project and include it in your HTML page as s
 |                                                                                                                                                   | **Shared (optional)** – if set to true then this data will be shared and accessible to all widgets published to the device (Boolean – default is false). |
 | **Return**                                                                                                                                            | Empty Promise                                                                                                                                        |
 | **Example**                                                                                                                                           |                                                                                                                                                      |
-| Signagelive.setData(‘userOne’, JSON.stringify({ firstName: ‘John’, lastName: ‘Smith’ })).then(function() {    console.log(‘User One stored’); }); |                                                                                                                                                      |
+|
+{% highlight javascript %}
+Signagelive.setData(‘userOne’, JSON.stringify({ firstName: ‘John’, lastName: ‘Smith’ })).then(function() {    console.log(‘User One stored’); });
+{% endhighlight %} 
 
 | **Signagelive.getData(key, shared)**                                                                                                                  |                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -295,8 +301,12 @@ Copy the javascript file into your project and include it in your HTML page as s
 |                                                                                                                                                   | **Shared (optional)** – if set to true then it will search for this key in the global shared storage (Boolean – default is false). |
 | **Return**                                                                                                                                            | Promise containing the returned data as a String                                                                               |
 | **Example**                                                                                                                                           |                                                                                                                                |
-| Signagelive.getData(‘userOne’).then(function(data) {    console.log(JSON.parse(data)); });                                                        |                                                                                                                                |
-| Signagelive.setData(‘userOne’, JSON.stringify({ firstName: ‘John’, lastName: ‘Smith’ })).then(function() {    console.log(‘User One stored’); }); |                                                                                                                                |
+|
+{% highlight javascript %}
+Signagelive.getData(‘userOne’).then(function(data) {    console.log(JSON.parse(data)); });                                                       
+
+Signagelive.setData(‘userOne’, JSON.stringify({ firstName: ‘John’, lastName: ‘Smith’ })).then(function() {    console.log(‘User One stored’); });
+{% endhighlight %} 
 
 ## Code Examples
 
@@ -322,13 +332,13 @@ We are working on a command line module, that will be available via NPM, that wi
 
 ## Things to Consider
 
-### Performance
+<h3 class="no_toc"> Performance </h3>
 
 Performance particularly animation varies across platforms, so it is again imperative you test on the target platform as part of your development process. Don’t rely on simply tested in a desktop browser as results can vary quite widely those experienced on media players.
 
 It will be essential to include a polyfile to request AnimateFrame in your code if you require this function as it is not available on all platforms.
 
-### Fonts
+<h3 class="no_toc"> Fonts </h3>
 
 It is best practice to embed fonts in your widget so that they always load and your widget displays correctly even when network connectivity is lost.
 
@@ -339,12 +349,12 @@ It is best practice to embed fonts in your widget so that they always load and y
 
 FontSquirrel will generate a zip file that contains all the converted fonts and the CSS to include in your project. Add those to your widget and use them as any other web font – ensure you include them in your widget package.
 
-### Content Security Policy
+<h3 class="no_toc"> Content Security Policy </h3>
 
 In order to help keep Widgets you develop secure Widgets should adhere to the general concept <a href="https://w3c.github.io/webappsec-csp/">Content Security Policy (CSP)</a>. One key item of note is that inline code is not permitted as this will not run on many of our players.
 See this <a href="https://developer.chrome.com/extensions/contentSecurityPolicy#JSExecution">documentation</a> from Google detailing inline script restrictions within ChromeOS for further details.
 
-### ES6
+<h3 class="no_toc"> ES6 </h3>
 
 Due to the wide variety of vendor platforms supported by Signagelive it is not possible to have consistent support for the latest standards across them, so we recommend you test your widgets on as many platforms as possible and include polyfills for any ES6 features you are using.
 
@@ -352,13 +362,13 @@ For an overview of ES6 features please see <a href="http://es6-features.org/">th
 
 We have found <a href="https://github.com/paulmillr/es6-shim">ES6 Shim</a> to be a useful shim if you need to use ES6 features in your code. However there may be situations we have not come across that don’t work so please test it for your specific use case before deploying your widget.
 
-### File System
+<h3 class="no_toc"> File System </h3>
 
 The file systems our media players, like many web servers (all except those on Windows) are case sensitive, as many of them are based on Linux, so please make sure you use the right case when referencing files in your widget.
 
 Please make sure that all references to local files are properly formed relative paths.
 
-### Tizen 2.4
+<h3 class="no_toc"> Tizen 2.4 </h3>
 
 Tizen 2.4 does not support the usage of the ‘JSON’ response type in XMLHTTPRequests, there have been occasions where the panel instead of returning an object, returns a blank string instead. 
 
