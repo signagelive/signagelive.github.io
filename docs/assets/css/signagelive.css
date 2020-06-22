@@ -1,0 +1,16 @@
+ /* Additional Styling for Tables */
+
+ table, td, tr, thead {
+    /* border: 1px solid #0d65b0; */
+    background-color: #404145;
+    /* background-color: #0f73c8; */
+    color: #FFF;
+  }
+
+  td {
+    font-size: 14px;
+}
+
+pre code {
+  color: #FFF;
+}
