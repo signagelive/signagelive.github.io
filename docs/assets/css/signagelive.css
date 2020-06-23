@@ -87,7 +87,11 @@ li .toc-entry::before {
 
 /* Flex */
 
-.flex {
+.center {
+  text-align: center;
+}
+
+.flex, .flex.col a {
   display: flex;
   display: -webkit-flex;
 }
@@ -95,6 +99,11 @@ li .toc-entry::before {
 .row {
   flex-direction: row;
   -webkit-flex-direction: row;
+}
+
+.col, .col a {
+  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .space-around {
