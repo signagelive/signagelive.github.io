@@ -40,7 +40,7 @@ pre code {
   top: 10px !important;
 }
 
-ul li, ul li .toc-h2 a, ul li .toc-h3 a {
+ul li .toc-h2 a, ul li .toc-h3 a {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -83,4 +83,21 @@ li .toc-entry::before {
     transition-property: transform;
     transition-duration: .3s;
     transition-timing-function: ease-out;
+}
+
+/* Flex */
+
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.row {
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+.space-around {
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
 }
