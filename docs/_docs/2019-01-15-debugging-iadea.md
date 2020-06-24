@@ -26,12 +26,21 @@ This user guide demonstrates the steps outlined to enable debugging on a IAdea d
 
 5. If you have chosen to install Android Studio, if it is open when you plug in your device you should see the device information.
 
-<img src="https://lh5.googleusercontent.com/jCmIMIAG_F-iNIkd3VS50mR62zZGDjZsBSuBr77GnxK1uRBlvbtdJh4loDyOSKd-r_nPJjNsDpncXcbeO67oOkUBLRlC-TptX63eCsCwZ5RJK60t6MhTgkZIygeGky9koe9cY4OO">
+<img src="/assets/images/debugging-iadea/debugging-iadea-1.png">
+<br>
 Example of the overview in Android Studio when an XDS-2288 is connected
 
 6. For debugging itself – navigate to chrome://inspect/devices – you should be able to see the attached device and some of the active tabs on the player.
 
+<img src="/assets/images/debugging-iadea/debugging-iadea-2.png">
+<br>
+Example of chrome://inspect/devices with a XDS-2288 connected by USB
+
 7. As you can see from the screenshot above there may be multiple instances running on the player. In this case I would click and open up the “Weather Widget” as that is the content I have published to the player, and also what I want to debug.
+
+<img src="/assets/images/debugging-iadea/debugging-iadea-3.png">
+<br>
+Example of the developer tools for a widget/app running on Signagelive
 
 ## [Optional] Setting up Android Studio (AS)
 

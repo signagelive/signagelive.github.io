@@ -26,7 +26,8 @@ For debugging on the Chrome browser follow the steps below, after this is a sect
 
 1. Create a Chrome shortcut on your desktop. Right-click and append to the end of the target: -–allow-file-access-from-files –autoplay-policy=no-user-gesture-required
 
-<img src="https://lh5.googleusercontent.com/_0VEMsw4smPp9xi31VvvUqtHXS2YDq1K8JnxhLQgAi8FdCMtRbUvSMEEskL9vMrOD2pZx-0og9nCwdG68DijKWacor4KJnI5DYjGIFpksLEbWEP5fLGF99Htum_vzNJUjSFkDhlh">
+<img src="/assets/images/debugging-browser/debugging-browser-1.png">
+<br>
 Example of the Chrome target details
 
 2. Close all running instances of Chrome (you can check this by confirming whether Chrome.exe is not running in your Task Manager).
@@ -35,7 +36,8 @@ Example of the Chrome target details
 
 Widgets may have different visual displays depending on the size of the window you are publishing too, for example 1920×1080 or in a zone in a layout. If you want to test responsive scaling or how it displays natively in HD then with the developer tools open you can click ‘Toggle device toolbar’ or use the shortcut CTRL+SHIFT+M
 
-<img src="https://lh5.googleusercontent.com/jU28v5sN5kSHDtzJRWa68cPcgpUV_hXv3C55jYfHH_VPeL83M_VzoKuHKYUAh-mCuQy8pGzZQ-hygLUmkB_JnD_33UKilBNlZCpijMGL-jr2tQiC2kENqX8DTdBb_LBjTHiwbmyn">
+<img src="/assets/images/debugging-browser/debugging-browser-2.png">
+<br>
 Example of the Responsive mode for Chrome (highlighted in blue)
 
 ## Debugging Firefox Step-by-Step - How To Guide
@@ -48,5 +50,6 @@ Example of the Responsive mode for Chrome (highlighted in blue)
 
 Widgets may have different visual displays depending on the size of the window you are publishing too, for example 1920×1080 or in a zone in a layout. If you want to test responsive scaling or how it displays natively in HD then with the developer tools open you can click ‘Responsive Design Mode’ or use the shortcut CTRL+SHIFT+M
 
-<img src="https://lh5.googleusercontent.com/bvqQQsyr2ReziXDlBESUShE1RzQYxTgC6aWiJ2zJQTbI-iLKwGNUwWEpmdpzJ4wb85V63mkhK9AQpFEaLSNXiATFnVrrJIr0I6D9TFSh0rKAic4hkJEonhdSHpr5QSEYKNxJlNpn">
+<img src="/assets/images/debugging-browser/debugging-browser-3.png">
+<br>
 Example of the Responsive mode for Firefox (highlighted on the right-hand size in blue)

@@ -30,7 +30,8 @@ After you have completed these steps you can then execute your Electron client â
 The devToolsEnabled flag will force the client to load the chrome developer tools alongside the media player to enable debugging.
 The disableGlobalKeypress flag is an option that prevents the media player from listening and consuming key presses when it does not have focus.
 
-<img src="https://lh4.googleusercontent.com/p7HJC8UJUwax-8nT8vclPKBcKvsyWNIKNU3afq4XYLnF1maTYZG9il8VDIFSXVEiG9OyBQOJEfcpKcHPPD6T7OBIBOTPNHp6u0gmqXJavJLf1wACjzxh3Q5e7JMM31Ctvbh4qw_l">
+<img src="/assets/images/debugging-electron/debugging-electron-1.png">
+<br>
 Example of the developer tools window on Electron (Windows PC)
 
 This tool will allow you to debug code in widgets/apps the same way you would locally as an HTML5 application. You will be able to view network requests, any errors thrown in the console, and whether elements have been added to the DOM.

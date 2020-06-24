@@ -18,12 +18,14 @@ This user guide demonstrates the steps outlined to enable debugging on a ChromeO
     1. Navigate to Chrome://extensions in your browser and click on the Signagelive extension (available under the details tab), if Signagelive is running then you will be able to open index.html.
     2. Navigate to Chrome://inspect in your browser and then go to Apps, from there you will be able to click on the link under Signagelive to open the debugger.
 
-<img src="https://lh5.googleusercontent.com/SwXVHSMqMx9PCaFcKoxfs7lSGkMddaYIR6STWCG39EHNKVyZncAq-gEOkLG8ISYmBAr9JizWRU-JZFjO3LTRuj1rcfbW1rEsAfTZYzoyq6ZgPoffCPc53qjLr8um5TmC5mBh458_">
+<img src="/assets/images/debugging-chrome/debugging-chrome-1.png">
+<br>
 Example of a Signagelive extension details page and the index.html view
 
 Once you have the debugger open you will be able to find various information like network details and also whether errors have been thrown in the console.
 
-<img src="https://lh3.googleusercontent.com/_qDIE0UuwMsv4H1wfsHCGK6FfK-3DWzmby0PsdnpmrK0tOxbTp9zDmJQwd8tuUraNaxNSvyTOjpfqV9JRwW0X7DyolO0pth6NpGYBhYHoj881zBKJzPLnXRP5y9jmywu7lo4YreS">
+<img src="/assets/images/debugging-chrome/debugging-chrome-2.png">
+<br>
 Example of the Chrome developer tools opened in the previous step
 
 ## Known Issues

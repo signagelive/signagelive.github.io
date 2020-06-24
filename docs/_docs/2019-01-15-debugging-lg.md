@@ -30,8 +30,13 @@ This user guide demonstrates the steps outlined to enable debugging on an LG Web
 
 When you have this information open up a new browser window on your computer and navigate to the IP Address of your Player and add in “:9998”, for example: http://192.168.90.145:9998. This should open up the “Inspectable Web View” for the panel. In the numbered list there should be an entry called “Signagelive Client” if you click on this it will then open the remote developer tools for the Player. You will be able to use this to view information like network traffic and also any errors reported in the Signagelive client.
 
-<img src="https://lh5.googleusercontent.com/j8zJUutTf_9ruR8TxGF4UAhAOOacmwvLwDuw20UiOTY7M1u0hhZDyiNwujKLPEz1IIDKlWZTyCHjKVQkuxlq3RvrXOZQXIEVzHNj2l1vC_v44MD9sP6P_hi39GNhxRblIKptIye6">
+<img src="/assets/images/debugging-lg/debugging-lg-2.png">
+<br>
 Example section of the initial webpage from a LG panel with debugging enabled – accessed from <ip address>:9998
+
+<img src="/assets/images/debugging-lg/debugging-lg-3.png">
+<br>
+Example overview of the Signagelive Client webpage (from above)
 
 ## Compatibility
 
