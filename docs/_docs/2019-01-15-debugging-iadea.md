@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Debugging Iadea
+title: Debugging IAdea
 date: 2019-09-08 8:14:30 +0600
 post_image: assets/images/service-icon3.png
 tags: [Profile]
