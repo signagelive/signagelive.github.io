@@ -21,10 +21,12 @@
   - text: Web Triggers
     url: /web-triggers/
 - text: Resources
-  url: /network-api/
+  url: /BrightSign/
   submenu:
   - text: Roadmap
     url: https://trello.com/b/xjDQXkXQ/signagelive-roadmap
+  - text: BrightSign Tools
+    url: /BrightSign/
   - text: Help Centre
     url: https://support.signagelive.com/hc/en-us
 - text: Contact Sales
