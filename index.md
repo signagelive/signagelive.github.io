@@ -74,7 +74,7 @@ layout: default
         </li>
         <li>
           <h3>
-            <a class="post-link" href="/network-API/">
+            <a class="post-link" href="/network-api/">
               Network API
             </a>
           </h3>
