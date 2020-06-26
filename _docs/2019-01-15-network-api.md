@@ -46,10 +46,10 @@ Once you are provided with your credentials, your application will then have to 
 
 This is something that you will need to provide a mechanism for Signagelive users to do, within your application.
 
-[Partner App Authorisation Process](/api/partner-app-authorization/){: .btn-style2 .btn .small}
+[Partner App Authorisation Process](/api/partner-app-authorization){: .btn-style2 .btn .small}
 
 ## Documentation
 
 The full Network API documentation is available for you to review. As part of the sign up process we will generally point you to the specific sections of the documentation, which are relevant to your use case.
 
-[View the Documentation](/api/network-api/){: .btn-style2 .btn .small}
+[View the Documentation](/api/network-api){: .btn-style2 .btn .small}

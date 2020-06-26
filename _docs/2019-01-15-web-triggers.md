@@ -40,7 +40,7 @@ We provide a getting started collections, which can be imported into Postman to 
 
 The full Web Triggers API documentation is available for you to review. The below section will give an example of the methods used to trigger an interrupt on a single player.
 
-[View the Documentation](/api/web-triggers/){: .btn-style2 .btn .small}
+[View the Documentation](/api/web-triggers){: .btn-style2 .btn .small}
 
 ## API Usage
 
@@ -48,16 +48,16 @@ The following details the API methods which are required for you to be able to t
 
 1. You will need to retrieve a list of the available players, only those activated will be returned. This is done with the Get All Players method.
 
-[Get All Players](/api/web-triggers/#players-2){: .btn-style2 .btn .small}
+[Get All Players](/api/web-triggers#players-2){: .btn-style2 .btn .small}
 
 2. Find the player you wish to trigger, and make a note of its ID.
 
 3. Retrieve a list of the different interrupts which are available. This is done with the Get All Triggers method.
 
-[Get All Triggers](/api/web-triggers/#triggers-2){: .btn-style2 .btn .small}
+[Get All Triggers](/api/web-triggers#triggers-2){: .btn-style2 .btn .small}
 
 4. Find the trigger you wish to send, and make a note of its ID, please be aware these ID’s are network specific, so the same trigger on a different network, will have a different ID.
 
 5. You can then call this trigger, using the Send Message method, adding the player ID and trigger ID to the message object sent.
 
-[Send Message](/api/web-triggers/#messages-2/){: .btn-style2 .btn .small}
+[Send Message](/api/web-triggers#messages-2){: .btn-style2 .btn .small}
