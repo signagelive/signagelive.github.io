@@ -26,16 +26,6 @@ animated_header: ""  #true
 twitter_username: jekyllrb
 github_username:  jekyll
 
-toc:
-  min_level: 1
-  max_level: 3
-  no_toc_section_class: no_toc_section
-  list_class: section-nav
-  sublist_class: ''
-  item_class: toc-entry
-  item_prefix: toc-
-
-
 # Build settings
 markdown: kramdown
 theme: minima
