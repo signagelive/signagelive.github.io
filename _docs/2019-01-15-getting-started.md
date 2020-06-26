@@ -30,7 +30,7 @@ Which of our developer tools you need to use, really depends on what you are loo
 
 <br>
 
-<h3> Are you an Adobe Photoshop user? </h3>
+<h3 class="no_toc"> Are you an Adobe Photoshop user? </h3>
 
 Why not use our Photoshop plugin, and upload your newly created images directly to your Signagelive network.
 
@@ -43,7 +43,7 @@ Why not use our Photoshop plugin, and upload your newly created images directly 
 <div class="flex row space-around">
 
 <div class="flex col">
-<h3> Videos </h3>
+<h3 class="no_toc"> Videos </h3>
 
 All standard video creation tools can be used to create video content to be using in Signagelive.
 
@@ -66,7 +66,7 @@ When rendering the video, you need to take into account the Signagelive player y
 </div>
 
 <div class="flex col">
-<h3> Web Content </h3>
+<h3 class="no_toc"> Web Content </h3>
 	
 Signagelive supports showing web content, both on the internet and also on an internal network, using a domain or IP address. Meaning that you don’t have to make your internal web pages public for them to be shown, the Signagelive player will connect directly.
 
@@ -89,7 +89,7 @@ If you are already creating web content, then you can create Widgets, using the 
 </div>
 
 <div class="flex col">
-<h2> Use existing tools to manage content in Signagelive </h2>
+<h2 class="no_toc"> Use existing tools to manage content in Signagelive </h2>
 
 If you are already using existing tools to create content, maybe for other platforms, and you want to continue using these, but make use of Signagelive, you can do this, by connecting to our Platform Services, and making use of our Network API.
 
@@ -102,7 +102,7 @@ We will set you up on our development environment, a copy of the production envi
 
 </div>
 
-### Example Integrations
+<h3 class="no_toc"> Example Integrations </h3>
 
 <div class="flex row space-around">
 
@@ -117,7 +117,7 @@ We will set you up on our development environment, a copy of the production envi
 </div>
 
 <div class="flex col">
-<h2> Create your own user interfaces </h2>
+<h2 class="no_toc"> Create your own user interfaces </h2>
 
 Do you want to create a user interface which is specific to your use case? Then by connecting to our Platform Services, using our Network API, you can do this.
 
@@ -136,7 +136,7 @@ We will set you up on our development environment, a copy of the production envi
 </div>
 
 <div class="flex col">
-<h2> Trigger changes on your Signagelive players remotely </h2>
+<h2 class="no_toc"> Trigger changes on your Signagelive players remotely </h2>
 
 Do you want to be able to trigger a change in the content being shown on a single, multiple or all of your Signagelive players, based on an event happening, be it a fire alarm, a specific event starting, or a conversation with a customer, then you can do this by integrating with our Platform Services, using our Web Triggers API.
 
@@ -148,7 +148,7 @@ If you already have your own Signagelive network, then we will activate the Web 
 
 </div>
 
-### Example Integrations
+<h3 class="no_toc"> Example Integrations </h3>
 
 <div class="flex row space-around">
 
