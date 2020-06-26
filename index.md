@@ -14,7 +14,24 @@ layout: default
   ul {
     list-style-type: none;
   }
+
+  li {
+    padding-bottom: 1vh;
+  }
 </style>
+
+<header class="header-area">
+    <div class="header-navigation">
+        <div class="container">
+            <div class="navigation-box">
+                <div class="navigation-left">
+                    <a class="header-logo" href="{{ "/" | relative_url }}"><img src="{{ '/assets/images/header-logo.png' | relative_url }}" alt="header logo"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</header>
 
 <section class="page-title-area bg-cover1">
   <div class="page-title-wrapper section-spacing">
@@ -22,13 +39,46 @@ layout: default
       <ul class="post-list">
         <li>
           <h3>
-            <a class="post-link" href="/network-api/">
+            <a class="post-link" href="/platform-services/">
+              Platform Services
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a class="post-link" href="/getting-started/">
+              Getting Started
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a class="post-link" href="/widget-development-framework/">
+              Widget Development Framework
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a class="post-link" href="/cli-build-tool/">
+              CLI Build Tool
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a class="post-link" href="/debugging-widgets/">
+              Debugging Widgets
+            </a>
+          </h3>
+        </li>
+        <li>
+          <h3>
+            <a class="post-link" href="/network-API/">
               Network API
             </a>
           </h3>
         </li>
-      </ul>
-      <ul class="post-list">
         <li>
           <h3>
             <a class="post-link" href="/web-triggers/">
@@ -36,12 +86,10 @@ layout: default
             </a>
           </h3>
         </li>
-      </ul>
-      <ul class="post-list">
         <li>
           <h3>
-            <a class="post-link" href="/widget-development-framework/">
-              Widget Development Framework
+            <a class="post-link" href="/BrightSign/">
+              BrightSign Tools
             </a>
           </h3>
         </li>
