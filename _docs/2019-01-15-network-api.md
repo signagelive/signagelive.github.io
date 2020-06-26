@@ -12,7 +12,7 @@ Before continuing with this guide, please make sure you have reviewed the Signag
 
 To interact with the Network API you will be provided with credentials for your Application. To request these credentials, please sign up for access.
 
-<button name="button" class="btn-style2 btn small" onclick="https://build.signagelive.com/sign-up">Sign Up for Access</button>
+[Sign Up for Access](https://build.signagelive.com/sign-up){: .btn-style2 .btn .small}
 
 ## Development Environment
 
@@ -30,15 +30,15 @@ These clients should NOT be used in a production environment, as there is no gua
 
 The installation process of these clients is the same as in the production environment, but with the alternative URL’s listed provided on sign up.
 
-<button name="button" class="btn-style2 btn small" onclick="https://support.signagelive.com/hc/en-us/articles/115000111391">Client Installation Instructions</button>
+[Client Installation Instructions](https://support.signagelive.com/hc/en-us/articles/115000111391){: .btn-style2 .btn .small}
 
 ## Postman
 
 At Signagelive we use a tool named Postman, to be able to interact with our API’s. This tool, if you are not familiar with it, allows you to be able to make calls to the API and see the responses without having to do any development work. This is specifically designed as a testing/development tool.
 
-We provide a getting started collections, which can be imported into Postman to get you started. You can then set up an environment which contains the credentials we provide to use with this collection .
+We provide a getting started collections, which can be imported into Postman to get you started. You can then set up an environment which contains the credentials we provide to use with this collection.
 
-<button name="button" class="btn-style2 btn small" onclick="https://drive.google.com/open?id=0B9p59cTuDz5vNHN3Q0Exc3IyUm8">Get Postman Collection</button>
+[Get Postman Collection](https://drive.google.com/open?id=0B9p59cTuDz5vNHN3Q0Exc3IyUm8){: .btn-style2 .btn .small}
 
 ## Application Authorisation
 
@@ -46,10 +46,10 @@ Once you are provided with your credentials, your application will then have to 
 
 This is something that you will need to provide a mechanism for Signagelive users to do, within your application.
 
-<button name="button" class="btn-style2 btn small" onclick="http://build.signagelive.com/api/partner-app-authorization/">Partner App Authorisation Process</button>
+[Partner App Authorisation Process](/api/partner-app-authorization/){: .btn-style2 .btn .small}
 
 ## Documentation
 
 The full Network API documentation is available for you to review. As part of the sign up process we will generally point you to the specific sections of the documentation, which are relevant to your use case.
 
-<button name="button" class="btn-style2 btn small" onclick="https://build.signagelive.com/api/network-api/">View the Documentation</button>
+[View the Documentation](/api/network-api/){: .btn-style2 .btn .small}

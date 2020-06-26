@@ -21,12 +21,12 @@ Which of our developer tools you need to use, really depends on what you are loo
 </div>
 
 <div class="flex col">
-    <h3> Images </h3>
+    <h3 class="no_toc"> Images </h3>
     All standard image creation tools can be used to create image content to be used in Signagelive.
 
     When saving/rendering the image, you need to take into account the Signagelive player you are producing content for, and the file types which are supported.
 
-<button name="button" class="btn-style2 btn small" onclick="https://docs.google.com/spreadsheets/d/1xQ5ev5ZT_mDiDA1jPtzwl3ThqF9GF5ClrZdjj5Bt1A4/edit#gid=0">Which file types are supported?</button>
+{% include button.html name="Which file types are supported?" url="https://docs.google.com/spreadsheets/d/1xQ5ev5ZT_mDiDA1jPtzwl3ThqF9GF5ClrZdjj5Bt1A4/edit#gid=0" %}
 
 <br>
 
@@ -34,7 +34,7 @@ Which of our developer tools you need to use, really depends on what you are loo
 
 Why not use our Photoshop plugin, and upload your newly created images directly to your Signagelive network.
 
-<button name="button" class="btn-style2 btn small" onclick="https://support.signagelive.com/hc/en-us/articles/360008268672-Using-the-Signagelive-for-Adobe-Creative-Cloud-Plugin">Find out more...</button>
+{% include button.html name="Find out more..." url="https://support.signagelive.com/hc/en-us/articles/360008268672-Using-the-Signagelive-for-Adobe-Creative-Cloud-Plugin" %}
 
 </div>
 
@@ -49,7 +49,7 @@ All standard video creation tools can be used to create video content to be usin
 
 When rendering the video, you need to take into account the Signagelive player you are producing content for, and the file types which are supported.
 
-<button name="button" class="btn-style2 btn small" onclick="https://docs.google.com/spreadsheets/d/1xQ5ev5ZT_mDiDA1jPtzwl3ThqF9GF5ClrZdjj5Bt1A4/edit#gid=0">Which file types are supported?</button>
+{% include button.html name="Which file types are supported?" url="https://docs.google.com/spreadsheets/d/1xQ5ev5ZT_mDiDA1jPtzwl3ThqF9GF5ClrZdjj5Bt1A4/edit#gid=0" %}
 
 </div>
 
@@ -76,7 +76,7 @@ Signagelive has also made its Widget Development Framework available to all user
 2. Provide customisable settings in a user-friendly interface, so that your users can modify the content easily using predefined options.
 If you are already creating web content, then you can create Widgets, using the Widget Development Framework. You don’t need to sign up for access, you can get started straight away.
 
-<button name="button" class="btn-style2 btn small" onclick="/widget-development-framework/">Get Started</button>
+{% include button.html name="Get Started" url="/widget-development-framework/" %}
 
 </div>
 
@@ -95,7 +95,8 @@ If you are already using existing tools to create content, maybe for other platf
 
 We will set you up on our development environment, a copy of the production environment, provide you with licences to develop against, and give you some guidance as to the correct platform services you need to use to achieve your goals.
 
-<button name="button" class="btn-style2 btn small" onclick="/network-api/">Get Started</button>
+
+{% include button.html name="Get Started" url="/network-api/" %}
 
 </div>
 
@@ -122,7 +123,7 @@ Do you want to create a user interface which is specific to your use case? Then 
 
 We will set you up on our development environment, a copy of the production environment, provide you with licences to develop against, and give you some guidance as to the correct platform services you need to use to achieve your goals.
 
-<button name="button" class="btn-style2 btn small" onclick="/network-api/">Get Started</button>
+{% include button.html name="Get Started" url="/network-api/" %}
 
 </div>
 
@@ -141,7 +142,7 @@ Do you want to be able to trigger a change in the content being shown on a singl
 
 If you already have your own Signagelive network, then we will activate the Web Triggers API on your network, if not, we can get you set up with one.
 
-<button name="button" class="btn-style2 btn small" onclick="/web-triggers/">Get Started</button>
+{% include button.html name="Get Started" url="/web-triggers/" %}
 
 </div>
 

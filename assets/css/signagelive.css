@@ -93,6 +93,16 @@ li .toc-entry::before {
     transition-timing-function: ease-out;
 }
 
+/* Buttons */
+
+a.btn-style2.btn.small {
+  color: #FFF;
+}
+
+a.btn-style2.btn.small:hover {
+  color: #0d65b0;
+}
+
 /* Flex */
 
 .center {
