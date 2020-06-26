@@ -1,3 +1,11 @@
+/* Change Docs with Sidebar Sizing */
+
+@media (min-width: 1300px) {
+  .container {
+      max-width: 1340px;
+  }
+}
+
 /* Logo */
 
 .header-logo img {
