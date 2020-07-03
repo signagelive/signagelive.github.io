@@ -1,7 +1,7 @@
+_site
 .sass-cache
-/_site
+.jekyll-cache
 .jekyll-metadata
 node_modules
-Gemfile.lock
 package-lock.json
 /dist

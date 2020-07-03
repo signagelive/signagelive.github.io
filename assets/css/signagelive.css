@@ -71,7 +71,7 @@ div#table-of-contents {
   transform: scaleY(1);
 }
 
-.toc-entry a:hover {
+.toc-entry a:hover, li .toc-entry a.active {
     border: 1px solid rgba(0,1,1,.01);
     color: #0d65b0;
     background: #fff;

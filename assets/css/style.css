@@ -2267,5 +2267,68 @@ h2 a.header-link {
 .doc-content a {
   color: #0D65B0; }
 
+div#table-of-contents {
+  background: #f2f6fb; }
+
 div#modal {
   background: #fff; }
+
+.custom-links,
+.doc-right-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px; }
+
+.custom-links {
+  background: #f2f6fb;
+  padding: 20px;
+  border-radius: 2px;
+  margin-bottom: 30px; }
+  .custom-links ul {
+    border-left: 1px solid #hover-color;
+    margin-top: 18px; }
+    .custom-links ul .display-dropdown .sub-dropdown {
+      display: block; }
+    .custom-links ul .display-dropdown a .fa {
+      transform: rotate(90deg); }
+    .custom-links ul li {
+      position: relative; }
+      .custom-links ul li ul.sub-dropdown {
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+        margin-left: 15px;
+        font-size: 14px;
+        display: none; }
+      .custom-links ul li i {
+        text-align: center;
+        position: absolute;
+        right: -10px;
+        top: 5px;
+        border: 1px solid #ddd;
+        width: 25px;
+        display: inline-block;
+        height: 25px;
+        line-height: 1.4;
+        cursor: pointer;
+        border-radius: 50%;
+        color: #0D65B0;
+        transition: all ease .2s; }
+        .custom-links ul li i:hover {
+          background: #0D65B0;
+          border-color: #0D65B0;
+          color: #ffffff;
+          transition: all ease .2s; }
+      .custom-links ul li a {
+        line-height: 1.8;
+        margin-left: -1px;
+        display: block;
+        padding-left: 15px;
+        line-height: 1.7;
+        padding-top: 6px;
+        padding-bottom: 6px; }
+        .custom-links ul li a:hover {
+          border-left: 1px solid #0d65b0; }
+
+.tutorial-content.mx-auto {
+  margin: 0px; }
