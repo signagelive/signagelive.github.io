@@ -17,47 +17,47 @@ There is nothing that we at Signagelive can do, that you as builders/makers will
 
 <div class="flex row space-around">
 
-<div class="flex col center" onclick="showDiv('media')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('media')">
 <img src="/assets/images/platform-services/media.png">
 MEDIA
 </div>
 
-<div class="flex col center" onclick="showDiv('layout')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('layout')">
 <img src="/assets/images/platform-services/layout.png">
 LAYOUT
 </div>
 
-<div class="flex col center" onclick="showDiv('schedule')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('schedule')">
 <img src="/assets/images/platform-services/schedule.png">
 SCHEDULE
 </div>
 
-<div class="flex col center" onclick="showDiv('publish')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('publish')">
 <img src="/assets/images/platform-services/publish.png">
 PUBLISH
 </div>
 
-<div class="flex col center" onclick="showDiv('report')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('report')">
 <img src="/assets/images/platform-services/report.png">
 REPORT
 </div>
 
-<div class="flex col center" onclick="showDiv('manage')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('manage')">
 <img src="/assets/images/platform-services/manage.png">
 MANAGE
 </div>
 
-<div class="flex col center" onclick="showDiv('monitor')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('monitor')">
 <img src="/assets/images/platform-services/monitor.png">
 MONITOR
 </div>
 
-<div class="flex col center" onclick="showDiv('widgets')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('widgets')">
 <img src="/assets/images/platform-services/widgets.png">
 WIDGETS
 </div>
 
-<div class="flex col center" onclick="showDiv('interact')">
+<div class="flex col center" style="max-width: 20%;" onclick="showDiv('interact')">
 <img src="/assets/images/platform-services/interact.png">
 INTERACT
 </div>
