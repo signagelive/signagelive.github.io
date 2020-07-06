@@ -35,6 +35,7 @@ plugins:
   - jekyll-archives
   - jekyll-toc
   - jekyll-seo-tag  
+  - jekyll-redirect-from
 
 collections:
   team_members:
