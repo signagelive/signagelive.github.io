@@ -97,6 +97,10 @@ li .toc-entry::before {
     transition-timing-function: ease-out;
 }
 
+div#table-of-contents {
+  background: transparent !important;
+}
+
 /* Buttons */
 
 a.btn-style2.btn.small {
