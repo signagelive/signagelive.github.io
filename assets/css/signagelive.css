@@ -9,7 +9,7 @@
 /* Logo */
 
 .header-logo img {
-  height: 50px;
+  max-height: 50px;
 }
 
 /* Additional Styling for Tables */
