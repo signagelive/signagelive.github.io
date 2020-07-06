@@ -97,10 +97,6 @@ INDEX SASS
         .header-logo{
             margin: 10px  0;
             display: block;
-            @include mobile{
-              margin: 8px 0;
-              width: 110px;
-            }
         }
         #navigation-menu{
           @include desktop{

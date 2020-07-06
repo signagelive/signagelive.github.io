@@ -19,9 +19,13 @@
   }
 
  thead {
-    /* border: 1px solid #0d65b0; */
+    /* border: 1px solid #26ACD9; */
     background-color: #404145;
-    /* background-color: #0f73c8; */
+    /* background-color: #2ca5ce; */
+  }
+
+  th, td {
+    padding-left: 1vh;
   }
 
   td {
@@ -29,7 +33,7 @@
   }
 
   table tbody tr:nth-child(odd) {
-    background: #404145;
+    background: #4a4b50;
   }
 
   table tbody tr:nth-child(even) {
@@ -71,9 +75,9 @@ div#table-of-contents {
   transform: scaleY(1);
 }
 
-.toc-entry a:hover, li .toc-entry a.active {
+.toc-entry a:hover, li.toc-entry a.active {
     border: 1px solid rgba(0,1,1,.01);
-    color: #0d65b0;
+    color: #26ACD9;
     background: #fff;
 }
 
@@ -100,7 +104,7 @@ a.btn-style2.btn.small {
 }
 
 a.btn-style2.btn.small:hover {
-  color: #0d65b0;
+  color: #26ACD9;
 }
 
 /* Flex */
@@ -127,4 +131,26 @@ a.btn-style2.btn.small:hover {
 .space-around {
   justify-content: space-around;
   -webkit-justify-content: space-around;
+}
+
+/* Scrollbar */
+
+/* width */
+#table-of-contents::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#table-of-contents::-webkit-scrollbar-track {
+  background: #2ca5ce;
+}
+
+/* Handle */
+#table-of-contents::-webkit-scrollbar-thumb {
+  background: #1c81a3;
+}
+
+/* Handle on hover */
+#table-of-contents::-webkit-scrollbar-thumb:hover {
+  background: #0e5369;
 }

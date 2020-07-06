@@ -520,10 +520,6 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   .header-navigation .navigation-box .header-logo {
     margin: 10px  0;
     display: block; }
-    @media (max-width: 575px) {
-      .header-navigation .navigation-box .header-logo {
-        margin: 8px 0;
-        width: 110px; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .header-navigation .navigation-box #navigation-menu {
       box-shadow: 0 0 20px 5px rgba(33, 107, 188, 0.03);
