@@ -39,7 +39,7 @@ The token must be a <a href="https://jwt.io/">JSON Web Token<A> that is signed u
 
 JWTs (JSON Web Tokens) are an industry standard way to exchange information and as such there are a large number of libraries available for almost all languages and frameworks designed to make encoding, decoding, signing and verifying JWTs easier. Check the <a href="https://jwt.io/#libraries-io">jwt.io libraries page</a> for more information or to find a ready built library that you can use in your own application.
 
-## Token Payload Required Properties
+## Required Properties
 
 The following properties must be included in the payload of the request token:
 
@@ -52,13 +52,13 @@ Any request that is made that does not include both a clientId and callbackUrl w
 
 Note that token payload property names are case sensitive.
 
-## Token Payload Additional Properties
+## Additional Properties
 
 As well as the required properties that must be included it is also possible to include additional properties in the payload that will be passed back to the calling application in the payload of the response token. This makes it easier for the calling application to associate the response back to the initial request by, for example, including a unique request identifier.
 
 When including additional properties the token payload must not include any of the reserved property names documented in the next section.
 
-## Token Payload Reserved Property Names
+## Reserved Property Names
 
 The following is a list of reserved property names that should not be included in the request token payload:
 
