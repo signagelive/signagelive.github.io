@@ -67,6 +67,11 @@ ul li .toc-h3 a {
   font-size: 14px;
 }
 
+ul li .toc-h4 a {
+  padding: 0 0 0 7vw;
+  font-size: 14px;
+}
+
 div#table-of-contents {
   font-size: 15px;
 }
