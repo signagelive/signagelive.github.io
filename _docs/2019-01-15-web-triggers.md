@@ -26,7 +26,7 @@ To be able to trigger content changes, you must have published interrupts to you
 
 You will be publishing a Key Press interrupt, although you won’t be triggering the interrupt with a keyboard, the key press is used as an identifier to tell the player which content to play for an interrupt triggered using this API.
 
-[Publishing an Interrupt](https://support.signagelive.com/hc/en-us/articles/115003459152){: .btn-style2 .btn .small}
+[Publishing an Interrupt](https://support.signagelive.com/hc/en-us/articles/115003459152){:target="_blank" .btn-style2 .btn .small}
 
 ## Postman
 
