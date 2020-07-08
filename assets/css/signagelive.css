@@ -19,9 +19,7 @@
   }
 
  thead {
-    /* border: 1px solid #26ACD9; */
-    background-color: #404145;
-    /* background-color: #2ca5ce; */
+    background-color: #262627;
   }
 
   th, td {
@@ -32,13 +30,25 @@
       font-size: 14px;
   }
 
-  table tbody tr:nth-child(odd) {
+  tr td:nth-child(odd) {
+    background: #404145;
+  }
+  
+  tr td:nth-child(even) {
+    background: #4a4b50;
+  }
+  
+  td {
+    border: 1px solid black;
+  }
+
+  /* table tbody tr:nth-child(odd) {
     background: #4a4b50;
   }
 
   table tbody tr:nth-child(even) {
     background: #404145;
-  }
+  } */
 
 /* Code formatting */
 
@@ -104,6 +114,12 @@ li .toc-entry::before {
 
 div#table-of-contents {
   background: transparent !important;
+}
+
+.doc-sidebar-menu li a {
+  border-top: 1px solid #26ACD9;
+  border-left: 1px solid #26ACD9;
+  border-right: 1px solid #26ACD9;
 }
 
 /* Buttons */
