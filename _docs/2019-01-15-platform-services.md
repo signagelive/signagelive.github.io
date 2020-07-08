@@ -370,12 +370,16 @@ The Signagelive Marketplace is a collection of free to use Images and Widgets (i
 
     for(var i = 0; i < elems.length; i++) {
         if(elems[i] == divToShow) {
-            if(document.getElementById(elems[i]).style.display == 'none') {
+            console.log('found');
+            if(document.getElementById(elems[i]).style.display == "" || document.getElementById(elems[i]).style.display == 'none') {
+                console.log('flex');
                 document.getElementById(elems[i]).style.display = 'flex';
             } else {
+                console.log('none');
                 document.getElementById(elems[i]).style.display = 'none';
             }
         } else {
+            console.log('hide');
             document.getElementById(elems[i]).style.display = 'none';
         }
     }
