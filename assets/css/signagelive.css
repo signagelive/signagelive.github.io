@@ -58,6 +58,29 @@ pre code {
 
 /* Navigation formatting */
 
+.header-navigation .navigation-box #navigation-menu li a:focus, .header-navigation .navigation-box #navigation-menu li a:hover {
+  background-color: initial !important;
+  opacity: initial;
+}
+
+.header-navigation .navigation-box #navigation-menu li.has-submenu ul li:hover {
+  border-left: 0;
+}
+
+ul.slimmenu:after, ul.slimmenu:before, .header-navigation .navigation-box #navigation-menu li.has-submenu ul:before, .header-navigation .navigation-box #navigation-menu li.has-submenu ul:after {
+  content: unset;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.header-navigation .navigation-box #navigation-menu li.has-submenu ul:before {
+  border: initial;
+}
+
+ul.slimmenu li a, .header-navigation .navigation-box #navigation-menu li.has-submenu ul:before, .header-navigation .navigation-box #navigation-menu li.has-submenu ul li {
+  transition: initial;
+}
+
 .sidebar.sticky.doc-sidebar-menu {
   top: 10px !important;
 }
