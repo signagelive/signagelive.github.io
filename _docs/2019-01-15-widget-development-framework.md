@@ -220,7 +220,7 @@ There is no right or wrong way to create your widgets and we recommend you utili
 
 Adobe Animate will not create a completed widget for you, but will generate high quality animations that you can incorporate into Widgets.
 
-Adobe Animate targets the HTML5 Canvas and exports code that utilised the <a href="https://createjs.com/">CreateJS</a> library.
+Adobe Animate targets the HTML5 Canvas and exports code that utilised the <a target="_blank" href="https://createjs.com/">CreateJS</a> library.
 
 Whilst there are many experiences that can be achieved with Adobe Animate, we have found that traditional timeline (looping) based animations, and dynamic animations that can be controlled by external data source/events are particularly easy to develop.
 
@@ -258,7 +258,7 @@ Tell the Signagelive media player when the application has loaded and is ready t
 
 <h4 class="no_toc"> Get the SDK Javascript File </h4>
 
-You can get the latest SDK javascript file from <a href="https://drive.google.com/open?id=1XQS49mZvDYGn9dOF4xHFHNOeqXK8JSyo">here</a>.
+You can get the latest SDK javascript file from <a target="_blank" href="https://drive.google.com/open?id=1XQS49mZvDYGn9dOF4xHFHNOeqXK8JSyo">here</a>.
 
 <h4 class="no_toc"> Include the Javascript File </h4>
 
@@ -342,7 +342,7 @@ It will be essential to include a polyfile to request AnimateFrame in your code 
 
 It is best practice to embed fonts in your widget so that they always load and your widget displays correctly even when network connectivity is lost.
 
-<a href="https://www.fontsquirrel.com/tools/webfont-generator">FontSquirrel</a> have a really useful web font generator that will generate all the fonts and CSS you require. We recommend using the following settings:
+<a target="_blank" href="https://www.fontsquirrel.com/tools/webfont-generator">FontSquirrel</a> have a really useful web font generator that will generate all the fonts and CSS you require. We recommend using the following settings:
 
 - Select all font formats (TrueType, WOFF, WOFF2, SVG, EOT Lite and EOT Compressed)
 - In the CSS section Base64 Encode your font
@@ -351,16 +351,16 @@ FontSquirrel will generate a zip file that contains all the converted fonts and 
 
 <h3 class="no_toc"> Content Security Policy </h3>
 
-In order to help keep Widgets you develop secure Widgets should adhere to the general concept <a href="https://w3c.github.io/webappsec-csp/">Content Security Policy (CSP)</a>. One key item of note is that inline code is not permitted as this will not run on many of our players.
-See this <a href="https://developer.chrome.com/extensions/contentSecurityPolicy#JSExecution">documentation</a> from Google detailing inline script restrictions within ChromeOS for further details.
+In order to help keep Widgets you develop secure Widgets should adhere to the general concept <a target="_blank" href="https://w3c.github.io/webappsec-csp/">Content Security Policy (CSP)</a>. One key item of note is that inline code is not permitted as this will not run on many of our players.
+See this <a target="_blank" href="https://developer.chrome.com/extensions/contentSecurityPolicy#JSExecution">documentation</a> from Google detailing inline script restrictions within ChromeOS for further details.
 
 <h3 class="no_toc"> ES6 </h3>
 
 Due to the wide variety of vendor platforms supported by Signagelive it is not possible to have consistent support for the latest standards across them, so we recommend you test your widgets on as many platforms as possible and include polyfills for any ES6 features you are using.
 
-For an overview of ES6 features please see <a href="http://es6-features.org/">this</a> great resource. Don’t rely on simply testing in a desktop browser as results can vary quite widely to those obtained when running on a  media player.
+For an overview of ES6 features please see <a target="_blank" href="http://es6-features.org/">this</a> great resource. Don’t rely on simply testing in a desktop browser as results can vary quite widely to those obtained when running on a  media player.
 
-We have found <a href="https://github.com/paulmillr/es6-shim">ES6 Shim</a> to be a useful shim if you need to use ES6 features in your code. However there may be situations we have not come across that don’t work so please test it for your specific use case before deploying your widget.
+We have found <a target="_blank" href="https://github.com/paulmillr/es6-shim">ES6 Shim</a> to be a useful shim if you need to use ES6 features in your code. However there may be situations we have not come across that don’t work so please test it for your specific use case before deploying your widget.
 
 <h3 class="no_toc"> File System </h3>
 
@@ -383,7 +383,7 @@ A workaround for this is to instead parse the response into JSON after it has re
 | Do I have to include a config.xml file                                            | Yes this is required to use within Signagelive as it tells Signagelive how to start the widget and includes any preferences you have added                                                                                                                                                           |
 | Is there a prefered IDE to use?                                                   | No as long as you end up with a working web application that can run from the file system it does not matter how you build it. Internally at Signagelive we use Adobe Animate to generate animations that utilise the HTML5 canvas and Visual Studio Code or Sublime Text to build write custom code |
 | Do you have to use Adobe Animate to create widgets?                               | No you are free to create your widget in anyway you wish, the examples are purely to help you along the way                                                                                                                                                                                          |
-| Do you have to use Adobe Animate if you wish to include animations in the widget? | No, Adobe Animate is a great tool for creating animations. However it essentially generates code based on <a href="https://createjs.com/">CreateJS</a>, which is just a nice wrapper libraries around HTML5 APIs, you can roll your own or use alternative libraries.                                                                    |
+| Do you have to use Adobe Animate if you wish to include animations in the widget? | No, Adobe Animate is a great tool for creating animations. However it essentially generates code based on <a target="_blank" href="https://createjs.com/">CreateJS</a>, which is just a nice wrapper libraries around HTML5 APIs, you can roll your own or use alternative libraries.                                                                    |
 | What can I build with widgets?                                                    | Anything you like as long as it can be developed as a web application and run locally from the file system on the media player.                                                                                                                                                                      |
 | Can I build touch aware applications?                                             | Yes absolutely                                                                                                                                                                                                                                                                                       |
 | Can I build 1 widget and have it dynamically get local data?                      | Yes, we have a set of reserved values for widget preferences, that will automatically inject player specific information in such as the postal code, or location/store id. You can then call an API with that data and return location specific information for display.                             |

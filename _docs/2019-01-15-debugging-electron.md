@@ -14,7 +14,7 @@ This user guide demonstrates the steps outlined to enable debugging on an Electr
 
 To set up a device for testing you will first need to configure a file to run with your Electron app. This process is as follows:
 
-1. Download and install the Signagelive client from <a href="https://clients.signagelive.com/windows/Signagelive.exe">here</a> (minimum version 1.0.43).
+1. Download and install the Signagelive client from <a target="_blank" href="https://clients.signagelive.com/windows/Signagelive.exe">here</a> (minimum version 1.0.43).
 2. Browse to %AppData%\Signagelive
 3. Create a new file called debug.json.
 4. Open debug.json with a text editor and copy the following into the contents of the file:

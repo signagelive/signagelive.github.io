@@ -56,9 +56,9 @@ Several endpoints are used by the Signagelive platform. We have supplied a list 
 
 Signagelive have made available a Postman configuration with a sample collection of all available requests to help partners get started using the API.
 
-The postman configuration file can be downloaded here: <a href="https://drive.google.com/a/signagelive.com/file/d/0B9p6rRnPnFlDMXJKaERxWjMxS00/view?usp=sharing">https://drive.google.com/a/signagelive.com/file/d/0B9p6rRnPnFlDMXJKaERxWjMxS00/view?usp=sharing</a>
+The postman configuration file can be downloaded here: <a target="_blank" href="https://drive.google.com/a/signagelive.com/file/d/0B9p6rRnPnFlDMXJKaERxWjMxS00/view?usp=sharing">https://drive.google.com/a/signagelive.com/file/d/0B9p6rRnPnFlDMXJKaERxWjMxS00/view?usp=sharing</a>
 
-For more information about Postman and to download Postman for Chrome see: <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en">https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en</a>
+For more information about Postman and to download Postman for Chrome see: <a target="_blank" href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en">https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en</a>
 
 ## Authorization
 

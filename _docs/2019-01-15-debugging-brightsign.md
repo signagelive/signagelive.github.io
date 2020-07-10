@@ -14,7 +14,7 @@ This user guide demonstrates the steps outlined to enable debugging on an Bright
 
 To set up a device for testing you will first need to configure a file to run with your Electron app. This process is as follows:
 
-1. Install the Signagelive client. Specific install instructions are available <a href="https://support.signagelive.com/hc/en-us/articles/115000280512-Configuring-your-BrightSign-device-">here</a>.
+1. Install the Signagelive client. Specific install instructions are available <a target="_blank" href="https://support.signagelive.com/hc/en-us/articles/115000280512-Configuring-your-BrightSign-device-">here</a>.
 2. Activate your panel on https://login.signagelive.com/ 
 3. To access the debugging capability go to your Player details for the activated player on Signagelive.
 4. Once on this page go to the System tab for the Player and note down IP Address under the Network details. If this information is unavailable you can also view the IP address of your Brightsign Player by inserting a keyboard (USB) and pressing CTRL + I with the Signagelive Client open.

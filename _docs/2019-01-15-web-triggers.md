@@ -12,7 +12,7 @@ Before continuing with this guide, please make sure you have reviewed the Signag
 
 To interact with the Network API you will be provided with credentials for your Application. To request these credentials, please sign up for access.
 
-[Sign Up for Access](https://build.signagelive.com/sign-up){: .btn-style2 .btn .small}
+[Sign Up for Access](https://build.signagelive.com/sign-up){:target="_blank" .btn-style2 .btn .small}
 
 ## Overview
 
@@ -34,7 +34,7 @@ At Signagelive we use a tool named Postman, to be able to interact with our APIâ
 
 We provide a getting started collections, which can be imported into Postman to get you started. You can then set up an environment which contains the credentials we provide to use with this collection .
 
-[Get Postman Collection](https://drive.google.com/open?id=1i3zapTXPtQ17XJqVNP0RfoC05X0t0Gsb){: .btn-style2 .btn .small}
+[Get Postman Collection](https://drive.google.com/open?id=1i3zapTXPtQ17XJqVNP0RfoC05X0t0Gsb){:target="_blank" .btn-style2 .btn .small}
 
 ## Documentation
 

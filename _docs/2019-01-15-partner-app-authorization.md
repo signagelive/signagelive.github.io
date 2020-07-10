@@ -23,7 +23,7 @@ Developers looking to integrate their applications with Signagelive should ensur
  - Client ID
  - Client Secret
 
-If you are a developer and have not been provided with access to your own network or credentials for your partner application and you are interested in integrating with Signagelive please reach out and join our <a href="https://signagelivedevelopers-signup.herokuapp.com/">Developer Slack Community</a> today.
+If you are a developer and have not been provided with access to your own network or credentials for your partner application and you are interested in integrating with Signagelive please reach out and join our <a target="_blank" href="https://signagelivedevelopers-signup.herokuapp.com/">Developer Slack Community</a> today.
 
 # High Level Workflow
 
@@ -35,9 +35,9 @@ The diagram below shows at a high-level the intended workflow.
 
 The calling application is expected to provide a request token which is passed on the query string when sending a request to authorize or deauthorize an application to Signagelive.
 
-The token must be a <a href="https://jwt.io/">JSON Web Token<A> that is signed using the Client Secret and the HS256 (HMAC SHA256) algorithm. This provides a secure way to transmit both the request and response data and verify the identity of the sender. Note that the Client Secret should only ever be used to sign the token and should never be included in the token payload or query string.
+The token must be a <a target="_blank" href="https://jwt.io/">JSON Web Token<A> that is signed using the Client Secret and the HS256 (HMAC SHA256) algorithm. This provides a secure way to transmit both the request and response data and verify the identity of the sender. Note that the Client Secret should only ever be used to sign the token and should never be included in the token payload or query string.
 
-JWTs (JSON Web Tokens) are an industry standard way to exchange information and as such there are a large number of libraries available for almost all languages and frameworks designed to make encoding, decoding, signing and verifying JWTs easier. Check the <a href="https://jwt.io/#libraries-io">jwt.io libraries page</a> for more information or to find a ready built library that you can use in your own application.
+JWTs (JSON Web Tokens) are an industry standard way to exchange information and as such there are a large number of libraries available for almost all languages and frameworks designed to make encoding, decoding, signing and verifying JWTs easier. Check the <a target="_blank" href="https://jwt.io/#libraries-io">jwt.io libraries page</a> for more information or to find a ready built library that you can use in your own application.
 
 ## Required Properties
 

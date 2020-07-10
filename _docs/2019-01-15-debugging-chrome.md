@@ -12,7 +12,7 @@ This user guide demonstrates the steps outlined to enable debugging on a ChromeO
 
 ## Debugging Step-by-Step - How To Guide
 
-1. Install the Signagelive client from <a href="https://chrome.google.com/webstore/detail/signagelive/hbfbekdejbpmnpilhdnfokjehnianfeb">here</a>. For further advice and guidance our support articles are available <a href="https://support.signagelive.com/hc/en-us/articles/115000152671-Signagelive-for-Chrome-OS-Overview">here</a>.
+1. Install the Signagelive client from <a target="_blank" href="https://chrome.google.com/webstore/detail/signagelive/hbfbekdejbpmnpilhdnfokjehnianfeb">here</a>. For further advice and guidance our support articles are available <a target="_blank" href="https://support.signagelive.com/hc/en-us/articles/115000152671-Signagelive-for-Chrome-OS-Overview">here</a>.
 2. Activate the Signagelive client license against your Network on https://login.signagelive.com/ 
 3. Complete one of the following to access the debugger.
     1. Navigate to Chrome://extensions in your browser and click on the Signagelive extension (available under the details tab), if Signagelive is running then you will be able to open index.html.

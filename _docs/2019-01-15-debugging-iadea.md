@@ -44,7 +44,7 @@ Example of the developer tools for a widget/app running on Signagelive
 
 ## [Optional] Setting up Android Studio (AS)
 
-1. Download <a href="https://developer.android.com/studio">here</a> and install
+1. Download <a target="_blank" href="https://developer.android.com/studio">here</a> and install
 2. Under the SDK Manager you may need to click ‘show package details for this step’ – you will need to install:
     1. SDK Platforms
         1. Android 9.0 (Pie) SDK Platform 28 only

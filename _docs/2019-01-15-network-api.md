@@ -12,7 +12,7 @@ Before continuing with this guide, please make sure you have reviewed the Signag
 
 To interact with the Network API you will be provided with credentials for your Application. To request these credentials, please sign up for access.
 
-[Sign Up for Access](https://build.signagelive.com/sign-up){: .btn-style2 .btn .small}
+[Sign Up for Access](https://build.signagelive.com/sign-up){:target="_blank" .btn-style2 .btn .small}
 
 ## Development Environment
 
@@ -30,7 +30,7 @@ These clients should NOT be used in a production environment, as there is no gua
 
 The installation process of these clients is the same as in the production environment, but with the alternative URLâ€™s listed provided on sign up.
 
-[Client Installation Instructions](https://support.signagelive.com/hc/en-us/articles/115000111391){: .btn-style2 .btn .small}
+[Client Installation Instructions](https://support.signagelive.com/hc/en-us/articles/115000111391){:target="_blank" .btn-style2 .btn .small}
 
 ## Postman
 
@@ -38,7 +38,7 @@ At Signagelive we use a tool named Postman, to be able to interact with our APIâ
 
 We provide a getting started collections, which can be imported into Postman to get you started. You can then set up an environment which contains the credentials we provide to use with this collection.
 
-[Get Postman Collection](https://drive.google.com/open?id=0B9p59cTuDz5vNHN3Q0Exc3IyUm8){: .btn-style2 .btn .small}
+[Get Postman Collection](https://drive.google.com/open?id=0B9p59cTuDz5vNHN3Q0Exc3IyUm8){:target="_blank" .btn-style2 .btn .small}
 
 ## Application Authorisation
 
