@@ -36,9 +36,7 @@ The installation process of these clients is the same as in the production envir
 
 At Signagelive we use a tool named Postman, to be able to interact with our API’s. This tool, if you are not familiar with it, allows you to be able to make calls to the API and see the responses without having to do any development work. This is specifically designed as a testing/development tool.
 
-We provide a getting started collections, which can be imported into Postman to get you started. You can then set up an environment which contains the credentials we provide to use with this collection.
-
-[Get Postman Collection](https://drive.google.com/open?id=0B9p59cTuDz5vNHN3Q0Exc3IyUm8){:target="_blank" .btn-style2 .btn .small}
+Once we have an understanding of your requirements and you are granted access we will provide a custom Postman collection to simplify the development of your application.
 
 ## Application Authorisation
 
