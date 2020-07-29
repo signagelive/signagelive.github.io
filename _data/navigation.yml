@@ -23,6 +23,8 @@
 - text: Resources
   url: /BrightSign/
   submenu:
+  - text: Developers Slack
+    url: https://join.slack.com/t/signagelivedevelopers/shared_invite/zt-g3zbrdo6-BlcON7H1bvLull~G0jVW7A
   - text: Roadmap
     url: https://trello.com/b/xjDQXkXQ/signagelive-roadmap
   - text: BrightSign Tools
