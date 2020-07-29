@@ -120,6 +120,27 @@ The Signagelive Widget Builder builds your widget based upon the information sto
 
 6. It’s best practice to include a thumbnail of your widget that will display in the Signagelive media asset library, this can be added to the widgetConfig object:
 
+{% highlight json %}
+{
+    "name": "your-widget",
+    "version": "1.0.0",
+    "description": "Long description of your widget",
+    "main": "index.html",
+    "author": "Your company name",
+    "license": "ISC",
+    "scripts": {
+        "dist": "signagelive-widget-builder"
+    },
+    "widgetConfig": {
+        "displayName": "You widget name here",
+        "thumbnail": "images/thumb.jpg",
+    },
+    "devDependencies": {
+        "signagelive-widget-builder": "0.0.20"
+    }
+}
+{% endhighlight %}
+
 ## Usage
 
 Running npm run dist, this will create a new folder in the root directory of your widget called dist and a versioned .wgt file.
