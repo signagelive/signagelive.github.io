@@ -13,6 +13,8 @@
     url: /cli-build-tool/
   - text: Debugging Widgets
     url: /debugging-widgets/
+  - text: Widget SDK
+    url: /widget-sdk
 - text: APIs
   url: /network-api/
   submenu:
