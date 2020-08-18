@@ -8,10 +8,26 @@ toc: true
 ---
 
 <style>
-    table thead tr th {
-    /* transform: rotate(90deg); */
-    font-size: 14px;
-    padding: 0px 1vh;
+    table thead tr th, .table-wrapper td {
+        /* transform: rotate(90deg); */
+        font-size: 14px;
+        padding: 0.3vw 1vh;
+        min-width: 6vw;
+        text-align: center;
+    }
+
+    .table-wrapper td:nth-child(1) {
+        text-align: left;
+        min-width: 16vw;
+    }
+
+    thead tr:nth-child(1) th {
+        transform: rotate(-60deg);
+        padding-top: 1vh;
+    }
+
+    .table-wrapper {
+        overflow-x: scroll;
     }
 </style>
 
@@ -88,18 +104,13 @@ $.ajax({
 
 # Supported Devices
 
-|                                       | LG          | Brightsign HD Series | Brightsign LS Series | Brightsign XD Series | Brightsign XT Series | IADEA / ViewSonic / Planar | Chrome OS |
-|---------------------------------------|-------------|----------------------|----------------------|----------------------|----------------------|----------------------------|-----------------------------------|
-| Signagelive.setData(key, val, shared) | *Coming soon* | ✔                    | ✔                    | ✔                    | ✔                    | ✘                          | ✔                                 |
-| Signagelive.getData(key, shared)      | *Coming soon* | ✔                    | ✔                    | ✔                    | ✔                    | ✘                          | ✔                                 |
-| Signagelive.log(msg)                  | ✔           | ✔                    | ✔                    | ✔                    | ✔                    | ✔                          | ✔                                 |
-| Signagelive.sendReadyToDisplay()      | *Coming soon* | ✔                    | ✔                    | ✔                    | ✔                    | ✘                          | ✔                                 |
+<div class="table-wrapper" markdown="block">
 
-<br>
+|                                       | Amazon Fire TV | Brightsign | Chrome OS | IAdea | LG webOS    | macOS | Philips Android SoC | Samsung SSP (Tizen) | Samsung SSSP (E) | Samsung SSSP (D) | Browser/ Broadcast Player | Legacy PC Client | Windows |
+|---------------------------------------|----------------|------------|-----------|-------|-------------|-------|---------------------|---------------------|------------------|------------------|---------------------------|------------------|---------|
+| Signagelive.setData(key, val, shared) | ✘              | ✔          | ✔         | ✘     | *Coming soon* | ✘     | ✘                   | ✘                   | ✘                | ✘                | ✘                         | ✘                | ✘       |
+| Signagelive.getData(key, shared)      | ✘              | ✔          | ✔         | ✘     | *Coming soon* | ✘     | ✘                   | ✘                   | ✘                | ✘                | ✘                         | ✘                | ✘       |
+| Signagelive.log(msg)                  | ✔              | ✔          | ✔         | ✔     | ✔           | ✔     | ✔                   | ✔                   | ✔                | ✔                | ✔                         | ✔                | ✔       |
+| Signagelive.sendReadyToDisplay()      | ✘              | ✔          | ✔         | ✘     | *Coming soon* | ✘     | ✘                   | ✘                   | ✘                | ✘                | ✘                         | ✘                | ✘       |
 
-|                                       | Philips | Samsung SSSP D/E | Samsung Tizen | Amazon Fire TV Stick (HD/4k) | Browser / Broadcast Player | Legacy PC | Electron Client (Windows/Mac) |
-|---------------------------------------|---------|------------------|---------------|------------------------------|---------------------------------------|------------|-------------------------------|
-| Signagelive.setData(key, val, shared) | ✘       | ✘                | ✘             | ✘                            | ✘                                     | ✘          | ✘                             |
-| Signagelive.getData(key, shared)      | ✘       | ✘                | ✘             | ✘                            | ✘                                     | ✘          | ✘                             |
-| Signagelive.log(msg)                  | ✔       | ✔                | ✔             | ✔                            | ✔                                     | ✔          | ✔                             |
-| Signagelive.sendReadyToDisplay()      | ✘       | ✘                | ✘             | ✘                            | ✘                                     | ✘          | ✘                             |
+</div>
