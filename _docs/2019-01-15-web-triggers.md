@@ -10,9 +10,9 @@ toc: true
 
 Before continuing with this guide, please make sure you have reviewed the Signagelive Platform Services Getting Started guide, to make sure the Web Triggers API is the correct API for your purpose.
 
-To interact with the Network API you will be provided with credentials for your Application. To request these credentials, please sign up for access.
+To interact with the Web Triggers API you will be provided with credentials for your Application. To request these credentials, please sign up for access.
 
-[Sign Up for Access](https://build.signagelive.com/sign-up){:target="_blank" .btn-style2 .btn .small}
+[Sign Up for Access](https://docs.google.com/forms/d/e/1FAIpQLScbomALViAsRf3gT562utIXbcLWP17JcLYaJhhnvDQLvrQOCQ/viewform){:target="_blank" .btn-style2 .btn .small}
 
 ## Overview
 
