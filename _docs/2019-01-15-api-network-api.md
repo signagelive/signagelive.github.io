@@ -7,6 +7,21 @@ post_image: assets/images/service-icon3.png
 tags: [Profile]
 toc: true
 ---
+
+<style>
+   figure.highlight {
+      margin-bottom: 0;
+   }
+
+   .table-wrapper table {
+      width: 100%;
+   }
+
+   .table-wrapper table tr td:nth-child(1) {
+      width: 20%;
+   }
+</style>
+
 # Overview
 
 The Network API is the main API used by the Signagelive User Interface, and is designed to be a RESTful API.
@@ -2899,14 +2914,24 @@ Note that calls to Proof of Play will return ‘Unauthorized’ if Proof of Play
 
 ### Create
 
-| DESCRIPTION          | Creates a new media asset where a file upload is not required i.e. adds a web page, IPTV Stream or RSS/MRSS Feed |                                                                                    |
-|----------------------|------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| HTTP METHOD          | POST                                                                                                             |                                                                                    |
-| URL                  | /mediaassets                                                                                                     |                                                                                    |
-| REQUEST BODY         | {       "name":"Web Page",    "type":"web",    "url":"http://www.signagelive.com" }                              | {      "name":"Web Page",    "type":"web",    "url":"http://www.signagelive.com" } |
-|                      | {      "name":"Web Page",    "type":"web",    "url":"http://www.signagelive.com" }                               |                                                                                    |
-| NORMAL RESPONSE CODE | 201                                                                                                              |                                                                                    |
-| RESPONSE BODY        | Media Asset object                                                                                               |                                                                                    |
+<div class="table-wrapper" markdown="block">
+
+| DESCRIPTION          | Creates a new media asset where a file upload is not required i.e. adds a web page, IPTV Stream or RSS/MRSS Feed |
+|----------------------|------------------------------------------------------------------------------------------------------------------|
+| HTTP METHOD          | POST                                                                                                             |
+| URL                  | /mediaassets                                                                                                     |
+| REQUEST BODY         |
+{% highlight javascript %}
+{
+   "name":"Web Page",
+   "type":"web",
+   "url":"http://www.signagelive.com"
+}
+{% endhighlight %}
+| NORMAL RESPONSE CODE | 201                                                                                                              |
+| RESPONSE BODY        | Media Asset object                                                                                               |
+
+</div>
 
 ### Upload
 
