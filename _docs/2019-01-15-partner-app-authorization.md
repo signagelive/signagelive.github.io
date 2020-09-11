@@ -23,7 +23,7 @@ Developers looking to integrate their applications with Signagelive should ensur
  - Client ID
  - Client Secret
 
-If you are a developer and have not been provided with access to your own network or credentials for your partner application and you are interested in integrating with Signagelive please reach out and join our <a target="_blank" href="https://signagelivedevelopers-signup.herokuapp.com/">Developer Slack Community</a> today.
+If you are a developer and have not been provided with access to your own network or credentials for your partner application and you are interested in integrating with Signagelive please reach out and join our <a target="_blank" href="https://join.slack.com/t/signagelivedevelopers/shared_invite/zt-g3zbrdo6-BlcON7H1bvLull~G0jVW7A">Developer Slack Community</a> today.
 
 # High Level Workflow
 
