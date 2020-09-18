@@ -374,6 +374,37 @@ Tizen 2.4 does not support the usage of the ‘JSON’ response type in XMLHTTPR
 
 A workaround for this is to instead parse the response into JSON after it has returned.
 
+## Windows Applications
+
+In addition to packaging standalone web applications it is possible to package Windows Applications within Widgets.
+
+This is only supported on the new range of Windows Media Players running the “Electron Client” - contact us if you are not sure.
+
+The executable files will run for the duration specified in the playlist. Using them as a default asset in zones is not recommended as they will restart every 10 seconds. If the executable file is closed or crashes, the Signagelive client will restart it. Signagelive cannot control the size or position of the application window, this is the responsibility of the application developer.
+
+The packaging process is very similar to packaging a web application the only difference being that the EXE needs to be specified in the src attribute of the content element e.g.
+
+{% highlight xml %}
+<?xml version="1.0"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:sl="http://www.signagelive.com/widgets" id="http://www.signagelive.com/samplewidget" version="0.0.1" width="1920" height="1080" >
+    <!-- Name of the widget displayed in Signagelive as the name of the Media Asset -->
+    <name>Simple Example</name>    
+    <description>A simple widget </description>
+    <!-- Widget author -->
+    <author>Signagelive Limited</author>
+    <!-- Start page for widget -->
+    <content src="application.exe" />
+    <!-- Icons to display in Signagelive, not essential as Signagelive will attempt to generate a preview if these are omitted -->
+    <icon src="images/thumb.jpg" sl:thumbnail="large" />
+    <icon src="images/thumb.jpg" sl:thumbnail="small" />
+    <!--Preferences (Optional)-->
+    <preference name="Text" value="Hello World" sl:type="string" sl:required="true" />
+    <preference name="Text Colour" value="#ffffff" sl:type="colour" sl:required="true" />     
+</widget>
+{% endhighlight %}
+
+Please note that any dependent resources either need to be packaged with the widget and referenced using relative paths or pre-installed on the target players (Signagelive does not manage this process).
+
 ## FAQs
 
 | Question                                                                          | Answer                                                                                                                                                                                                                                                                                               |
