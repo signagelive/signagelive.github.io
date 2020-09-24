@@ -10,8 +10,8 @@
 # Site settings
 title: "Signagelive Developer Documentation"
 email: "themeix@gmail.com"
-description: "Doxy is a responsive Jekyll template for your documentation or knowledgebase website"
-keywords: "jekyll, minimal jekyll, jekyll theme, responsive jekyll, seo friendly blog, super fast blog, responsive"
+description: ""
+keywords: "signagelive, digital signage"
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: ""
 cover_image: "https://themeix.com/wp-content/uploads/dooxy-responsive-html-template-preview.png" # Image will Display in Social Media When share the website
