@@ -1064,7 +1064,7 @@ A client/player is the device that connects to the Signagelive Player API and pl
 | proofOfPlayEnabled         | A boolean value indicating whether or not proof of play has been enabled on the player.                                                                                                                   | Yes        |
 | site                       | The location and contact information for the playe                                                                                                                                                        | Yes        |
 | isInTrash                  | A boolean value indicating whether or not the player is in the trash                                                                                                                                      | Yes        |
-      * This field can only be updated to ‘null’ to remove the default playlist
+      * This field can only be updated to ‘null’ to remove the default playlist |
 
 ### Example
 
@@ -1977,11 +1977,12 @@ Content to be published.
 
 ### Field Definitions
 
-| NAME           | DESCRIPTION                                                                                                                                                                                                                                                                           |
+| NAME           | DESCRIPTION |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | content        | An object containing the content to publish: defaultPlaylist – The id of the default playlist to publish to the players, or null if not publishing a default playlist. layouts – An array of scheduledLayout objects to publish interrupts – An array of interrupt objects to publish |
-| players        | An array of integers containing the player ids to publish to.                                                                                                                                                                                                                         |
-| ignoreWarnings | A boolean value indicating whether or not warnings should be ignored when publishing.                                                                                                                                                                                                 |
+| players        | An array of integers containing the player ids to publish to. |
+| ignoreWarnings | A boolean value indicating whether or not warnings should be ignored when publishing. |
+
 ### Example
 
 {% highlight javascript %}
