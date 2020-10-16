@@ -146,6 +146,39 @@ A network is a Signagelive network.
 }
 {% endhighlight %}
 
+## Create Network Request
+
+The object used when creating a new network
+
+### Field Definitions
+
+| NAME                      | DESCRIPTION                                                 |
+|---------------------------|-------------------------------------------------------------|
+| network                   | A network object                                            |
+| licenceCode               | A single licence code to be added to the Network            |
+| organisationalUnitName    | The name of the Organisational Unit which owns this Network |
+
+### Example
+
+{% highlight javascript %}
+{
+   "network": {
+     "name" :  "New Network", - Required
+     "contactName" :  "",
+     "contactEmail" : "",
+     "contactPhone" : "",
+     "addressLine1" : "",
+     "addressLine2" : "",
+     "city" : "",
+     "county" : "",
+     "postcode" : "",
+     "country" : "United Kingdom" - Required
+    },
+   "licenceCode":"AAAA-BBBB-CCCC-DDDD", - This is a single licence code
+   "organisationalUnitName": "Signagelive OU" - Required for White Labelling
+}
+{% endhighlight %}
+
 ## Network Status
 
 A network’s status is made of a number of network­wide KPIs. The network Status also includes a complete list of players on the network and each player’s individual player KPIs.
@@ -2124,6 +2157,368 @@ An object containing the URL to a player screenshot and details about the screen
 }
 {% endhighlight %}
 
+## Real Time Event
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| id                     | ID of the request                               |
+| name                   | The name of the RTE                             |
+| assetStartConfig       | A stringified JSON object for the configuration |
+| assetCompleteConfig    | A stringified JSON object for the configuration |
+| assetDownloadConfig    | A stringified JSON object for the configuration |
+| assetRemoveConfig      | A stringified JSON object for the configuration                                                  |
+| userPreferencesConfig  | A stringified JSON object with the defined values for user preferences used in the above configs |
+
+### Example
+
+{% highlight javascript %}
+{
+   "id":13456,
+   "player":19876
+}
+{% endhighlight %}
+
+### Example JSON Config
+
+{% highlight javascript %}
+{
+   "type":"http",
+   "config":{
+      "url":"",
+      "type":"POST",
+      "data":{
+         "player_id":"$player_serial_number$",
+         "data":[
+            {
+               "id":0,
+               "start_time":"$pma_start$",
+               "end_time":"$pma_end$",
+               "message_id":
+               "$pma_media_asset_id$"
+            }
+         ]
+      },
+      "headers":[
+         {
+            "name":"content-type",
+            "value":"application/json"
+         },
+         {
+            "name":"tenant_id",
+            "value":"$tenantid$"
+         }
+      ],
+      "commands":""
+   },
+   "slplaceholderConfig":[
+      {
+         "name":"$host$",
+         "value":"",
+         "dataType":"string"
+      },
+      {
+         "name":"$tenantid$",
+         "value":"",
+         "dataType":"string"
+      },
+      {
+         "name":"$player_serial_number$",
+         "field":"clientDetails.signageliveSerialNumber",
+         "dataType":"string"
+      },
+      {
+         "name":"$pma_start$",
+         "field":"start",
+         "dataType":"datetime",
+         "format":"epochSeconds"
+      },
+      {
+         "name":"$pma_end$",
+         "field":"end",
+         "dataType":"datetime",
+         "format":"epochSeconds"
+      },
+      {
+         "name":"$pma_media_asset_id$",
+         "field":"pma.mediaAsset.externalId",
+         "dataType":"id",
+         "format":"int"
+      }
+   ]
+}
+{% endhighlight %}
+
+### Example User Preferences Config
+
+{% highlight javascript %}
+[
+   {
+      "key":"$host$",
+      "name":"Host",
+      "value":"",
+      "dataType":"string"
+   },
+   {
+      "key":"$tenantid$",
+      "name":"Tenant ID",
+      "value":"1244",
+      "dataType":"string"
+   }
+]
+{% endhighlight %}
+
+## Remote Sync Media Asset Request
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| request                   | The url of the media asset and any required headers for authentication                             |
+| realTimeEvents       | Any real time events, that should be added to the Media Asset when it is created |
+| webHook    | The webHook which status updates should be sent to and any headers which should be included |
+
+### Example
+
+{% highlight javascript %}
+[
+   {
+      "request":{   
+         "url":"{{assetUrl}}",
+         "headers":[
+            {
+               "key":"",
+               "value""
+            }
+         ]
+      },
+      "realTimeEvents":{
+         "global":[
+            {{realtimeeventId}}
+         ],
+         "custom":[ ]
+      },
+      "webhook": {
+         "url":"{{assetUrl}}",
+         "headers":[
+            {
+               "key":"",
+               "value""
+            }
+         ]
+      }
+   }
+]
+{% endhighlight %}
+
+## Remote Sync Media Asset Request
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| url                   | The url of the media asset                             |
+| remoteSyncRequestId       | The ID of the Remote Sync Request so this can be linked to the web hook status messages |
+| metadata    | A list of any key value pair data |
+
+### Example
+
+{% highlight javascript %}
+[
+   {
+      "url":"",
+      "remoteSyncRequestId":1,
+      "meta_data": [
+         {
+            "key":"",
+            "value":""
+         }
+      ]
+   }
+]
+{% endhighlight %}
+
+## Remote Sync Request Status
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| remoteSyncRequestId       | The ID of the Remote Sync Request  |
+| mediaAssetId    | If successful, the ID of the created Media Asset |
+| success    | A boolean showing the success of the request |
+| errors    | An array of any errors in the case that success = false |
+| meta_data    | An array of any additional meta_data which was included in the request |
+
+### Example
+
+{% highlight javascript %}
+[
+   {
+      "remoteSyncRequestId":1,
+      "mediaAssetId": 1,
+      "success":true,
+      "errors": [
+         {
+            "code":"SLR0001",
+            "description":""
+         }
+      ],
+      "meta_data": [
+         {
+            "key":"",
+            "value":""
+         }
+      ]
+   }
+]
+{% endhighlight %}
+
+## Playlist Media Asset Add Request
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| networkId       | The ID of the Network the Playlist is on  |
+| pma    | The Playlist Media Asset object to be added |
+| playlistId    | The ID of the Playlist to add the asset to |
+| webHook    | The webHook which status updates should be sent to and any headers which should be included |
+
+### Example
+
+{% highlight javascript %}
+[
+   {
+      "networkId":1,
+      "pma": {},
+      "playlistId":1,
+      "webhook": {
+         "url":"{{assetUrl}}",
+         "headers":[
+            {
+               "key":"",
+               "value""
+            }
+         ]
+      }
+   }
+]
+{% endhighlight %}
+
+## Playlist Media Asset Add Request Status
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| playlistId       | The ID of the Remote Sync Request  |
+| playlistMediaAssetId    | If successful, the ID of the created Media Asset |
+| success    | A boolean showing the success of the request |
+| errors    | An array of any errors in the case that success = false |
+
+### Example
+
+{% highlight javascript %}
+[
+   {
+      "playlistId":1,
+      "playlistMediaAssetId": 1,
+      "success":true,
+      "errors": [
+         {
+            "code":"SLR0001",
+            "description":""
+         }
+      ]
+   }
+]
+{% endhighlight %}
+
+## Publish Configuration
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| start       | The start date and time the schedule will start  |
+| end       |  The end date and time the schedule will finish, set to 9999-12-31T00:00 for it to run until further notice |
+| publishType       |  Default or Schedule or Interrupt |
+| contentType       |  mediaAsset or Playlist or Layout |
+| playlist       |  The Playlist object being published |
+| layout       |  The Layout object being published |
+| scheduledLayout       |  The configured scheduled layout for the layout being published, including the scheduled playlists in zones |
+| mediaAsset       | The Media Asset being published  |
+| publishResults       | A list of publish result objects which is the list of players being published to  |
+| validity       | The validity object if any is to be used  |
+| hasValidity       |  A boolean to say whether validity is being used |
+| startTrigger       |  The Interrupt Signal object to trigger the interrupt, if serial is not being used |
+| endTrigger       | The interrupt Signal object to end the interrupt, if serial is not being used  |
+| interruptDuration       | The duration the interrupt will play for if set, in seconds  |
+| interruptPlayToLength       |  Whether to play the interrupt to length of the content or the defined duration |
+| interruptResumeOnNext       |  When next interrupting start at the next asset based on the previous interrupt playback |
+| serialDevice       |  The serial device to use to trigger the interrupt |
+| serialStartCommand       | The serial command to trigger the interrupt  |
+| serialEndComand       | The serial command to end the interrupt  |
+
+### Example
+
+{% highlight javascript %}
+{
+   "start":"2019-02-18T14:22:00",
+   "end":"9999-12-31T00:00:00",
+   "publishType":"interrupt",
+   "contentType":"playlist",
+   "validity":null,
+   "hasValidity":false,
+   "interruptPlayToLength":true,
+   "interruptDuration":10,
+   "interruptResumeOnNext":false,
+   "interruptPlayType":"playToLength",
+   "playlist":{
+      "id":"",
+      "name":"Triggered Playlist",
+      "dateCreated":"2018-03-29T13:55:16.000Z",
+      "lastModified":"2019-02-14T15:42:40.000Z",
+      "size":0,
+      "includeInProofOfPlay":false,
+      "playlistTypeString":"Main",
+      "proofOfPlay":null,
+      "thumbnailUrl":"",
+      "autoGenerated":false,
+      "isInTrash":false,
+      "startOnHour":false,
+      "mediaAssets":[
+         
+      ]
+   },
+   "layout":null,
+   "scheduledLayout":null,
+   "mediaAsset":null,
+   "publishResults":[
+      {
+         "id":"29643",
+         "type":null,
+         "result":null,
+         "publishConfig":null,
+         "player":"29643",
+         "publishIssues":[
+
+         ]
+      }
+   ],
+   "startTrigger":{
+      "id":"67",
+      "displayName":"",
+      "signalValue":"",
+      "type":"3"
+   },
+   "endTrigger":null
+}
+{% endhighlight %}
+
+
 # Operations
 
 ## Network
@@ -2137,6 +2532,16 @@ An object containing the URL to a player screenshot and details about the screen
 | REQUEST BODY         | None                   |
 | NORMAL RESPONSE CODE | 200                    |
 | RESPONSE BODY        | A Network object       |
+
+### CREATE
+
+| DESCRIPTION          | Create a Network (only a single licence can be added using this method)                               |
+|----------------------|-------------------------------------------------|
+| HTTP METHOD          | POST                                            |
+| URL                  | /networks/                                      |
+| REQUEST BODY         | Create Network Request Object                   |
+| NORMAL RESPONSE CODE | 200                                             |
+| RESPONSE BODY        | A Network object with an API Authorization Code |
 
 ## Status
 
@@ -2168,7 +2573,6 @@ An object containing the URL to a player screenshot and details about the screen
 |----------------------|------------------------------------------------|
 | HTTP METHOD          | PUT                                            |
 | URL                  | /networks/{network_id}/NetworkKPISettings/{id} |
-| REQUEST BODY         | None                                           |
 | REQUEST BODY         | Network KPI Settings object with updates       |
 | NORMAL RESPONSE CODE | 200                                            |
 | RESPONSE BODY        | Updated Network KPI Settings Object            |
@@ -2944,6 +3348,35 @@ Note that calls to Proof of Play will return ‘Unauthorized’ if Proof of Play
 | NORMAL RESPONSE CODE | 201                                                                |
 | RESPONSE BODY        | Media Asset object                                                 |
 
+### Add Media Asset from a Digital Asset Management Tool
+
+Signagelive have added a mechanism to be able to add content using a URL pointing at their Digital Asset Management platform, Signagelive will take this, download the file, and validate it is usable, and then send the success or failure of this to a provided webhook. It is possible to send multiple Media Assets at once.
+
+| DESCRIPTION          | Add Media Asset from a Digital Asset Management Tool               |
+|----------------------|--------------------------------------------------------------------|
+| HTTP METHOD          | POST                                                               |
+| URL                  | /mediaassets/remoteupload                                                |
+| REQUEST BODY         | Remote Sync Media Asset Upload Object |
+| NORMAL RESPONSE CODE | 201                                                                |
+| RESPONSE BODY        | Remote Sync Media Asset Response                                                 |
+
+Once Signagelive has processed the request, we will send the outcome to the configured webHook. The body included will be a Remote Sync Media Asset Status object. If success is true, the asset is ready to be used and the ID is included.
+
+If success is false, then errors will be included as the reason why. The error codes are as follows:
+
+| ERROR CODE | Description |
+|------------|-------------|
+|SLRSR0001 | Asset could not be downloaded from the remote URL  |
+|SLRSR0002 | The file type is unknown to Signagelive based on the extension  |
+|SLRSR0003 | The media asset could not be uploaded to Signagelive storage (cloud files)  |
+|SLRSR0004 | There was an error saving the new media asset to the database  |
+|SLRSR0005 | Thumbnail could not be generated  |
+|SLRSR0006 | Uncaught exception thrown  |
+|SLRSR0007 | Network Real Time Event not found  |
+|SLRSR0008 | Unable to add Real Time event/s to media asset  |
+
+
+
 ### Update
 
 | DESCRIPTION          | Allows the name of the media asset or if it is included in Proof of Play to be updated. |
@@ -3140,6 +3573,33 @@ Note that calls to Proof of Play will return ‘Unauthorized’ if Proof of Play
 | REQUEST BODY         | None                                         |
 | NORMAL RESPONSE CODE | 200                                          |
 | RESPONSE BODY        | None                                         |
+
+### Add Asset to Playlist
+
+| DESCRIPTION          | Add an Asset to a Playlist                   |
+|----------------------|----------------------------------------------|
+| HTTP METHOD          | POST                                         |
+| URL                  | /playlists/{id}/playlistmediaasset           |
+| REQUEST BODY         | Add Asset to Playlist Request Model          |
+| NORMAL RESPONSE CODE | 200                                          |
+| RESPONSE BODY        | Add Asset to Playlist Request Response       |
+
+The Network API has a method to allow for a Media Asset to be added to a Playlist, without the need for retrieving the entire playlist, adding the media to the media assets collection and then resaving the playlist.
+
+The reason for this addition is to make it possible to add a number of media assets to a single playlist in parallel without having to maintain the entire collection of media assets for a playlist, as this is required for each save.
+
+This method accepts requests, and adds them to a queue which will be processed in the background serially for a specific playlist.
+
+Once the request is processed and the playlist is saved, if it is published to a player, then the player will be automatically updated with the new playlist content.
+
+The body of the request requires the entire Playlist Media Asset object, as it would be when adding to a playlist, this can include Validity and Conditional Playback data if required. This object, must also include the entire Media Asset object.
+
+It is also possible to include a web hook, which will be sent a notification when the media is successfully added to the playlist, or an error when it cannot be added to the playlist.
+
+If you set the position to -1, then the asset will be added to the end of the playlist. If you set a position then the asset will be added in that position, and everything after and including the asset currently at that position, will be moved 1 higher in their position.
+
+NOTE: Positions start from 0, so the first media asset in a playlist, will have a position of 0;
+
 
 ## Layouts
 
@@ -3525,8 +3985,8 @@ Delete Player Type KPI Setting
 | DESCRIPTION          | Publish content to players      |
 |----------------------|---------------------------------|
 | HTTP METHOD          | POST                            |
-| URL                  | /publish                        |
-| REQUEST BODY         | A publication object            |
+| URL                  | /publish/publish                        |
+| REQUEST BODY         | A publication configuration object            |
 | NORMAL RESPONSE CODE | 200                             |
 | RESPONSE BODY        | A list of PublishResult objects |
 
@@ -3535,10 +3995,24 @@ Delete Player Type KPI Setting
 | DESCRIPTION          | Checks the publication prior to publishing |
 |----------------------|--------------------------------------------|
 | HTTP METHOD          | POST                                       |
-| URL                  | /publish/check                             |
-| REQUEST BODY         | A publication object                       |
+| URL                  | /publish/checkPublication                             |
+| REQUEST BODY         | A publication configuration object                       |
 | NORMAL RESPONSE CODE | 200                                        |
 | RESPONSE BODY        | A list of PublishResult objects            |
+
+#### Publish an Interrupt Example
+
+<b>Get the Interrupt</b>
+
+Signagelive provides a list of interrupt signals, which need to be included in the publication, to define which interrupt is being used, and will trigger the published content.
+
+You will need to get all, and find the interrupt you are looking to use.
+
+<b>Publish to Players</b>
+
+So that all players have the Trigger published to them, meaning that when we add content it is automatically published, we need to publish the interrupt to all players we currently know about and want to publish the trigger to. Any new players added after this, will need to have the trigger published to them, using this process.
+
+Make sure you set the Playlist object to be the full playlist object returned for the playlist.
 
 ### Player List
 
@@ -3653,3 +4127,48 @@ Delete Player Type KPI Setting
 | REQUEST BODY         | The new network user object            |
 | NORMAL RESPONSE CODE | 201                                    |
 | RESPONSE BODY        | The network user object now with an ID |
+
+## Real Time Events
+
+### GET
+
+| DESCRIPTION          | Gets all System Real Time Events       |   |
+|----------------------|----------------------------------------|   |
+| HTTP METHOD          | GET                                    |   |
+| URL                  | /system/realtimeevents/                |   |
+| OPTIONAL PARAMETERS  | |           |                                                                             |
+| NAME                 | DESCRIPTION                                                                                                 | DATA TYPE |  PERMITTED VALUES                                                            |
+| search               | Term to be used to compare against the real time event name. If omitted then all real time events are returned | string    | Empty String    |    
+| REQUEST BODY         | None                                   |   |
+| NORMAL RESPONSE CODE | 200                                    |   |
+| RESPONSE BODY        | A list of real time event objects      |   |
+
+### Install System RTE
+
+| DESCRIPTION          | Install a System RTE on to a Network   |
+|----------------------|----------------------------------------|
+| HTTP METHOD          | POST                                   |
+| URL                  | /realtimeevents/install/{{id}}                         |
+| REQUEST BODY         | None             |
+| NORMAL RESPONSE CODE | 201                                    |
+| RESPONSE BODY        | The real time event object with an ID |
+
+### CREATE
+
+| DESCRIPTION          | Create a Network RTE   |
+|----------------------|----------------------------------------|
+| HTTP METHOD          | PUT                                   |
+| URL                  | /realtimeevents/                         |
+| REQUEST BODY         | The new real time event object             |
+| NORMAL RESPONSE CODE | 201                                    |
+| RESPONSE BODY        | The real time event object with the ID  |
+
+### UPDATE
+
+| DESCRIPTION          | Update the configuration of a Network RTE   |
+|----------------------|----------------------------------------|
+| HTTP METHOD          | POST                                   |
+| URL                  | /realtimeevents/{{id}}                         |
+| REQUEST BODY         | The updated real time event object             |
+| NORMAL RESPONSE CODE | 201                                    |
+| RESPONSE BODY        | The real time event object  |
