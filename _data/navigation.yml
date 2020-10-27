@@ -22,6 +22,8 @@
     url: /network-api/
   - text: Web Triggers
     url: /web-triggers/
+  - text: Proof of Play API
+    url: /proof-of-play-api/
 - text: Resources
   url: /BrightSign/
   submenu:
