@@ -258,7 +258,7 @@ Tell the Signagelive media player when the application has loaded and is ready t
 
 <h4 class="no_toc"> Get the SDK Javascript File </h4>
 
-You can get the latest SDK javascript file from <a target="_blank" href="https://drive.google.com/open?id=1XQS49mZvDYGn9dOF4xHFHNOeqXK8JSyo">here</a>.
+You can get the latest SDK javascript file from <a target="_blank" href="https://drive.google.com/file/d/1RyA_Z7Zvr6Zl31EwL1YxQL06IxWgdnsy/view">here</a>.
 
 <h4 class="no_toc"> Include the Javascript File </h4>
 
