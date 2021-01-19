@@ -25,7 +25,6 @@
   - text: Proof of Play API
     url: /proof-of-play-api/
 - text: Resources
-  url: /BrightSign/
   submenu:
   - text: Developers Slack
     url: https://join.slack.com/t/signagelivedevelopers/shared_invite/zt-g3zbrdo6-BlcON7H1bvLull~G0jVW7A
