@@ -36,7 +36,7 @@ The Network API is only available to Signagelive partners. If you would like to 
 
 ## API URL
 
-<a href="http://alpha1networkapi.signagelivedev.com/">http://alpha1networkapi.signagelivedev.com/</a>
+We will provide the API url once you have signed up.
 
 ## API Setup & Onboarding
 
