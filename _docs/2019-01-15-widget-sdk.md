@@ -16,6 +16,10 @@ toc: true
         text-align: center;
     }
 
+    table {
+        width: 100%;
+    }
+
     .table-wrapper td:nth-child(1) {
         text-align: left;
         min-width: 16vw;
@@ -101,16 +105,137 @@ $.ajax({
         });
 {% endhighlight %}
 
+## Signagelive.playVideo()
+
+|              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description  | Used to play video natively on Samsung SSP Tizen displays. Native playback can offer a better visual experience over standard HTML5 video when used in a playlist with other videos and when wanted to render 2 videos with video concurrently.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Parameters   | fileURI(s) - a relative URI or array of relative URIs pointing to video files to play (relative to index.html). x - the x coordinate of the video relative to the zone. If you want the video to cover the entire widget zone then this should be 0. y - the y coordinate of the video relative to the zone. If you want the video to cover the entire widget zone then this should be 0. width - the width of the video. If this is larger than the width of the widget zone, this will be scaled down to fit the zone height - the height of the video. If this is larger than the height of the widget zone this will be scaled down to fit the zone. loop - whether or not to loop the video(s) - This will be true by default (makes sense to me) play4K - if playing a 4k video this must be true callbacks - pass in functions to be called when specific events fire. The exact events you can add listeners for are:- onTimeUpdate - use this to receive the current play time of the video- onComplete - fired when a video completes- onError - fired when there is a playback error |
+| Availability | Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Limitations  | Your widget must have a transparent background in order for video to be visible. Only 1 video can be played per widget at any one time You can play up to 2 widget zones each with 1 video concurrently @ FHD resolution If playing 4K only 1 video can be played at a time (across all widgets) Videos should not be larger than the widget zone they are scheduled to. Videos that are larger than the widget zone will be scaled down to fit the zone  |
+| Example      |
+{% highlight javascript %}
+
+style.css
+ 
+html {
+    background-color: transparent !important;
+}
+ 
+main.js
+ 
+    // Use the new playVideo() SDK API to play a single video
+    Signagelive.playVideo(
+        'content/1.mp4',        // File to play (relative to index.html)
+        0,                      // x pos
+        0,                      // y pos
+        1920,                   // width
+        1080,                   // height
+        true,                   // loop video
+        false,                  // 4k video (supported screens only)
+        // Video events
+        { 
+            onTimeUpdate: onVideoTimeUpdate,
+            onComplete: onVideoComplete,
+            onError: onVideoError
+        }
+    ).then(function(success) {
+        // Was playback successful?
+        success
+            ? console.log('Video playback started successfully.')
+            : console.error('Video playback failed.');
+    });
+ 
+    function onVideoTimeUpdate(video, currentTime) {
+        var message = 'Video Time Update: ' + currentTime;
+    }
+ 
+    function onVideoComplete(video) {
+        var message = 'Video Complete';
+        console.log(message);
+    }
+ 
+    function onVideoError(video, errorMessage) {
+        var message = 'Video Error: ' + errorMessage;
+        console.error(message);
+    }
+ 
+var videoPlaylist = [
+        'content/1.mp4',
+        'content/2.mp4',
+        'content/3.mp4',
+    ];
+    // Use the new playVideo() SDK API to play a playlist of videos
+    Signagelive.playVideo(
+        videoPlaylist,          // Array of video files to play (relative to index.html)
+        0,                      // x pos
+        0,                      // y pos
+        1920,                   // width
+        1080,                   // height
+        true,                   // loop video
+        false,                  // 4k video (supported screens only)
+        // Video events
+        { 
+            onTimeUpdate: onVideoTimeUpdate,
+            onComplete: onVideoComplete,
+            onError: onVideoError
+        }
+    ).then(function(success) {
+        // Was playback successful?
+        success
+            ? console.log('Video playback started successfully.')
+            : console.error('Video playback failed.');
+    });
+ 
+    function onVideoTimeUpdate(video, currentTime) {
+        var message = 'Video Time Update: ' + currentTime;
+        document.getElementById('eventText').textContent = message;
+    }
+ 
+    function onVideoComplete(video) {
+        var message = 'Video Complete';
+        console.log(message);
+        document.getElementById('eventText').textContent = message;
+    }
+ 
+    function onVideoError(video, errorMessage) {
+        var message = 'Video Error: ' + errorMessage;
+        console.error(message);
+        document.getElementById('eventText').textContent = message;
+    }
+{% endhighlight %}
+ |
+
+## Signagelive.stopVideo()
+
+|              |                                                                                                 |
+|--------------|-------------------------------------------------------------------------------------------------|
+| Description  | Used to stop a video that is currently playing as a result of a call to Signagelive.playVideo() |
+| Parameters   | None                                                                                            |
+| Availability | Tizen SSP Only (Tizen 2.4+)                                                                     |
+| Limitations  | None                                                                                            |
+| Example      |
+{% highlight javascript %}
+Signagelive.stopVideo().then(function(success) {
+    success
+        ? console.log('Video stopped.')
+        : console.error('An error occurred stopping the video.');
+}); 
+{% endhighlight %}
+ |
+
 
 # Supported Devices
 
 <div class="table-wrapper" markdown="block">
 
-|                                       | Amazon Fire TV | Brightsign | Chrome OS | IAdea | LG webOS    | macOS | Philips Android SoC | Samsung SSP (Tizen) | Samsung SSSP (E) | Samsung SSSP (D) | Browser/ Broadcast Player | Legacy PC Client | Windows |
-|---------------------------------------|----------------|------------|-----------|-------|-------------|-------|---------------------|---------------------|------------------|------------------|---------------------------|------------------|---------|
-| Signagelive.setData(key, val, shared) | ✘              | ✔          | ✔         | ✘     | *Coming soon* | ✘     | ✘                   | ✘                   | ✘                | ✘                | ✘                         | ✘                | ✘       |
-| Signagelive.getData(key, shared)      | ✘              | ✔          | ✔         | ✘     | *Coming soon* | ✘     | ✘                   | ✘                   | ✘                | ✘                | ✘                         | ✘                | ✘       |
-| Signagelive.log(msg)                  | ✔              | ✔          | ✔         | ✔     | ✔           | ✔     | ✔                   | ✔                   | ✔                | ✔                | ✔                         | ✔                | ✔       |
-| Signagelive.sendReadyToDisplay()      | ✘              | ✔          | ✔         | ✘     | *Coming soon* | ✘     | ✘                   | ✘                   | ✘                | ✘                | ✘                         | ✘                | ✘       |
+|                                       | Amazon Fire TV | Brightsign | Chrome OS | IAdea |   LG webOS  | macOS | Philips Android SoC | Samsung SSP (Tizen) | Samsung SSSP (E) | Samsung SSSP (D) | Browser/ Broadcast Player | Legacy PC Client | Windows |
+|:-------------------------------------:|:--------------:|:----------:|:---------:|:-----:|:-----------:|:-----:|:-------------------:|:-------------------:|:----------------:|:----------------:|:-------------------------:|:----------------:|:-------:|
+| Signagelive.setData(key, val, shared) |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.getData(key, shared)      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.log(msg)                  |        ✔       |      ✔     |     ✔     |   ✔   |      ✔      |   ✔   |          ✔          |          ✔          |         ✔        |         ✔        |             ✔             |         ✔        |    ✔    |
+| Signagelive.sendReadyToDisplay()      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.playVideo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.stopVideo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
 
 </div>
