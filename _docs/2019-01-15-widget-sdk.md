@@ -79,30 +79,41 @@ Signagelive.setData('status', data, true).then(function () {       console.log(�
 Signagelive.getData('status', true).then(function (data) {         self.dataResponse = JSON.parse(data); });
 {% endhighlight %}
 
-## Signagelive.log(msg)
+## Signagelive.removeData(key, shared)
 
-|              |                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Description  | When using this it allows the message to be printed both to the developer console and to the DOM.  This means even without a debugger you can still log statements, you can preview these by adding a div called trace-log to the DOM. You will need to make sure this is layered on-top of the other content in your widget - possibly using CSS like z-index and absolute positioning.                                            |
-| Parameters   | msg (string): The string or response that you want to be returned, for example a string to denote if something has succeeded or failed.                                                                                                                                                                                                                                                                                             |
-| Availability | All devices                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Example      |
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.removeData(key, shared)                                                                                     |
+| Description      | Remove a key-value pair stored using Signagelive.setData()                                                              |
+| Parameters       | Key - [string] The key of the key-value pair to remove Shared - [boolean] Whether or not the key is a shared key or not |
+| Returns          | A promise that resolves when the requested key has been removed.                                                        |
+| Example usage    |                                                                                                                         |
+
 {% highlight javascript %}
-$.ajax({
-    url: ‘https://exampleurl.com/feed.xml’,
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-        'X-Requested-With': 'XMLHttpRequest',
-        },
-        type: 'GET',
-        dataType: 'xml',
-        success: function (response) {
-            Signagelive.log('success ' + response)
-            },
-        error: function (error) {
-            Signagelive.log(error);
-            }
-        });
+Signagelive.removeData('items', false)
+    .then(function() {
+        console.log('items key-value pair removed');
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.log(logLevel, message)
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.log(logLevel, message)                                                                                                          |
+| Description      | Ability to log universally across all media players                                                                                         |
+| Parameters       | logLevel - (Optional - default is INFO) [string] The options are [DEBUG, INFO, WARNING, ERROR, FATAL] message - [string] The message to log |
+| Returns          | Returns a promise that resolves once the message has been logged.                                                                           |
+| Example usage    |                                                                                                                                             |
+
+{% highlight javascript %}
+Signagelive.log('ERROR', 'Unable to load items from data storage.')
+    .then(function() {
+        // Logged
+    });
 {% endhighlight %}
 
 ## Signagelive.playVideo()
@@ -224,18 +235,285 @@ Signagelive.stopVideo().then(function(success) {
 {% endhighlight %}
  |
 
+## Signagelive.getPlayerDetails()
+
+|                  |                                                                                                                                                              |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.getPlayerDetails()                                                                                                                               |
+| Description      | Get details about the player the widget is playing on including Signagelive serial number, site details, model details, and firmware and client information. |
+| Parameters       | None                                                                                                                                                         |
+| Returns          | A promise that resolves to a JSON object containing all of the player details. Example:                                                                      |
+
+{% highlight javascript %}
+{
+    "serial_number": 12345,
+    "client_id": "4A:38:95:01:23:54",
+    "site_description": "Player 1",
+    "address_1": "123 Bond Street",
+    "address_2": "",
+    "city": "London",
+    "state": "London",
+    "zip_code": "E17 8BB",
+    "reference_code_1": "Ref 1",
+    "reference_code_2": "Ref 2",
+    "reference_code_3": "Ref 3",
+    "time_zone": "Europe/London",
+    "utc_offset": 0,
+    "player_type": "Tizen",
+    "manufacturer": "Samsung",
+    "model": "PMF",
+    "client_version": "1.15",
+    "firmware_version": "T-HKMLAC-2100.2"
+}
+{% endhighlight %}
+
+Example Usage
+
+{% highlight javascript %}
+Signagelive.getPlayerDetails()
+    .then(function(playerDetails) {
+        console.log(JSON.stringify(playerDetails, undefined, 2));
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.getDisplayProperties()
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|             | Signagelive.getDisplayProperties()                                                                                       |
+| Description | Get player display properties such as display width and height, rotation and whether or not video rotation is supported. |
+| Parameters  | None                                                                                                                     |
+| Returns     | A promise that resolves to a JSON object containing all of the display properties. Example:                              |
+
+{% highlight javascript %}
+{
+    "width": 1920,
+    "height": 1080,
+    "rotation": 270,
+    "is_native_portrait_app": false,
+    "video_rotation_supported": true,
+}
+{% endhighlight %}
+
+Example Usage
+
+{% highlight javascript %}
+Signagelive.getDisplayProperties()
+    .then(function(displayProperties) {
+        console.log(JSON.stringify(displayProperties, undefined, 2));
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.getTLSSupportInfo()
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.getTLSSupportInfo()                                                                                                                                                                                                                                                                                                                |
+| Description      | Get detailed information about the TLS (SSL) support of the player.                                                                                                                                                                                                                                                                            |
+| Parameters       | None                                                                                                                                                                                                                                                                                                                                           |
+| Returns          | A promise that resolves to a JSON object with TLS support details. The following example shows how the response should look if we are able to get detailed data from the howsmyssl.com API. Note that if the detailed data is available, the detailed_tls_settings_included property will be true and detailed_tls_settings will be populated. |
+
+{% highlight javascript %}
+{
+    "tls_version_string": "TLS 1.3",
+    "tls_version": 1.3,
+    "detailed_tls_settings_included": true,
+    "detailed_tls_settings": {
+        "given_cipher_suites": [
+            "TLS_AES_128_GCM_SHA256",
+            "TLS_AES_256_GCM_SHA384",
+            "TLS_CHACHA20_POLY1305_SHA256",
+            "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+            "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+            "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+            "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+            "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+            "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+            "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+            "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+            "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA",
+            "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+            "TLS_RSA_WITH_AES_128_GCM_SHA256",
+            "TLS_RSA_WITH_AES_256_GCM_SHA384",
+            "TLS_RSA_WITH_AES_128_CBC_SHA",
+            "TLS_RSA_WITH_AES_256_CBC_SHA",
+            "TLS_RSA_WITH_3DES_EDE_CBC_SHA"
+        ],
+        "ephemeral_keys_supported": true,
+        "session_ticket_supported": true,
+        "tls_compression_supported": false,
+        "unknown_cipher_suite_supported": false,
+        "beast_vuln": false,
+        "able_to_detect_n_minus_one_splitting": false,
+        "insecure_cipher_suites": {}
+    }
+}
+
+If howsmyssl is unavailable and the media player has to return the default tls settings only then the detailed_tls_settings_included property will be false and detailed_tls_settings object will be null.
+
+{
+    "tls_version_string": "TLS 1.2",
+    "tls_version": 1.2,
+    "detailed_tls_settings_included": false,
+    "detailed_tls_settings": null
+}
+{% endhighlight %}
+
+Example Usage
+
+{% highlight javascript %}
+Signagelive.getMaxSupportedTLSVersion()
+    .then(function(maxSupportedTLSVersion) {
+        console.log(JSON.stringify(maxSupportedTLSVersion, undefined, 2));
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.getOnlineStatus()
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.getOnlineStatus()                                                                                                                                                                                                                                 |
+| Description      | Find out if the player has a network connection and is connected to the internet.                                                                                                                                                                             |
+| Parameters       | None                                                                                                                                                                                                                                                          |
+| Returns          | A promise that resolves to a JSON object with network and internet connectivity status. The response object contains two boolean values that can be used to determine if the player is connected to a LAN and whether or not it has internet access. Example: |
+
+{% highlight javascript %}
+{
+    "network_connected": true,
+    "internet_access": true
+}
+{% endhighlight %}
+
+Example Usage
+
+{% highlight javascript %}
+Signagelive.getOnlineStatus()
+    .then(function(status) {
+        console.log(JSON.stringify(status, undefined, 2));
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.checkSupportedHTML5Features(featuresToCheck)
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.checkSupportedHTML5Features(featuresToCheck)                                                                                                                                                                                                                                                 |
+| Description      | Check HTML5 feature support on the player using Modernizr.                                                                                                                                                                                                                                               |
+| Parameters       | featuresToCheck - [Array of strings] representing the features to check. The full list of available features to check are defined in the Modernizr documentation.                                                                                                                                        |
+| Returns          | A promise that resolves to a JSON object that contains results for the features that were requested to be tested. Each feature that was tested will be returned as a boolean property of the results object with the feature name and “_supported” appended to it (see example below). Example response: |
+
+{% highlight javascript %}
+{
+    "cssanimations_supported": true,
+    "flexbox_supported": false,
+    "es6collections_supported": false,
+    "arrow_supported": false
+}
+{% endhighlight %}
+
+Example Usage
+
+{% highlight javascript %}
+Signagelive.checkSupportedHTML5Features(['cssanimations', 'flexbox', 'es6collections', 'arrow'])
+    .then(function(results) {
+        console.log(JSON.stringify(results, undefined, 2));
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.ajax(url, options)
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.ajax(url, options)                                                                                                                                    |
+| Description      | Callout to the provided URL using the options specified                                                                                                           |
+| Parameters       | url - [string] The URL to send the request to options - [object] An object containing request settings. All available settings are documented in the JQuery docs. |
+| Returns          | Returns a promise that resolves to the response status code, status text and data.                                                                                |
+| Example usage    |                                                                                                                                                                   |
+
+{% highlight javascript %}
+Signagelive.ajax('https://jsonplaceholder.typicode.com/todos', { method: 'GET',  dataType: "json", timeout: 60000})
+    .then(function(statusCode, statusText, data) {
+        console.log(data);
+    })
+    .catch(function(statusCode, statusText, error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.onWidgetClosing(callback, options)
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Method Signature | Signagelive.onWidgetClosing(callback, options)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Description      | Register a callback that will get called when the widget is to be closed because the media player is moving to the next asset.Note that if the widget does not register a callback using this function then the media player will forcibly close the widget and move next as normal.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Parameters       | function callback(Promise resolve, timeInfo) - A reference to a function or anonymous function that will be executed when the Signagelive media player notifies the widget that the widget is about to close.The callback function will have 2 parameters The first is a reference to resolve the promise and notify the media player that the cleanup code has finished executing. The widget developer should always call resolve() after their cleanup code has executed. The second parameter timeInfo provides details about the timing until the widget will be closed, which is dependent on the configuration options provided to the initial call. The timeInfo parameter object has the following properties: millisecondsNotifiedInAdvance millisecondsUntilClosed millisecondsUntilForciblyClosed options - (optional) An optional options object. Configurable options include: millisecondsToNotifyInAdvance - This is the time in milliseconds that the callback is called in advance of the Widget being closed. Default: 500ms, Max: 2000ms millisecondsToWaitForCallbackResolution - This is the time in milliseconds that the media player will wait for the callback method to call resolve() before forcibly closing the widget and moving to the next asset. Default: 500ms, Max: 2000ms |
+| Returns          | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Example usage    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+
+{% highlight javascript %}
+Signagelive.onWidgetClosing(function(resolve, timeInfo) {
+    console.log('Widget closing in ' + timeInfo.millisecondsUntilForciblyClosed + 'ms. Getting current state...');
+    getCurrentState()
+        .then(function(state) {
+            console.log('Storing state...');
+            return storeCurrentState(state);
+        })
+        .then(function() {
+            console.log('Stopping video player...');
+            return stopVideoPlayer();   
+        })
+        .then(function() {
+            console.log('Hiding background...');
+            return hideBackground();
+        })
+        .then(function() {
+            console.log('Clean up code completed. Notifying media player.');
+            resolve(); // Always call resolve()
+        })
+        .catch(function(err) {
+            console.error('An unexpected error occurred.');
+            resolve(); // Always call resolve()
+        })
+}, {
+    millisecondsToNotifyInAdvance: 500,
+    millisecondsToWaitForCallbackResolution: 500
+});
+{% endhighlight %}
 
 # Supported Devices
 
 <div class="table-wrapper" markdown="block">
 
 |                                       | Amazon Fire TV | Brightsign | Chrome OS | IAdea |   LG webOS  | macOS | Philips Android SoC | Samsung SSP (Tizen) | Samsung SSSP (E) | Samsung SSSP (D) | Browser/ Broadcast Player | Legacy PC Client | Windows |
-|:-------------------------------------:|:--------------:|:----------:|:---------:|:-----:|:-----------:|:-----:|:-------------------:|:-------------------:|:----------------:|:----------------:|:-------------------------:|:----------------:|:-------:|
+|-------------------------------------|:--------------:|:----------:|:---------:|:-----:|:-----------:|:-----:|:-------------------:|:-------------------:|:----------------:|:----------------:|:-------------------------:|:----------------:|:-------:|
 | Signagelive.setData(key, val, shared) |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
 | Signagelive.getData(key, shared)      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
-| Signagelive.log(msg)                  |        ✔       |      ✔     |     ✔     |   ✔   |      ✔      |   ✔   |          ✔          |          ✔          |         ✔        |         ✔        |             ✔             |         ✔        |    ✔    |
+| Signagelive.removeData(key, shared)      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.log(logLevel, message)                  |        ✔       |      ✔     |     ✔     |   ✔   |      ✔      |   ✔   |          ✔          |          ✔          |         ✔        |         ✔        |             ✔             |         ✔        |    ✔    |
 | Signagelive.sendReadyToDisplay()      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
 | Signagelive.playVideo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
 | Signagelive.stopVideo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.getPlayerDetails()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.getDisplayProperties()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.getTLSSupportInfo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.getOnlineStatus()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.checkSupportedHTML5Features(featuresToCheck)               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.ajax(url, options)               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
+| Signagelive.onWidgetClosing(callback, options)               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     *Coming soon*     |         ✘        |         ✘        |             ✘             |         ✘        |    ✘    |
 
 </div>
