@@ -166,7 +166,7 @@ Below you can find all the data relating to the above mentioned concepts.
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | name        | The group name                                                                                                                               |
 | description | A description of the group                                                                                                                   |
-| isAllGroup  | A boolean indicating if the group is the all group. Each network has one “All” group setup by default containing all players on the network. |
+| isAllGroup  | A boolean indicating if the group is the all group. Each network has one "All" group setup by default containing all players on the network. |
 | players     | An array of players in the group                                                                                                             |
 
 ### Example

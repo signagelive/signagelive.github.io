@@ -36,7 +36,7 @@ Example of the overview in Android Studio when an XDS-2288 is connected
 <br>
 Example of chrome://inspect/devices with a XDS-2288 connected by USB
 
-7. As you can see from the screenshot above there may be multiple instances running on the player. In this case I would click and open up the “Weather Widget” as that is the content I have published to the player, and also what I want to debug.
+7. As you can see from the screenshot above there may be multiple instances running on the player. In this case I would click and open up the "Weather Widget" as that is the content I have published to the player, and also what I want to debug.
 
 <img src="/assets/images/debugging-iadea/debugging-iadea-3.png">
 <br>

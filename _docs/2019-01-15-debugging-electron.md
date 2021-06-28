@@ -20,7 +20,7 @@ To set up a device for testing you will first need to configure a file to run wi
 4. Open debug.json with a text editor and copy the following into the contents of the file:
 
 {% highlight json %}
-{ “devToolsEnabled”: true, “disableGlobalKeypress”: true}
+{ "devToolsEnabled": true, "disableGlobalKeypress": true}
 {% endhighlight %}
 
 5. Run the Signagelive client

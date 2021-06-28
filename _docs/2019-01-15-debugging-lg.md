@@ -17,7 +17,7 @@ This user guide demonstrates the steps outlined to enable debugging on an LG Web
     2. Set the Launch Mode to be Remote
 2. Confirm you want to make these changes
 3. Turn the panel off then back on.
-4. It will attempt to enable the debugging capabilities on the panel – if successful it will show a “Debugging enabled” message.
+4. It will attempt to enable the debugging capabilities on the panel – if successful it will show a "Debugging enabled" message.
 5. Go back to the URL Launcher
     1. Set the URL to be http://clients.signagelive.com/lgapp.zip
     2. Set the Launch Mode to be Local
@@ -28,7 +28,7 @@ This user guide demonstrates the steps outlined to enable debugging on an LG Web
 8. To access the debugging capability go to your Player details for the activated player on Signagelive.
 9. Once on this page go to the System tab for the Player and note down IP Address under the Network details.
 
-When you have this information open up a new browser window on your computer and navigate to the IP Address of your Player and add in “:9998”, for example: http://192.168.90.145:9998. This should open up the “Inspectable Web View” for the panel. In the numbered list there should be an entry called “Signagelive Client” if you click on this it will then open the remote developer tools for the Player. You will be able to use this to view information like network traffic and also any errors reported in the Signagelive client.
+When you have this information open up a new browser window on your computer and navigate to the IP Address of your Player and add in ":9998", for example: http://192.168.90.145:9998. This should open up the "Inspectable Web View" for the panel. In the numbered list there should be an entry called "Signagelive Client" if you click on this it will then open the remote developer tools for the Player. You will be able to use this to view information like network traffic and also any errors reported in the Signagelive client.
 
 <img src="/assets/images/debugging-lg/debugging-lg-2.png">
 <br>

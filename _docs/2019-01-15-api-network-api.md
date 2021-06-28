@@ -70,7 +70,7 @@ The following table shows a brief summary of the expected API response codes:
 
 Date Time values will be expressed using the ISO 8601 format e.g. 2012-12-31T23:59:59Z. Note that some date time values will be in UTC (using the ‘Z’ time zone designator) and some will be in local time.
 
-Time only values will be expressed as a timespan in the form of “HH:MM:SS” e.g. “15:25:00” for 3:25 PM.
+Time only values will be expressed as a timespan in the form of "HH:MM:SS" e.g. "15:25:00" for 3:25 PM.
 
 ## Security
 
@@ -246,7 +246,7 @@ A network’s status is made of a number of network­wide KPIs. The network Stat
 
 Each network has a collection of KPI settings packaged up within the Network KPI Setting object.
 
-These settings are used to define when the various network and player KPIs will switch between “ok”, “warning” and alert states.
+These settings are used to define when the various network and player KPIs will switch between "ok", "warning" and alert states.
 
 ### Field Definitions
 
@@ -477,7 +477,7 @@ A Media Asset is a media object that plays within Signagelive. Media Assets can 
 | thumbnails           | The thumbnails object contains properties relating to different thumbnails that Signagelive generates when an asset is uploaded. All assets once processed will have an imageSmall and an imageLarge property referencing jpgs. Video assets will have a videoH264 thumbnail. If a thumbnail/preview is not available in a particular format (could be it’s not processed yet or is not applicable) then the relevant property will be omitted. |
 | type                 | High level media type, possible values are: audio image video flash stream web rss tvin widget                                                                                                                                                                                                                                                                                                                                                  |
 | hash                 | The hash value used to verify the integrity of the media asset if it is a downloadable asset                                                                                                                                                                                                                                                                                                                                                    |
-| hashType             | The type of hash. Values are “CRC32” or “MD5”.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| hashType             | The type of hash. Values are "CRC32" or "MD5".                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### Example
 
@@ -954,7 +954,7 @@ A layout is the design that is going to be displayed on the screen. Each layout 
 | height                | Layout height in pixels                                                                                                           |
 | orientation           | Layout orientation                                                                                                                |
 | backgroundImage       | The ID of the background image media asset, or null if there is none                                                              |
-| backgroundColour      | The background colour of the layout. Colours will be a HTML colour code e.g. “#FFAA11” or “transparent”                           |
+| backgroundColour      | The background colour of the layout. Colours will be a HTML colour code e.g. "#FFAA11" or "transparent"                           |
 | customBackgroundImage | If a custom background image has been created in the layout designer, this will be the ID of the the CustomBackgroundImage object |
 | mediaWindows          | A list of media windows in the layout                                                                                             |
 | isInTrash             | A boolean value indicating whether or not the layout is in the trash                                                              |
@@ -1013,7 +1013,7 @@ A layout is the design that is going to be displayed on the screen. Each layout 
    },
    "includeInProofOfPlay":false,
    "dateModified":"2016-07-21T15:38:07.458Z",
-   "thumbnailUrl":"   http://url.to.thumbnail/thumb.jpg”
+   "thumbnailUrl":"   http://url.to.thumbnail/thumb.jpg"
 }
 {% endhighlight %}
 
@@ -1079,11 +1079,11 @@ A client/player is the device that connects to the Signagelive Player API and pl
 | lastReboot                 | Date/time of the last reboot                                                                                                                                                                              | No         |
 | contentCheckType           | The type of content check done by the player. This will be one of the following: 0 – Set interval e.g. every 30 minutes 1 – Daily – Player will perform a content check at a set time every day           | Yes        |
 | contentCheckFrequency      | If contentCheckType is set to 0, this will be how frequently the player will perform content checks. Value is in minutes.                                                                                 | Yes        |
-| contentCheckTime           | If contentCheckType is set to 1, this will be the time of day that the player will perform a content check. The value will be a string representation of the time e.g “11:44:00”.                         | Yes        |
+| contentCheckTime           | If contentCheckType is set to 1, this will be the time of day that the player will perform a content check. The value will be a string representation of the time e.g "11:44:00".                         | Yes        |
 | healthCheckFrequency       | The frequency, in minutes, that the player will perform health checks.                                                                                                                                    | Yes        |
 | diagnosticsUpdateType      | The type of diagnostics update done by the player. This will be one of the following: 0 – Set interval e.g. every 30 minutes 1 – Daily – Player will perform a diagnostics update at a set time every day | Yes        |
 | diagnosticsUpdateFrequency | If diagnosticsUpdateType is set to 0, this will be how frequently the player will perform diagnostics update. Value is in minutes.                                                                        | Yes        |
-| diagnosticsUpdateTime      | If diagnosticsUpdateType is set to 1, this will be the time of day that the player will perform a content check. The value will be a string representation of the time e.g “11:44:00”.                    | Yes        |
+| diagnosticsUpdateTime      | If diagnosticsUpdateType is set to 1, this will be the time of day that the player will perform a content check. The value will be a string representation of the time e.g "11:44:00".                    | Yes        |
 | dateActivated              | The date the licence was activated on the player.                                                                                                                                                         | No         |
 | inService                  | Boolean value indicating whether or not the player is marked as in service.                                                                                                                               | Yes        |
 | followUpRequired           | Boolean value indicating whether or not the player is marked as requiring a follow up.                                                                                                                    | Yes        |
@@ -1154,7 +1154,7 @@ A client/player is the device that connects to the Signagelive Player API and pl
 "ipAddress": "5.159.121.68"
   },
   "isInTrash": false,
-  "lastScreenshotUrl": “http://
+  "lastScreenshotUrl": "http://"
 }
 {% endhighlight %}
 
@@ -1364,14 +1364,14 @@ A client/player is the device that connects to the Signagelive Player API and pl
 | memory              | The current status of the client’s memory totalBytes – Total amount of memory in bytes usedBytes – Amount of used memory in bytes                                                                                                                                                                                                                                                                                                                                                                 |
 | processor           | Information about the player’s processor name – The processor name speed – Processor speed in MHz usage – Processor usage in percent                                                                                                                                                                                                                                                                                                                                                              |
 | temperatures        | A list of temperature sensors name – The sensor name temperatureCelsius – Current temperature in celsius                                                                                                                                                                                                                                                                                                                                                                                          |
-| networkAdapters     | A list of network adapters present on the player type – Network adapter type. Values can be “Ethernet”, “Wifi” or “Mobile” dhcp – A boolean value indicating whether or not the adapter us using DHCP ipv4Address – The IPv4 address for the network adapter subnetMask – the subnet mask for the network adapter defaultGateway – The default gateway for the network adapter dns1 – The primary DNS server dns2 – The secondary DNS server macAddress – The MAC address for the network adapter |
+| networkAdapters     | A list of network adapters present on the player type – Network adapter type. Values can be "Ethernet", "Wifi" or "Mobile" dhcp – A boolean value indicating whether or not the adapter us using DHCP ipv4Address – The IPv4 address for the network adapter subnetMask – the subnet mask for the network adapter defaultGateway – The default gateway for the network adapter dns1 – The primary DNS server dns2 – The secondary DNS server macAddress – The MAC address for the network adapter |
 | applicationSettings | A list of name/value pairs of settings set in the application                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | systemSettings      | A list of name/value pairs of settings set on the player’s system                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | installedSoftware   | A list of installed software on the client name – The name of the software version – The installed version publisher – The publisher of the software                                                                                                                                                                                                                                                                                                                                              |
 | runningProcesses    | A list of processes currently running on the client name – The name of the process description – A short description provided by the client averageCpuUsage – The average CPU usage in percent averageMemoryUsage – The average memory usage in bytes currentCpuUsage – Current CPU usage in percent currentMemoryUsage – Current memory usage in bytes                                                                                                                                           |
 | monitors            | A list of monitors attached to the player name – A name given to the monitor positionX – X-Coordinate for the monitor, to identify its position in a multi-monitor setup. positionY – Y-Coordinate for the monitor, to identify its position in a multi-monitor setup. resolutionX – Monitor width in pixels resolutionY – Monitor height in pixels                                                                                                                                               |
-| drives              | A list of storage devices available on the player name – The name given to the storage device e.g. “C:\”, “Internal Storage” totalBytes – Total size of the storage device in bytes availableBytes – Available space in bytes format – The file format if available e.g. NTFS, FAT32                                                                                                                                                                                                              |
-| graphicsControllers | A list of graphics controllers available on the player name – The name given to the graphics controller e.g. “Internal Graphics” or “AMD Radeon R9 380” resolutionX – Output resolution of the device in pixels (width) resolutionY – Output resolution of the device in pixels (height)                                                                                                                                                                                                          |
+| drives              | A list of storage devices available on the player name – The name given to the storage device e.g. "C:\", "Internal Storage" totalBytes – Total size of the storage device in bytes availableBytes – Available space in bytes format – The file format if available e.g. NTFS, FAT32                                                                                                                                                                                                              |
+| graphicsControllers | A list of graphics controllers available on the player name – The name given to the graphics controller e.g. "Internal Graphics" or "AMD Radeon R9 380" resolutionX – Output resolution of the device in pixels (width) resolutionY – Output resolution of the device in pixels (height)                                                                                                                                                                                                          |
 
 ### Example
 
@@ -1485,7 +1485,7 @@ A client/player is the device that connects to the Signagelive Player API and pl
 | dns2             | The secondary DNS address to use if DHCP is disabled                                       |
 | broadcastAddress | The player’s broadcast address                                                             |
 | proxyServer      | The IP address of the proxy to use                                                         |
-| type             | The type of network, “Ethernet” or “Wifi”.                                                 |
+| type             | The type of network, "Ethernet" or "Wifi".                                                 |
 | wifiNetworkName  | The wifi network name if wifi is enabled                                                   |
 | wifiPassPhrase   | The wifi network pass phrase if wifi is enabled                                            |
 | wifiSecurityType | The wifi security type if wifi is enabled. Possible values are: open wep wpa_psk wpa2_psk  |
@@ -1518,7 +1518,7 @@ A client/player is the device that connects to the Signagelive Player API and pl
 |-------------|-----------------------------------------------------------------------------------------------------------------------|
 | text        | The note text                                                                                                         |
 | dateCreated | The date/time the note was created                                                                                    |
-| user        | The email address of the user who created the note. If the note is created automatically, the author will be “System” |
+| user        | The email address of the user who created the note. If the note is created automatically, the author will be "System" |
 
 ### Example
 
@@ -1668,7 +1668,7 @@ A client/player is the device that connects to the Signagelive Player API and pl
 | NAME    | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | name    | The name of the interrupt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| trigger | The trigger that will start the interrupt. type – The type of interrupt. Possible values are: KeyboardEvent MouseEvent configurationParameters – An array of name/value pairs defining configuration parameters for the trigger. A KeyboardEvent will have an ActionKey and a CancelKey. A MouseEvent will have a ClickRegion, which will be a pipe separated list of regions for a mouse click. An example of an ActionKey or CancelKey value is “A”,“B”, “D0”, or “NumPad0” An example of a ClickRegion for a mouse click is “0,0,1920,1080” or “0,0,200,200\|1080,0,200,200”. Each set of 4 numbers corresponds to “X,Y, Width, Height”   |
+| trigger | The trigger that will start the interrupt. type – The type of interrupt. Possible values are: KeyboardEvent MouseEvent configurationParameters – An array of name/value pairs defining configuration parameters for the trigger. A KeyboardEvent will have an ActionKey and a CancelKey. A MouseEvent will have a ClickRegion, which will be a pipe separated list of regions for a mouse click. An example of an ActionKey or CancelKey value is "A","B", "D0", or "NumPad0" An example of a ClickRegion for a mouse click is "0,0,1920,1080" or "0,0,200,200\|1080,0,200,200". Each set of 4 numbers corresponds to "X,Y, Width, Height"   |
 | action  | instruction – A string containing either the scheduledLayout ID to play, or the location of an external executable on the client player. instructionType – The type of interrupt. Possible values are: ScheduledLayout ExternalExecutable duration – The duration that the interrupt will play for. If set to 0, it will play until the content finishes, or until it is cancelled by the endAction mediaAsset – If the interrupt is a single media asset, this will be the ID of that media asset playlist – If the interrupt is a playlist, this will be the playlist ID layout – If the interrupt is a layout, this will be the layout ID |
 
 ### Example

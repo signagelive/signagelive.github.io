@@ -43,7 +43,7 @@ Example of the Responsive mode for Chrome (highlighted in blue)
 ## Debugging Firefox Step-by-Step - How To Guide
 
 1. Go to about:config
-2. In the search bar type in “privacy.file_unique_origin”
+2. In the search bar type in "privacy.file_unique_origin"
 3. Change this from true (default value) to false
 4. Open up the index.html of the widget you are attempting to debug. You can do this by dragging the index.html file to an open instance of Firefox.
 5. This should then allow you to see the widget running locally. From here you can go to the burger context menu for Firefox > Web Developer > Toggle Tools or use the shortcut CTRL+SHIFT+I.
