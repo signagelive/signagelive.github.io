@@ -9,6 +9,8 @@
   submenu:
   - text: Overview
     url: /widget-development-framework/
+  - text: Guidance
+    url: /guidance/
   - text: CLI Build Tool
     url: /cli-build-tool/
   - text: Debugging Widgets
