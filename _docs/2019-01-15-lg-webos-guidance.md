@@ -92,4 +92,6 @@ You can reduce unnecessary asset transitions by:
 
 ## Remote Screenshots Support
 
+Not all players support remote screenshots in the usage of widgets with video backgrounds, therefore the corresponding Help Centre Article covers which players are supported. Unsupported players will not render the video element itself as part of the screenshot but will show other information e.g. text.
+
 <a href="https://support.signagelive.com/hc/en-us/articles/360018583678-Remote-Screenshots-Support-on-the-LG-platform-will-Remote-Screenshots-include-videos-">Relevant Help Centre Article</a>

@@ -25,3 +25,11 @@ The following guides are available:
 Also as part of this development process there is the ability to debug widgets locally on the user’s PC, therefore the following guide has been made available regarding debugging within a browser:
 
 <a href="/debugging-browser/">Chrome/Firefox Browser</a>
+
+# Additional Guidance
+
+Further information has been compiled and provided below that covers specific usecases and recommendations when developing Widgets for usage in Signagelive. For example, video rendering/playback and concurrent video tag limitations.
+
+<a href="/lg-webos-guidance">LG</a>
+
+<!-- <a href="/samsung-ssp-guidance">Samsung SSP</a> -->
