@@ -239,74 +239,9 @@ A walk through for converting an Adobe Animate will be published soon
 
 ## Signagelive Widget SDK
 
-### Status
-
-Both the Signagelive Widget SDK and this document are a work in progress and subject to change. This SDK is currently only supported on the Signagelive Chrome client.
-
-It is intended that this SDK be supported across all of our media players and be made publically available and as easy to use as possible.
-
-### Overview
-
 The Signagelive Widget SDK is intended to provide Signagelive widget developers with additional capabilities beyond the standard APIs available to all web applications.
 
-Using the Signagelive Widget SDK it is possible to:
-
-Read and write application data to local storage
-Tell the Signagelive media player when the application has loaded and is ready to display
-
-### Using the SDK
-
-<h4 class="no_toc"> Get the SDK Javascript File </h4>
-
-You can get the latest SDK javascript file from <a target="_blank" href="https://drive.google.com/file/d/1RyA_Z7Zvr6Zl31EwL1YxQL06IxWgdnsy/view">here</a>.
-
-<h4 class="no_toc"> Include the Javascript File </h4>
-
-Copy the javascript file into your project and include it in your HTML page as shown in the example below:
-
-{% highlight javascript %}
-<script src="js/signagelive.js"></script>
-{% endhighlight %}
-
-<h4 class="no_toc"> SDK Methods </h4>
-
-| **Signagelive.sendReadyToDisplay()**                                                    |                                                                                                                                                                                                                                                            |
-|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Description**                                                                              | Tell the Signagelive media player when all data and assets have been loaded and the application is ready to display.   Note that the Signagelive media player will continue to display the previous asset until this event is received or after 2 seconds. |
-| **Parameters**                                                                                  | None                                                                                                                                                                                                                                                       |
-| **Return**                                                                                      | Empty Promise                                                                                                                                                                                                                                              |
-| **Example**                                                                                     |                                                                                                                                                                                                                                                            |
-|
-{% highlight javascript %}
-Signagelive.sendReadyToDisplay().then(function() {    console.log(‘Displaying widget’); }); 
-{% endhighlight %} 
-
-| **Signagelive.setData(key, value, shared)**                                                                                                           |                                                                                                                                                      |
-|---------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Description**                                                                                                                                       | Store data in the form of key,value pairs that is persisted on the device.                                                                           |
-| **Parameters**                                                                                                                                        | **Key** – The data key (String)                                                                                                                          |
-|                                                                                                                                                   | **Value** – the value to store (String)                                                                                                                  |
-|                                                                                                                                                   | **Shared (optional)** – if set to true then this data will be shared and accessible to all widgets published to the device (Boolean – default is false). |
-| **Return**                                                                                                                                            | Empty Promise                                                                                                                                        |
-| **Example**                                                                                                                                           |                                                                                                                                                      |
-|
-{% highlight javascript %}
-Signagelive.setData(‘userOne’, JSON.stringify({ firstName: ‘John’, lastName: ‘Smith’ })).then(function() {    console.log(‘User One stored’); });
-{% endhighlight %} 
-
-| **Signagelive.getData(key, shared)**                                                                                                                  |                                                                                                                                |
-|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Description**                                                                                                                                       | Get data stored on the device by the data key.                                                                                 |
-| **Parameters**                                                                                                                                        | **Key** – The data key (String)                                                                                                    |
-|                                                                                                                                                   | **Shared (optional)** – if set to true then it will search for this key in the global shared storage (Boolean – default is false). |
-| **Return**                                                                                                                                            | Promise containing the returned data as a String                                                                               |
-| **Example**                                                                                                                                           |                                                                                                                                |
-|
-{% highlight javascript %}
-Signagelive.getData(‘userOne’).then(function(data) {    console.log(JSON.parse(data)); });                                                       
-
-Signagelive.setData(‘userOne’, JSON.stringify({ firstName: ‘John’, lastName: ‘Smith’ })).then(function() {    console.log(‘User One stored’); });
-{% endhighlight %} 
+Documentation regarding the supported features and players is available <a href="/widget-sdk">here</a>.
 
 ## Code Examples
 

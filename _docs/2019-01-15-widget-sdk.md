@@ -41,6 +41,14 @@ This document describes the Signagelive Widget SDK methods available and their p
 
 The SDK is available <a href="https://drive.google.com/file/d/1RyA_Z7Zvr6Zl31EwL1YxQL06IxWgdnsy/view">here</a>.
 
+<h4 class="no_toc"> Include the Javascript File </h4>
+
+Copy the javascript file into your project and include it in your HTML page as shown in the example below:
+
+{% highlight javascript %}
+<script src="js/signagelive.js"></script>
+{% endhighlight %}
+
 # Methods
 
 ## Signagelive.sendReadyToDisplay()
@@ -52,7 +60,9 @@ The SDK is available <a href="https://drive.google.com/file/d/1RyA_Z7Zvr6Zl31EwL
 | Availability | ChromeOS and Brightsign devices                                                                                                                                                                                                                                                      |
 | Example      |
 {% highlight javascript %}
-Signagelive.sendReadyToDisplay().then(function() {         console.log('Widget is displayed...'); });
+Signagelive.sendReadyToDisplay().then(function() {
+    console.log('Widget is displayed...');
+});
 {% endhighlight %}
 
 ## Signagelive.setData(key, value, shared)
@@ -64,7 +74,9 @@ Signagelive.sendReadyToDisplay().then(function() {         console.log('Widget i
 | Availability | Currently only used in ChromeOS devices due to native localStorage support being available elsewhere                                                                                                                  |
 | Example      |
 {% highlight javascript %}
-Signagelive.setData('status', data, true).then(function () {       console.log("Data stored as 'status'"); });
+Signagelive.setData('status', data, true).then(function () {
+    console.log("Data stored as 'status'");
+});
 {% endhighlight %}
 
 ## Signagelive.getData(key, shared)
@@ -76,7 +88,9 @@ Signagelive.setData('status', data, true).then(function () {       console.log("
 | Availability | Currently only used in ChromeOS devices due to native localStorage support being available elsewhere                                                                |
 | Example      | Signagelive.getData('status', true).then(function (data) {         self.dataResponse = JSON.parse(data); });                                                        |
 {% highlight javascript %}
-Signagelive.getData('status', true).then(function (data) {         self.dataResponse = JSON.parse(data); });
+Signagelive.getData('status', true).then(function (data) {
+    self.dataResponse = JSON.parse(data);
+});
 {% endhighlight %}
 
 ## Signagelive.removeData(key, shared)
