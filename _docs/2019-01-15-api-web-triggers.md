@@ -4,7 +4,7 @@ title: Web Triggers
 permalink: api/web-triggers
 date: 2019-09-08 8:14:30 +0600
 post_image: assets/images/service-icon3.png
-tags: [Profile]
+tags: [Web Triggers, API, Developer]
 toc: true
 ---
 # Overview

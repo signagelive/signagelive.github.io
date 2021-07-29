@@ -4,7 +4,7 @@ title: Network API
 date: 2019-09-08 8:14:30 +0600
 permalink: api/network-api
 post_image: assets/images/service-icon3.png
-tags: [Profile]
+tags: [Network, API, Developers]
 toc: true
 ---
 

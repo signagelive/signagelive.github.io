@@ -4,7 +4,7 @@ title: Partner App Authorization
 permalink: api/partner-app-authorization
 date: 2019-09-08 8:14:30 +0600
 post_image: assets/images/service-icon3.png
-tags: [Profile]
+tags: [Partner App, Authorization, Developer, Applications]
 toc: true
 ---
 # Overview

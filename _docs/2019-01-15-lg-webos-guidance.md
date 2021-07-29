@@ -3,7 +3,7 @@ layout: doc
 title: LG webOS - Guidance
 date: 2020-10-27 8:14:30 +0000
 post_image: assets/images/service-icon3.png
-tags: [Profile]
+tags: [LG, webOS, Guidance, Limitations, Video, Encoding, Transitions]
 toc: true
 ---
 # LG webOS - Guidance

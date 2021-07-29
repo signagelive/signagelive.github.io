@@ -3,7 +3,7 @@ layout: doc
 title: Proof of Play API
 date: 2020-10-27 8:14:30 +0000
 post_image: assets/images/service-icon3.png
-tags: [Profile]
+tags: [Proof of Play, PoP, API, Developer]
 toc: true
 ---
 ## Proof of Play API - Getting Started
