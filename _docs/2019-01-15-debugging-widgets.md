@@ -3,7 +3,7 @@ layout: doc
 title: Debugging Widgets
 date: 2019-09-08 8:14:30 +0600
 post_image: assets/images/service-icon3.png
-tags: [Profile]
+tags: [Debugging Widgets, Developer, LG, Chrome, Electron, BrightSign, Iadea, Guidance]
 toc: true
 ---
 # Debugging Widgets on Media Players
@@ -32,4 +32,4 @@ Further information has been compiled and provided below that covers specific us
 
 <a href="/lg-webos-guidance">LG</a>
 
-<!-- <a href="/samsung-ssp-guidance">Samsung SSP</a> -->
+<a href="/samsung-ssp-guidance">Samsung SSP</a>
