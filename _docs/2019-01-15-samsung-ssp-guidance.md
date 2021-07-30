@@ -44,7 +44,7 @@ It is strongly recommended that you use videos encoded with the same resolution 
 
 <a href="https://support.signagelive.com/hc/en-us/articles/115000152451-Supported-Samsung-SSP-Players-and-their-Features">Relevant Help Centre Article</a>
 
-### Gapless Playback for Fullscreen Video content
+### Gapless Playback
 
 How do I set Gapless Playback?
 If you're using one of the newer Samsung models (D range and higher) we have now developed our Signagelive solution to allow gapless playback when using fullscreen videos only. Working with this understanding you can then remove the black frames and achieve gapless playback. 

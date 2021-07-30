@@ -10,7 +10,7 @@ toc: true
 
 ## Video Support and Limitations
 
-### Maximum supported number of concurrent videos playing using the HTML5 video tag
+### Maximum Concurrent Videos
 
 There is a limit to the number of concurrent videos that can be loaded and played using the HTML5 video tag concurrently - this limit is different depending on the generation of webOS panel you are using, and this has increased in more recent generations as shown below:
 
@@ -27,7 +27,7 @@ This limit applies to all of the content on the screen and is not restricted to 
 
 Equally, if you have 1 widget playing full screen but it uses 2 video tags to play 2 videos at the same time within the widget then this would count as 2 video tags being in use concurrently.
 
-### Widget transitions and how they impact concurrent video playback
+### Widget Transitions
 
 Signagelive has made every effort to ensure that transitions between widgets and other playlist media assets are as seamless as possible (see: <a href="/widget-sdk">Widget SDK</a>). In order to achieve this the Signagelive media player will attempt to pre-load the next widget asset in a playlist and then display it on screen only once it has loaded and is ready to be displayed. This significantly reduces the potential for noticeable black gaps between widget assets.
 
@@ -55,14 +55,14 @@ This leads to the following table that describes the number of widgets that play
 
 2) - In testing we have noticed that occasionally transitions are not ideal on webOS 4.0 when playing 2 concurrent zones that include widgets-to-widget/widget-to-video transitions. This is much better on webOS 4.1.
 
-### What happens when you exceed the maximum number of supported video tags?
+### Issues
 
 If the maximum number of supported video tags in use is exceeded at any time you may notice:
 * Videos fail to play
 * Flashing during transitions
 * Other unexpected video playback issues
 
-### General recommendations for best results
+### Recommendations
 
 For the best results when working with widgets that include video playback it is recommended to ensure that you do not exceed the maximum number of supported concurrent video tags for your webOS generation.
 
@@ -75,7 +75,9 @@ You can reduce unnecessary asset transitions by:
 
 <a href="https://support.signagelive.com/hc/en-us/articles/360017833397-Limitations-for-developers-and-content-creators-when-using-videos-in-widgets-on-LG-webOS-players">Relevant Help Centre Article</a>
 
-### Supported table regarding LG webOS and video background rendering
+### Video Requirements Table
+
+The table below outlines the video asset requirements for each type of webOS series.
 
 | webOS Series | Video Assets (Portrait)    | Apps with MP4 Background (Portrait) |
 |--------------|----------------------------|-------------------------------------|
