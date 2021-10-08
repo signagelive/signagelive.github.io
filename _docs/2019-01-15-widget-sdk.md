@@ -79,6 +79,23 @@ Signagelive.setData('status', data, true).then(function () {
 });
 {% endhighlight %}
 
+## Signagelive.listStoredDataKeys(shared)
+
+|              |                                                                                                                                                                                                                       |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description | Get a list of all keys that have been stored using Signagelive.setData() |
+|---|---|
+| Parameters | shared (boolean): Whether or not to include keys stored in the shared storage space |
+| Returns | A promise that resolves an array of stored keys. Example response: ["items", "names", "places"] |
+| Example |  |
+{% highlight javascript %}
+Signagelive.listStoredDataKeys(false).then(function(data) {
+    console.log(data);
+}).catch(function(error) {
+    console.error(error.message);
+});
+{% endhighlight %}
+
 ## Signagelive.getData(key, shared)
 
 |              |                                                                                                                                                                     |
@@ -97,11 +114,10 @@ Signagelive.getData('status', true).then(function (data) {
 
 |              |                                                                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.removeData(key, shared)                                                                                     |
 | Description      | Remove a key-value pair stored using Signagelive.setData()                                                              |
 | Parameters       | Key - [string] The key of the key-value pair to remove Shared - [boolean] Whether or not the key is a shared key or not |
 | Returns          | A promise that resolves when the requested key has been removed.                                                        |
-| Example usage    |                                                                                                                         |
+| Example    |                                                                                                                         |
 
 {% highlight javascript %}
 Signagelive.removeData('items', false)
@@ -113,16 +129,27 @@ Signagelive.removeData('items', false)
     });
 {% endhighlight %}
 
+## Signagelive.clearStorage()
+
+|              |                                                                                                                                                                                                                       |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description | Remove all key-value pairs stored using Signagelive.setData() |
+|---|---|
+| Parameters | n/a |
+| Example |  |
+{% highlight javascript %}
+Signagelive.clearStorage()
+{% endhighlight %}
+
 ## Signagelive.log(logLevel, message)
 
 |              |                                                                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.log(logLevel, message)                                                                                                          |
 | Description      | Ability to log universally across all media players                                                                                         |
 | Parameters       | logLevel - (Optional - default is INFO) [string] The options are [DEBUG, INFO, WARNING, ERROR, FATAL] message - [string] The message to log |
 | Availability | All devices                                                                                                                                                                                                                                                       |
 | Returns          | Returns a promise that resolves once the message has been logged.                                                                           |
-| Example usage    |                                                                                                                                             |
+| Example    |                                                                                                                                             |
 
 {% highlight javascript %}
 Signagelive.log('ERROR', 'Unable to load items from data storage.')
@@ -254,7 +281,6 @@ Signagelive.stopVideo().then(function(success) {
 
 |                  |                                                                                                                                                              |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.getPlayerDetails()                                                                                                                               |
 | Description      | Get details about the player the widget is playing on including Signagelive serial number, site details, model details, and firmware and client information. |
 | Parameters       | None                                                                                                                                                         |
 | Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
@@ -283,7 +309,7 @@ Signagelive.stopVideo().then(function(success) {
 }
 {% endhighlight %}
 
-Example Usage
+| Example |  |
 
 {% highlight javascript %}
 Signagelive.getPlayerDetails()
@@ -315,7 +341,7 @@ Signagelive.getPlayerDetails()
 }
 {% endhighlight %}
 
-Example Usage
+| Example |  |
 
 {% highlight javascript %}
 Signagelive.getDisplayProperties()
@@ -331,7 +357,6 @@ Signagelive.getDisplayProperties()
 
 |              |                                                                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.getTLSSupportInfo()                                                                                                                                                                                                                                                                                                                |
 | Description      | Get detailed information about the TLS (SSL) support of the player.                                                                                                                                                                                                                                                                            |
 | Parameters       | None                                                                                                                                                                                                                                                                                                                                           |
 | Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
@@ -383,7 +408,7 @@ If howsmyssl is unavailable and the media player has to return the default tls s
 }
 {% endhighlight %}
 
-Example Usage
+| Example |  |
 
 {% highlight javascript %}
 Signagelive.getMaxSupportedTLSVersion()
@@ -399,7 +424,6 @@ Signagelive.getMaxSupportedTLSVersion()
 
 |              |                                                                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.getOnlineStatus()                                                                                                                                                                                                                                 |
 | Description      | Find out if the player has a network connection and is connected to the internet.                                                                                                                                                                             |
 | Parameters       | None                                                                                                                                                                                                                                                          |
 | Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
@@ -412,7 +436,7 @@ Signagelive.getMaxSupportedTLSVersion()
 }
 {% endhighlight %}
 
-Example Usage
+| Example |  |
 
 {% highlight javascript %}
 Signagelive.getOnlineStatus()
@@ -424,68 +448,15 @@ Signagelive.getOnlineStatus()
     });
 {% endhighlight %}
 
-## Signagelive.checkSupportedHTML5Features(featuresToCheck)
-
-|              |                                                                                                                                                                     |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.checkSupportedHTML5Features(featuresToCheck)                                                                                                                                                                                                                                                 |
-| Description      | Check HTML5 feature support on the player using Modernizr.                                                                                                                                                                                                                                               |
-| Parameters       | featuresToCheck - [Array of strings] representing the features to check. The full list of available features to check are defined in the Modernizr documentation.                                                                                                                                        |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
-| Returns          | A promise that resolves to a JSON object that contains results for the features that were requested to be tested. Each feature that was tested will be returned as a boolean property of the results object with the feature name and "_supported" appended to it (see example below). Example response: |
-
-{% highlight javascript %}
-{
-    "cssanimations_supported": true,
-    "flexbox_supported": false,
-    "es6collections_supported": false,
-    "arrow_supported": false
-}
-{% endhighlight %}
-
-Example Usage
-
-{% highlight javascript %}
-Signagelive.checkSupportedHTML5Features(['cssanimations', 'flexbox', 'es6collections', 'arrow'])
-    .then(function(results) {
-        console.log(JSON.stringify(results, undefined, 2));
-    })
-    .catch(function(error) {
-        console.error(error.message);
-    });
-{% endhighlight %}
-
-## Signagelive.ajax(url, options)
-
-|              |                                                                                                                                                                     |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.ajax(url, options)                                                                                                                                    |
-| Description      | Callout to the provided URL using the options specified                                                                                                           |
-| Parameters       | url - [string] The URL to send the request to options - [object] An object containing request settings. All available settings are documented in the JQuery docs. |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
-| Returns          | Returns a promise that resolves to the response status code, status text and data.                                                                                |
-| Example usage    |                                                                                                                                                                   |
-
-{% highlight javascript %}
-Signagelive.ajax('https://jsonplaceholder.typicode.com/todos', { method: 'GET',  dataType: "json", timeout: 60000})
-    .then(function(statusCode, statusText, data) {
-        console.log(data);
-    })
-    .catch(function(statusCode, statusText, error) {
-        console.error(error.message);
-    });
-{% endhighlight %}
-
 ## Signagelive.onWidgetClosing(callback, options)
 
 |              |                                                                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Method Signature | Signagelive.onWidgetClosing(callback, options)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Description      | Register a callback that will get called when the widget is to be closed because the media player is moving to the next asset.Note that if the widget does not register a callback using this function then the media player will forcibly close the widget and move next as normal.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Parameters       | function callback(Promise resolve, timeInfo) - A reference to a function or anonymous function that will be executed when the Signagelive media player notifies the widget that the widget is about to close.The callback function will have 2 parameters The first is a reference to resolve the promise and notify the media player that the cleanup code has finished executing. The widget developer should always call resolve() after their cleanup code has executed. The second parameter timeInfo provides details about the timing until the widget will be closed, which is dependent on the configuration options provided to the initial call. The timeInfo parameter object has the following properties: millisecondsNotifiedInAdvance millisecondsUntilClosed millisecondsUntilForciblyClosed options - (optional) An optional options object. Configurable options include: millisecondsToNotifyInAdvance - This is the time in milliseconds that the callback is called in advance of the Widget being closed. Default: 500ms, Max: 2000ms millisecondsToWaitForCallbackResolution - This is the time in milliseconds that the media player will wait for the callback method to call resolve() before forcibly closing the widget and moving to the next asset. Default: 500ms, Max: 2000ms |
 | Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns          | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Example usage    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Example    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 {% highlight javascript %}
 Signagelive.onWidgetClosing(function(resolve, timeInfo) {
@@ -517,25 +488,102 @@ Signagelive.onWidgetClosing(function(resolve, timeInfo) {
 });
 {% endhighlight %}
 
+## Signagelive.checkSupportedHTML5Features(featuresToCheck)
+
+|              |                                                                                                                                                                     |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description      | Check HTML5 feature support on the player using Modernizr.                                                                                                                                                                                                                                               |
+| Parameters       | featuresToCheck - [Array of strings] representing the features to check. The full list of available features to check are defined in the Modernizr documentation.                                                                                                                                        |
+| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
+| Returns          | A promise that resolves to a JSON object that contains results for the features that were requested to be tested. Each feature that was tested will be returned as a boolean property of the results object with the feature name and "_supported" appended to it (see example below). Example response: |
+
+{% highlight javascript %}
+{
+    "cssanimations_supported": true,
+    "flexbox_supported": false,
+    "es6collections_supported": false,
+    "arrow_supported": false
+}
+{% endhighlight %}
+
+| Example |  |
+
+{% highlight javascript %}
+Signagelive.checkSupportedHTML5Features(['cssanimations', 'flexbox', 'es6collections', 'arrow'])
+    .then(function(results) {
+        console.log(JSON.stringify(results, undefined, 2));
+    })
+    .catch(function(error) {
+        console.error(error.message);
+    });
+{% endhighlight %}
+
+## Signagelive.requestMediaPlayerMoveToNextAsset()	
+
+|              |                                                                                                                                                                                                                       |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description | Request the player to move to the next media asset available in the playlist. |
+|---|---|
+| Parameters | n/a |
+| Availability | Tizen SSP Only (Tizen 2.4+) |
+| Example |  |
+{% highlight javascript %}
+Signagelive.requestMediaPlayerMoveToNextAsset()
+{% endhighlight %}
+
+## Signagelive.getExternalData(dataSource, integrationId, objectId, callback)
+
+|              |                                                                                                                                                                                                                       |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description | Gets data (or files) from an external data source. |
+|---|---|
+| Parameters | dataSource - The source of the data. Currently “DSS” will be the only option here integrationId - The public Id of the integration, such as com.signagelive.datasyncservices.authenticatedwebsites objectId - the id of the integration object as defined in the Widget preferences onDataUpdate - a reference to a callback function that will be fired when new data for this data source is available |
+| Returns | A promise that resolves to a JSON object containing the requested data. The actual fields and data returned will be very different for each integration. Developers will need to read the documentation specific to the integration they are using to understand what they can expect to be returned. The example below shows data that might be returned for a corporate dashboard web page made available by the authenticated websites integration. Example: {     "webpage": {         "id": {             "id": "85c91571-a47d-471c-a845-7f9748301dd9"         },         "name": "Corporate Dashboard 1",         "latestSuccessfulCaptureTimestamp": "2021-03-19T10:00:00",         "latestSuccessfulCapture": {             "name": "file1",             "src": "/com.signagelive.datasyncservices.authenticatedwebites/Corporate_Dashboard_1.jpg"         }     } }   |
+| Example |  |
+{% highlight javascript %}
+function onDashboardUpdated(data) {
+    console.log('Dashboard Updated: ' + JSON.stringify(data, undefined, 2));
+    $("#dashboard-img").attr('src', data.webpage.latestSuccessfulCapture.url);
+    $("#last-updated-time").html(data.webpage.latestSuccessfulCaptureTimestamp);
+}
+
+window.addEventListener('widget-init', function (e) {
+    // Load dashboard values from Widget preferences
+    var cytheDashboardId = Widget.preferences.getItem("Cythe");
+    // Get Data and Render
+    Signagelive.getExternalData("DSS", "com.signagelive.datasyncservices.authenticatedwebsites", cytheDashboardId, onDashboardUpdated).then(function(data) {             onDashboardUpdated(data);
+    }).catch(function(error) {
+        console.error('Error getting data: ' + error);
+    });
+});
+{% endhighlight %}
+
+
+
 # Supported Devices
 
 <div class="table-wrapper" markdown="block">
 
-|                                       | Amazon Fire TV | Brightsign | Chrome OS | IAdea |   LG webOS  | macOS | Philips Android SoC | Samsung SSP (Tizen) | Samsung SSSP (E) | Samsung SSSP (D) | Browser/ Broadcast Player | Legacy PC Client | Windows |
-|-------------------------------------|:--------------:|:----------:|:---------:|:-----:|:-----------:|:-----:|:-------------------:|:-------------------:|:----------------:|:----------------:|:-------------------------:|:----------------:|:-------:|
-| Signagelive.setData(key, val, shared) |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.getData(key, shared)      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.removeData(key, shared)      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.log(logLevel, message)                  |        ✔       |      ✔     |     ✔     |   ✔   |      ✔      |   ✔   |          ✔          |          ✔          |         ✔        |         ✔        |             ✔             |         ✔        |    ✔    |
-| Signagelive.sendReadyToDisplay()      |        ✘       |      ✔     |     ✔     |   ✘   | ✔ |   ✘   |          ✘          |          ✔          |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.playVideo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.stopVideo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.getPlayerDetails()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.getDisplayProperties()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.getTLSSupportInfo()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.getOnlineStatus()               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.checkSupportedHTML5Features(featuresToCheck)               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.ajax(url, options)               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
-| Signagelive.onWidgetClosing(callback, options)               |        ✘       |      ✘     |     ✘     |   ✘   | *Coming soon* |   ✘   |          ✘          |     ✔     |         ✘        |         ✘        |             ✘             |         ✘        |    *Coming soon*    |
+|  | Brightsign (All Series 3 and 4) | LG webOS 1.0 | LG webOS 2.0 | LG webOS 3.0 | LG webOS 3.2 | LG webOS 4.0 | LG webOS 4.1 | LG webOS 6.0 | Samsung SSSP (D) | Samsung SSSP (E) | Samsung Tizen 2.4 | Samsung Tizen 3.0 | Samsung Tizen 4.0 | Samsung Tizen 5.0 | Philips Android (All Models) | Amazon Fire TV | Windows | macOS | Chrome OS | IAdea SMIL (All) | Browser/ Broadcast Player | Legacy PC Client |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Main Widget SDK Support** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Signagelive.setData(key, val, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.listStoredDataKeys(shared) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.getData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.removeData(key, shared) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.clearStorage() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.log(logLevel, message) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Signagelive.sendReadyToDisplay() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.playVideo() | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.stopVideo() | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.getPlayerDetails() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.getDisplayProperties() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.getTLSSupportInfo() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.getOnlineStatus() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.onWidgetClosing(callback) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.checkSupportedHTML5Features(featuresToCheck) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.requestMediaPlayerMoveToNextAsset() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| **Data Sync Services Support** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| Signagelive.getExternalData(dataSource, integrationId, objectId, callback) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 
 </div>
