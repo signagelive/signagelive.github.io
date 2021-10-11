@@ -20,6 +20,7 @@
 
  thead {
     background-color: #262627;
+    border: 1px solid black;
   }
 
   th, td {

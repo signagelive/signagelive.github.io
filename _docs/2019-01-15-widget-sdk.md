@@ -33,6 +33,11 @@ toc: true
     .table-wrapper {
         overflow-x: scroll;
     }
+
+    .container {
+        width: 95%;
+        max-width: 95%;
+    }
 </style>
 
 # Overview
@@ -551,7 +556,8 @@ window.addEventListener('widget-init', function (e) {
     // Load dashboard values from Widget preferences
     var cytheDashboardId = Widget.preferences.getItem("Cythe");
     // Get Data and Render
-    Signagelive.getExternalData("DSS", "com.signagelive.datasyncservices.authenticatedwebsites", cytheDashboardId, onDashboardUpdated).then(function(data) {             onDashboardUpdated(data);
+    Signagelive.getExternalData("DSS", "com.signagelive.datasyncservices.authenticatedwebsites", cytheDashboardId, onDashboardUpdated).then(function(data) {
+        onDashboardUpdated(data);
     }).catch(function(error) {
         console.error('Error getting data: ' + error);
     });
