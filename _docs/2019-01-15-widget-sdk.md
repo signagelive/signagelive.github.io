@@ -62,7 +62,7 @@ Copy the javascript file into your project and include it in your HTML page as s
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description  | To be used to signal when the player has downloaded the data and assets within the widget and is ready for the content to be shown on screen. By default the media player will automatically show the widget after 2 seconds as this method will not allow it to be delayed further. |
 | Parameters   | n/a                                                                                                                                                                                                                                                                                  |
-| Availability | ChromeOS and Brightsign devices                                                                                                                                                                                                                                                      |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-sendReadyToDisplay){:target="_blank"} |
 | Example      |
 {% highlight javascript %}
 Signagelive.sendReadyToDisplay().then(function() {
@@ -76,7 +76,7 @@ Signagelive.sendReadyToDisplay().then(function() {
 |--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description  | A localStorage alternative; where data can be stored on the player and can persist between reloading the widget.                                                                                                      |
 | Parameters   | key (string): The name/reference for the data being stored. value (string): The data that is going to be stored. shared (boolean): If set to true then data will be accessible to all widgets published to the player |
-| Availability | Currently only used in ChromeOS devices due to native localStorage support being available elsewhere                                                                                                                  |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-setData-getData){:target="_blank"} |
 | Example      |
 {% highlight javascript %}
 Signagelive.setData('status', data, true).then(function () {
@@ -92,6 +92,7 @@ Signagelive.setData('status', data, true).then(function () {
 |---|---|
 | Parameters | shared (boolean): Whether or not to include keys stored in the shared storage space |
 | Returns | A promise that resolves an array of stored keys. Example response: ["items", "names", "places"] |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-listStoredDataKeys){:target="_blank"} |
 | Example |  |
 {% highlight javascript %}
 Signagelive.listStoredDataKeys(false).then(function(data) {
@@ -107,8 +108,8 @@ Signagelive.listStoredDataKeys(false).then(function(data) {
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description  | A localStorage alternative; where data stored with Signagelive.setData(key, value, shared) can be retrieved.                                                        |
 | Parameters   | key (string): The name/reference for the previously stored data. shared (boolean): If set to true, it will search for this key in the global storage of the player. |
-| Availability | Currently only used in ChromeOS devices due to native localStorage support being available elsewhere                                                                |
-| Example      | Signagelive.getData('status', true).then(function (data) {         self.dataResponse = JSON.parse(data); });                                                        |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-setData-getData){:target="_blank"} |
+| Example      |                                                     |
 {% highlight javascript %}
 Signagelive.getData('status', true).then(function (data) {
     self.dataResponse = JSON.parse(data);
@@ -122,6 +123,7 @@ Signagelive.getData('status', true).then(function (data) {
 | Description      | Remove a key-value pair stored using Signagelive.setData()                                                              |
 | Parameters       | Key - [string] The key of the key-value pair to remove Shared - [boolean] Whether or not the key is a shared key or not |
 | Returns          | A promise that resolves when the requested key has been removed.                                                        |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-removeData){:target="_blank"} |
 | Example    |                                                                                                                         |
 
 {% highlight javascript %}
@@ -141,6 +143,7 @@ Signagelive.removeData('items', false)
 | Description | Remove all key-value pairs stored using Signagelive.setData() |
 |---|---|
 | Parameters | n/a |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-clearStorage){:target="_blank"} |
 | Example |  |
 {% highlight javascript %}
 Signagelive.clearStorage()
@@ -152,8 +155,8 @@ Signagelive.clearStorage()
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description      | Ability to log universally across all media players                                                                                         |
 | Parameters       | logLevel - (Optional - default is INFO) [string] The options are [DEBUG, INFO, WARNING, ERROR, FATAL] message - [string] The message to log |
-| Availability | All devices                                                                                                                                                                                                                                                       |
 | Returns          | Returns a promise that resolves once the message has been logged.                                                                           |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-log){:target="_blank"} |
 | Example    |                                                                                                                                             |
 
 {% highlight javascript %}
@@ -169,8 +172,8 @@ Signagelive.log('ERROR', 'Unable to load items from data storage.')
 |--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description  | Used to play video natively on Samsung SSP Tizen displays. Native playback can offer a better visual experience over standard HTML5 video when used in a playlist with other videos and when wanted to render 2 videos with video concurrently.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Parameters   | fileURI(s) - a relative URI or array of relative URIs pointing to video files to play (relative to index.html). x - the x coordinate of the video relative to the zone. If you want the video to cover the entire widget zone then this should be 0. y - the y coordinate of the video relative to the zone. If you want the video to cover the entire widget zone then this should be 0. width - the width of the video. If this is larger than the width of the widget zone, this will be scaled down to fit the zone height - the height of the video. If this is larger than the height of the widget zone this will be scaled down to fit the zone. loop - whether or not to loop the video(s) - This will be true by default (makes sense to me) play4K - if playing a 4k video this must be true callbacks - pass in functions to be called when specific events fire. The exact events you can add listeners for are:- onTimeUpdate - use this to receive the current play time of the video- onComplete - fired when a video completes- onError - fired when there is a playback error |
-| Availability | Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Limitations  | Your widget must have a transparent background in order for video to be visible. Only 1 video can be played per widget at any one time You can play up to 2 widget zones each with 1 video concurrently @ FHD resolution If playing 4K only 1 video can be played at a time (across all widgets) Videos should not be larger than the widget zone they are scheduled to. Videos that are larger than the widget zone will be scaled down to fit the zone  |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-playVideo-stopVideo){:target="_blank"} |
 | Example      |
 {% highlight javascript %}
 
@@ -270,8 +273,8 @@ var videoPlaylist = [
 |--------------|-------------------------------------------------------------------------------------------------|
 | Description  | Used to stop a video that is currently playing as a result of a call to Signagelive.playVideo() |
 | Parameters   | None                                                                                            |
-| Availability | Tizen SSP Only (Tizen 2.4+)                                                                     |
 | Limitations  | None                                                                                            |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-playVideo-stopVideo){:target="_blank"} |
 | Example      |
 {% highlight javascript %}
 Signagelive.stopVideo().then(function(success) {
@@ -288,7 +291,6 @@ Signagelive.stopVideo().then(function(success) {
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description      | Get details about the player the widget is playing on including Signagelive serial number, site details, model details, and firmware and client information. |
 | Parameters       | None                                                                                                                                                         |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns          | A promise that resolves to a JSON object containing all of the player details. Example:                                                                      |
 
 {% highlight javascript %}
@@ -313,7 +315,7 @@ Signagelive.stopVideo().then(function(success) {
     "firmware_version": "T-HKMLAC-2100.2"
 }
 {% endhighlight %}
-
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-getPlayerDetails){:target="_blank"} |
 | Example |  |
 
 {% highlight javascript %}
@@ -333,7 +335,6 @@ Signagelive.getPlayerDetails()
 |             | Signagelive.getDisplayProperties()                                                                                       |
 | Description | Get player display properties such as display width and height, rotation and whether or not video rotation is supported. |
 | Parameters  | None                                                                                                                     |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns     | A promise that resolves to a JSON object containing all of the display properties. Example:                              |
 
 {% highlight javascript %}
@@ -346,6 +347,7 @@ Signagelive.getPlayerDetails()
 }
 {% endhighlight %}
 
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-getDisplayProperties){:target="_blank"} |
 | Example |  |
 
 {% highlight javascript %}
@@ -358,13 +360,12 @@ Signagelive.getDisplayProperties()
     });
 {% endhighlight %}
 
-## Signagelive.getTLSSupportInfo()
+## Signagelive.getMaxSupportedTLSVersion()
 
 |              |                                                                                                                                                                     |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description      | Get detailed information about the TLS (SSL) support of the player.                                                                                                                                                                                                                                                                            |
 | Parameters       | None                                                                                                                                                                                                                                                                                                                                           |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns          | A promise that resolves to a JSON object with TLS support details. The following example shows how the response should look if we are able to get detailed data from the howsmyssl.com API. Note that if the detailed data is available, the detailed_tls_settings_included property will be true and detailed_tls_settings will be populated. |
 
 {% highlight javascript %}
@@ -413,6 +414,7 @@ If howsmyssl is unavailable and the media player has to return the default tls s
 }
 {% endhighlight %}
 
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-getMaxSupportedTLSVersion){:target="_blank"} |
 | Example |  |
 
 {% highlight javascript %}
@@ -431,7 +433,6 @@ Signagelive.getMaxSupportedTLSVersion()
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description      | Find out if the player has a network connection and is connected to the internet.                                                                                                                                                                             |
 | Parameters       | None                                                                                                                                                                                                                                                          |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns          | A promise that resolves to a JSON object with network and internet connectivity status. The response object contains two boolean values that can be used to determine if the player is connected to a LAN and whether or not it has internet access. Example: |
 
 {% highlight javascript %}
@@ -441,6 +442,7 @@ Signagelive.getMaxSupportedTLSVersion()
 }
 {% endhighlight %}
 
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-getOnlineStatus){:target="_blank"} |
 | Example |  |
 
 {% highlight javascript %}
@@ -459,8 +461,8 @@ Signagelive.getOnlineStatus()
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description      | Register a callback that will get called when the widget is to be closed because the media player is moving to the next asset.Note that if the widget does not register a callback using this function then the media player will forcibly close the widget and move next as normal.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Parameters       | function callback(Promise resolve, timeInfo) - A reference to a function or anonymous function that will be executed when the Signagelive media player notifies the widget that the widget is about to close.The callback function will have 2 parameters The first is a reference to resolve the promise and notify the media player that the cleanup code has finished executing. The widget developer should always call resolve() after their cleanup code has executed. The second parameter timeInfo provides details about the timing until the widget will be closed, which is dependent on the configuration options provided to the initial call. The timeInfo parameter object has the following properties: millisecondsNotifiedInAdvance millisecondsUntilClosed millisecondsUntilForciblyClosed options - (optional) An optional options object. Configurable options include: millisecondsToNotifyInAdvance - This is the time in milliseconds that the callback is called in advance of the Widget being closed. Default: 500ms, Max: 2000ms millisecondsToWaitForCallbackResolution - This is the time in milliseconds that the media player will wait for the callback method to call resolve() before forcibly closing the widget and moving to the next asset. Default: 500ms, Max: 2000ms |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns          | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-onWidgetClosing){:target="_blank"} |
 | Example    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 {% highlight javascript %}
@@ -499,7 +501,6 @@ Signagelive.onWidgetClosing(function(resolve, timeInfo) {
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Description      | Check HTML5 feature support on the player using Modernizr.                                                                                                                                                                                                                                               |
 | Parameters       | featuresToCheck - [Array of strings] representing the features to check. The full list of available features to check are defined in the Modernizr documentation.                                                                                                                                        |
-| Availability | 	Tizen SSP Only (Tizen 2.4+)                                                                                                                                                                                                                                                       |
 | Returns          | A promise that resolves to a JSON object that contains results for the features that were requested to be tested. Each feature that was tested will be returned as a boolean property of the results object with the feature name and "_supported" appended to it (see example below). Example response: |
 
 {% highlight javascript %}
@@ -511,6 +512,7 @@ Signagelive.onWidgetClosing(function(resolve, timeInfo) {
 }
 {% endhighlight %}
 
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-checkSupportedHTML5Features){:target="_blank"} |
 | Example |  |
 
 {% highlight javascript %}
@@ -530,7 +532,7 @@ Signagelive.checkSupportedHTML5Features(['cssanimations', 'flexbox', 'es6collect
 | Description | Request the player to move to the next media asset available in the playlist. |
 |---|---|
 | Parameters | n/a |
-| Availability | Tizen SSP Only (Tizen 2.4+) |
+| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-requestMediaPlayerMoveToNextAsset){:target="_blank"} |
 | Example |  |
 {% highlight javascript %}
 Signagelive.requestMediaPlayerMoveToNextAsset()
@@ -573,21 +575,21 @@ window.addEventListener('widget-init', function (e) {
 |  | Brightsign (All Series 3 and 4) | LG webOS 1.0 | LG webOS 2.0 | LG webOS 3.0 | LG webOS 3.2 | LG webOS 4.0 | LG webOS 4.1 | LG webOS 6.0 | Samsung SSSP (D) | Samsung SSSP (E) | Samsung Tizen 2.4 | Samsung Tizen 3.0 | Samsung Tizen 4.0 | Samsung Tizen 5.0 | Philips Android (All Models) | Amazon Fire TV | Windows | macOS | Chrome OS | IAdea SMIL (All) | Browser/ Broadcast Player | Legacy PC Client |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Main Widget SDK Support** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| Signagelive.setData(key, val, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.setData(key, val, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.listStoredDataKeys(shared) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
-| Signagelive.getData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.getData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.removeData(key, shared) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.clearStorage() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
-| Signagelive.log(logLevel, message) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| Signagelive.sendReadyToDisplay() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.playVideo() | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
-| Signagelive.stopVideo() | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.log(message) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Signagelive.sendReadyToDisplay() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming Soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.playVideo() | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✘ | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.stopVideo() | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✘ | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.getPlayerDetails() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.getDisplayProperties() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.getTLSSupportInfo() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.getOnlineStatus() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.onWidgetClosing(callback) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
-| Signagelive.checkSupportedHTML5Features(featuresToCheck) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
+| Signagelive.checkSupportedHTML5Features(featuresToCheck) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | Signagelive.requestMediaPlayerMoveToNextAsset() | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
 | **Data Sync Services Support** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | Signagelive.getExternalData(dataSource, integrationId, objectId, callback) | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✘ | ✘ | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *On Roadmap* | *On Roadmap* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✘ | ✘ | ✘ |
