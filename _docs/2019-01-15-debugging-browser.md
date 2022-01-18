@@ -53,3 +53,44 @@ Widgets may have different visual displays depending on the size of the window y
 <img src="/assets/images/debugging-browser/debugging-browser-3.png">
 <br>
 Example of the Responsive mode for Firefox (highlighted on the right-hand size in blue)
+
+## Debugging in Signagelive
+
+As well as being able to debug locally - there is also the ability to see a widget running in the Signagelive UI when accessing its preview. To access a widget preview you need to:
+
+1. Login to Signagelive
+2. Go to either Content > Playlist or open up a Playlist under Content > Playlist > Manage, and double-click on a widget asset.
+- *This will load the widget preview and start attempting to playback the widget. This may not necessarily work as intended depending on the nature of the widget e.g. if it requires specific Widget SDK methods or if it requires player-specific details.*
+3. Now you can go to the triple dot context menu for:
+- Chrome > More Tools > Developer Tools
+- Firefox > Web Developer > Toggle Tools
+or use the shortcut CTRL+SHIFT+I.
+
+At a high level summary the devTools provides a range of information that may help assess where or why a widget may not be working as expected, as well as this - it can be used to validate a widgets playback to confirm it is retrieving and/or accessing the correct information.
+
+- The main areas to be aware of in the devTools are the:
+  - Console
+  - Network
+
+The Console allows you to view any relevant logging or errors messages in relation to the Signagelive UI or the widget preview you are accessing.
+
+- There are 3 main levels of messages to be aware of: Informational, Warning and Error. 
+  - Informational: Default level for logging of messages, generally used to provide contextual information.
+  - Warning: There may have been an unexpected issue but this has not impacted the application from continuing.
+  - Error: There has been a fatal error which means the application has stopped running.
+
+In the Console you can filter these levels (under "Default levels" in Chrome) to restrict the type of logging you want to view; this may be helpful for example if you are trying to isolate and view only Errors and want to disregard any Warning messages.
+
+These messages can further be filtered by their location by right-clicking on any of the logging statements and choosing "Hide messages from ..."; this may be helpful when trying to hide unnecessary logging statements when debugging. This can be reverted by clicking the "X" next to "Custom levels" in the Console tab of Chrome.
+
+<img src="/assets/images/debugging-browser/debugging-browser-4.png">
+<br>
+Example of the logging levels available in Chrome devTools
+
+The Network tab allows you to view incoming and outgoing network requests. This will allow you to find additional information regarding what types of requests have been sent/received and also their current status (e.g. if pending or resolved), as well as how long it has taken a request to resolve and the size of the request.
+
+If there is an issue then the current state of the network requests can be saved to a HAR file for investigative purposes.
+
+<img src="/assets/images/debugging-browser/debugging-browser-5.png">
+<br>
+Example of how to save network request details to a HAR file
