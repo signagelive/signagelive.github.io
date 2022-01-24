@@ -34,7 +34,7 @@ At Signagelive we use a tool named Postman, to be able to interact with our APIâ
 
 We provide a getting started collections, which can be imported into Postman to get you started. You can then set up an environment which contains the credentials we provide to use with this collection .
 
-[Get Postman Collection](https://drive.google.com/file/d/0B9p6rRnPnFlDMXJKaERxWjMxS00/view?usp=sharing){:target="_blank" .btn-style2 .btn .small}
+[Get Postman Collection](https://drive.google.com/file/d/0B9p6rRnPnFlDMXJKaERxWjMxS00/view?usp=sharing&resourcekey=0-Vwm574cZecbGR17DJLXyeQ){:target="_blank" .btn-style2 .btn .small}
 
 ## Documentation
 
