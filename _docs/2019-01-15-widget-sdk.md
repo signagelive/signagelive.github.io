@@ -575,23 +575,23 @@ window.addEventListener('widget-init', function (e) {
 |  | Brightsign (All Series 3 and 4) | LG webOS 1.0 | LG webOS 2.0 | LG webOS 3.0 | LG webOS 3.2 | LG webOS 4.0 | LG webOS 4.1 | LG webOS 6.0 | Samsung SSSP (D) | Samsung SSSP (E) | Samsung Tizen 2.4 | Samsung Tizen 3.0 | Samsung Tizen 4.0 | Samsung Tizen 5.0 | Philips Android (All Models) | Amazon Fire TV | Windows | Chrome OS | IAdea SMIL (All) | Browser/ Broadcast Player | Legacy PC Client |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Main Widget SDK Support** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| Signagelive.setData(key, val, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.listStoredDataKeys(shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.getData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.removeData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.clearStorage() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
+| Signagelive.setData(key, val, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.listStoredDataKeys(shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.getData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.removeData(key, shared) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.clearStorage() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.log(message) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| Signagelive.sendReadyToDisplay() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.playVideo() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.stopVideo() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.getPlayerDetails() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.getDisplayProperties() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.getTLSSupportInfo() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.getOnlineStatus() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.onWidgetClosing(callback) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | *Coming soon* | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.checkSupportedHTML5Features(featuresToCheck) | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
-| Signagelive.requestMediaPlayerMoveToNextAsset() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
+| Signagelive.sendReadyToDisplay() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.playVideo() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.stopVideo() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.getPlayerDetails() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.getDisplayProperties() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.getTLSSupportInfo() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.getOnlineStatus() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.onWidgetClosing(callback) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | *Coming soon* | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.checkSupportedHTML5Features(featuresToCheck) | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.requestMediaPlayerMoveToNextAsset() | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✔ | ✔ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
 | **Data Sync Services Support** |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| Signagelive.getExternalData(dataSource, integrationId, objectId, callback) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *On Roadmap* | *On Roadmap* | ✔ | *Coming soon* | ✘ | ✘ | ✘ |
+| Signagelive.getExternalData(dataSource, integrationId, objectId, callback) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
 
 </div>
