@@ -1,0 +1,38 @@
+#Please use the main menu items under the "text"
+
+- text: Platform Services
+  url: /platform-services/
+- text: Getting Started
+  url: /getting-started/
+- text: Widget Development Framework
+  url: /widget-development-framework/
+  submenu:
+  - text: Overview
+    url: /widget-development-framework/
+  - text: CLI Build Tool
+    url: /cli-build-tool/
+  - text: Debugging Widgets
+    url: /debugging-widgets/
+  - text: Widget SDK
+    url: /widget-sdk
+- text: APIs
+  url: /network-api/
+  submenu:
+  - text: Network API
+    url: /network-api/
+  - text: Web Triggers
+    url: /web-triggers/
+  - text: Proof of Play API
+    url: /proof-of-play-api/
+- text: Resources
+  submenu:
+  - text: Developers Slack
+    url: https://join.slack.com/t/signagelivedevelopers/shared_invite/zt-g3zbrdo6-BlcON7H1bvLull~G0jVW7A
+  - text: Roadmap
+    url: https://trello.com/b/xjDQXkXQ/signagelive-roadmap
+  - text: BrightSign Tools
+    url: /BrightSign/
+  - text: Help Centre
+    url: https://support.signagelive.com/hc/en-us
+- text: Contact Sales
+  url: https://signagelive.com/contact/
