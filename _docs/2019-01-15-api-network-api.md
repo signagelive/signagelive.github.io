@@ -34,6 +34,199 @@ This means that you can not only retrieve monitoring data about your Signagelive
 
 The Network API is only available to Signagelive partners. If you would like to start using the Network API then please fill out our Signup Form.
 
+## API Updates
+
+In the Signagelive Cloud release on the 26th September 2022, we made some improvements to the way in which Media Assets are created using the Network API.
+
+These improvements include the creation of a single Network API endpoint for all Media Asset creation.
+
+Currently the Network API also contains the previous methods, so that it is backward compatible, and as such you should not notice any issues in your current code base, if you use the Network API to create Media Assets.
+
+This notice is to let you know that in a future release the existing methods will be retired and will no longer be usable. 
+
+The expected timescales for the retirement of these endpoints is 6 months 3rd April 2023 you will be notified again before this occurs and if this date changes, but if you do not update the methods being used, after this point Media Asset Uploads will no longer work.
+
+If you have any questions regarding these changes please contact the Signagelive Team.
+
+The new endpoint is available on the test environment so you can test the code changes there prior to migrating them to production.
+
+The endpoints which are affected are:
+
+|End Point                                      |Type|Body                      |
+|-----------------------------------------------|----|--------------------------|
+|networks/{networkid}/mediaassets/            |Post|MediaAssetDTO             |
+|networks/{networkid}/mediaassets/upload      |Post|Multipart form data       |
+|networks/{networkid}/mediaassets/remoteupload|Post|List<RemoteSyncRequestDTO>|
+
+
+The new endpoint is as follows:
+
+|End Point                                      |Type|Body                      |
+|-----------------------------------------------|----|--------------------------|
+|/networks/{networkid}/mediaassets/add        |Post|List<NewMediaAssetRequestDTO>|
+
+This takes an array of NewMediaAssetRequest DTOs in the body of the request, this is defined as follows:
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”
+   },
+   “mediaAsset”: {
+     Media Asset DTO as defined here
+   },
+   remoteRequest: {
+     Remote Sync Request DTO as defined here
+   }
+}
+{% endhighlight %}
+
+The way in which this is created and used, depends on the type of request.
+
+Sending a request to this endpoint, will return an array of NewMediaAssetResponse DTOs, which are defined as follows:
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “fileupload” / “nonfileasset” / “remotefileupload”
+   },
+   “success”: true/false,
+   “errorCode”: “”,
+   “errorMessage”: “”,
+   “mediaAsset”: MediaAssetDTO,
+   “uploadUrl”: “”,
+   “uploadContentType”: “”,
+   “remoteUrl”: “”,
+   “remoteSyncRequestId”: 0,
+   “meta_data”: [
+     “key”: “”,
+     “value”: “”
+   ]
+}
+{% endhighlight %}
+
+
+### File Uploads
+If performing direct file uploads, then this is a 2 step process. The request is sent to the Network API, which will return a pre-signed URL for the file to be uploaded to. An example of the request DTO in this scenario is:
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “fileupload”
+   },
+   “mediaAsset”: {
+     “name”: “filename and extension”
+   }
+}
+{% endhighlight %}
+
+Sending this request will return a NewMediaAssetResponse DTO, and this will include an upload URL, if the success field is set to true.
+
+The file should then be attached to the body of a PUT request, which is sent to the upload URL, and the content/type of the PUT request must be set as the same as the “uploadContentType” returned in the NewMediaAssetResponse DTO.
+
+Once the file is uploaded, it will be processed in the background, a thumbnail created and this will then be marked as supported in Signagelive and will be usable.
+
+The NewMediaAssetResponseDTO will include the MediaAssetDTO of the created Media Asset.
+
+{% highlight javascript %}
+[
+   {
+      “type”: {
+        “type”: “fileupload”
+      },
+      “success”: true/false,
+      “errorCode”: “”,
+      “errorMessage”: “”,
+      “uploadUrl”: “”,
+      “uploadContentType”: “”,
+      “mediaAsset”: MediaAssetDTO of the created asset
+   }
+]
+{% endhighlight %}
+
+
+### Non File Uploads
+When adding assets which are of the following types, a media asset DTO needs to be created in exactly the same way as you would have with the previous API method, but this needs to be sent as the media asset property of a NewMediaAssetRequestDTO.
+
+Affected types:
+Web Page
+RSS Feed
+MRSS Feed
+IPTV Stream
+
+Example request DTO:
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “nonfileasset”
+   },
+   “mediaAsset”: {
+     “name”: “”,
+     “url”: “”,
+     “type”: “rss” / “web” / “stream”
+   }
+}
+{% endhighlight %}
+
+This will return an array of NewMediaAssetResponse DTOs, if the asset creation was successful, then the success field of each object will be true. If it is false, then the reason will be set in the errorMessage field and the reason code will be in the errorCode field. The errorCode field matches HTTP response codes.
+
+The most likely error you will receive is 409 (Conflict) and this will be because there is already an asset with the same URL or name on the Network.
+
+{% highlight javascript %}
+[
+   {
+      “type”: {
+        “type”: “nonfileasset”
+      },
+      “success”: true/false,
+      “errorCode”: “”,
+      “errorMessage”: “”,
+      “mediaAsset”: MediaAssetDTO of the created asset
+   }
+]
+{% endhighlight %}
+
+
+### Remote File Uploads
+Remote File Uploads will continue to work as defined here. But using the new method, you must include the Remote Sync request DTO as a property of a NewMediaAssetRequest DTO object in the body of the request to the Add API method.
+
+{% highlight javascript %}
+{
+  “type”: {
+     “type”: “remotefileupload”
+   },
+   “remoteRequest”: RemoteSyncRequestDTO
+}
+{% endhighlight %}
+
+This will return an array of NewMediaAssetRespone DTOs which will contain the same data as the original RemoteSyncRequestResponseDTO with the fields mapping as follows.
+
+remoteSyncRequestId = remoteSyncRequestId
+url = remoteUrl
+meta_data = meta_data
+
+An example response DTO is: 
+
+{% highlight javascript %}
+[
+   {
+      “type”: {
+        “type”: “remotefileupload”
+      },
+      “success”: true/false,
+      “errorCode”: “”,
+      “errorMessage”: “”,
+      “remoteUrl”: “”,
+      “remoteSyncRequestId”: 0,
+      “meta_data”: [
+        “key”: “”,
+        “value”: “”
+      ]
+   }
+]
+{% endhighlight %}
+
 ## API URL
 
 We will provide the API url once you have signed up.
@@ -2269,6 +2462,103 @@ An object containing the URL to a player screenshot and details about the screen
 ]
 {% endhighlight %}
 
+## New Media Asset Request
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| type                   | The type of new media asset request (fileupload, nonfileasset, remotefileupload)|
+| mediaAsset             | A Media Asset DTO, for file uploads the name of the file is the only required field, for non file assets, the whole DTO should be complete |
+| remoteRequest          | A Remote Sync Media Asset Request |
+
+### Example
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”
+   },
+   “mediaAsset”: {
+     Media Asset DTO as defined here
+   },
+   remoteRequest: {
+     Remote Sync Request DTO as defined here
+   }
+}
+{% endhighlight %}
+
+#### File Upload
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “fileupload”
+   },
+   “mediaAsset”: {
+     “name”: “filename and extension”
+   }
+}
+{% endhighlight %}
+
+#### Non File Upload
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “nonfileasset”
+   },
+   “mediaAsset”: {
+     “name”: “”,
+     “url”: “”,
+     “type”: “rss” / “web” / “stream”
+   }
+}
+{% endhighlight %}
+
+#### Remote File Upload
+
+{% highlight javascript %}
+{
+   “type”: {
+     “type”: “remotefileupload”
+   },
+   “remoteRequest”: RemoteSyncRequestDTO
+}
+{% endhighlight %}
+
+## New Media Asset Upload Response
+
+### Field Definitions
+
+| NAME                   | DESCRIPTION                                     |
+|------------------------|-------------------------------------------------|
+| type                   | The type of new media asset request (fileupload, nonfileasset, remotefileupload)|
+| success                | True/False     |
+| errorCode              | Any error codes which are resulting from the request |
+| errorMessage           | If any errors occurred, a message detailing them |
+| uploadUrl              | For file uploads, this is the URL to send the actual file to |
+| uploadContentType      | The content type which should be set on the upload request |
+| mediaAsset             | The created media asset DTO  |
+
+### Example
+
+{% highlight javascript %}
+[
+   {
+      “type”: {
+        “type”: “fileupload”
+      },
+      “success”: true/false,
+      “errorCode”: “”,
+      “errorMessage”: “”,
+      “uploadUrl”: “”,
+      “uploadContentType”: “”,
+      “mediaAsset”: MediaAssetDTO of the created asset
+   }
+]
+{% endhighlight %}
+
 ## Remote Sync Media Asset Request
 
 ### Field Definitions
@@ -3319,34 +3609,14 @@ Note that calls to Proof of Play will return ‘Unauthorized’ if Proof of Play
 
 ### Create
 
-<div class="table-wrapper" markdown="block">
-
-| DESCRIPTION          | Creates a new media asset where a file upload is not required i.e. adds a web page, IPTV Stream or RSS/MRSS Feed |
+| DESCRIPTION          | Creates a new media asset the same request is used for file uploads, non files (i.e. adds a web page, IPTV Stream or RSS/MRSS Feed) and adding a media asset from a Digital Asset Management Tool |
 |----------------------|------------------------------------------------------------------------------------------------------------------|
 | HTTP METHOD          | POST                                                                                                             |
-| URL                  | /mediaassets                                                                                                     |
-| REQUEST BODY         |
-{% highlight javascript %}
-{
-   "name":"Web Page",
-   "type":"web",
-   "url":"http://www.signagelive.com"
-}
-{% endhighlight %}
+| URL                  | /mediaassets/add                                                                                                 |
+| REQUEST BODY         | New Media Asset Request Object                                                                                   |
 | NORMAL RESPONSE CODE | 201                                                                                                              |
-| RESPONSE BODY        | Media Asset object                                                                                               |
+| RESPONSE BODY        | New Media Asset Response                                                                                         |
 
-</div>
-
-### Upload
-
-| DESCRIPTION          | Creates a new media asset where a file upload is required          |
-|----------------------|--------------------------------------------------------------------|
-| HTTP METHOD          | POST                                                               |
-| URL                  | /mediaassets/upload                                                |
-| REQUEST BODY         | The file should be included in the request as Multi Part Form Data |
-| NORMAL RESPONSE CODE | 201                                                                |
-| RESPONSE BODY        | Media Asset object                                                 |
 
 ### Add Media Asset from a Digital Asset Management Tool
 
@@ -3355,10 +3625,10 @@ Signagelive have added a mechanism to be able to add content using a URL pointin
 | DESCRIPTION          | Add Media Asset from a Digital Asset Management Tool               |
 |----------------------|--------------------------------------------------------------------|
 | HTTP METHOD          | POST                                                               |
-| URL                  | /mediaassets/remoteupload                                                |
-| REQUEST BODY         | Remote Sync Media Asset Upload Object |
+| URL                  | /mediaassets/add                                                |
+| REQUEST BODY         | New Media Asset Request Object |
 | NORMAL RESPONSE CODE | 201                                                                |
-| RESPONSE BODY        | Remote Sync Media Asset Response                                                 |
+| RESPONSE BODY        | New Media Asset Response                                                 |
 
 Once Signagelive has processed the request, we will send the outcome to the configured webHook. The body included will be a Remote Sync Media Asset Status object. If success is true, the asset is ready to be used and the ID is included.
 
