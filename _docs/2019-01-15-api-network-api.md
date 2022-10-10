@@ -68,17 +68,19 @@ The new endpoint is as follows:
 This takes an array of NewMediaAssetRequest DTOs in the body of the request, this is defined as follows:
 
 {% highlight javascript %}
-{
-   “type”: {
-     “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”
-   },
-   “mediaAsset”: {
-     Media Asset DTO as defined here
-   },
-   remoteRequest: {
-     Remote Sync Request DTO as defined here
+[
+   {
+     “type”: {
+       “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”
+     },
+     “mediaAsset”: {
+       Media Asset DTO as defined here
+     },
+     remoteRequest: {
+       Remote Sync Request DTO as defined here
+     }
    }
-}
+]
 {% endhighlight %}
 
 The way in which this is created and used, depends on the type of request.
@@ -86,23 +88,25 @@ The way in which this is created and used, depends on the type of request.
 Sending a request to this endpoint, will return an array of NewMediaAssetResponse DTOs, which are defined as follows:
 
 {% highlight javascript %}
-{
-   “type”: {
-     “type”: “fileupload” / “nonfileasset” / “remotefileupload”
-   },
-   “success”: true/false,
-   “errorCode”: “”,
-   “errorMessage”: “”,
-   “mediaAsset”: MediaAssetDTO,
-   “uploadUrl”: “”,
-   “uploadContentType”: “”,
-   “remoteUrl”: “”,
-   “remoteSyncRequestId”: 0,
-   “meta_data”: [
-     “key”: “”,
-     “value”: “”
-   ]
-}
+[
+   {
+     “type”: {
+       “type”: “fileupload” / “nonfileasset” / “remotefileupload”
+     },
+     “success”: true/false,
+     “errorCode”: “”,
+     “errorMessage”: “”,
+     “mediaAsset”: MediaAssetDTO,
+     “uploadUrl”: “”,
+     “uploadContentType”: “”,
+     “remoteUrl”: “”,
+     “remoteSyncRequestId”: 0,
+     “meta_data”: [
+       “key”: “”,
+       “value”: “”
+     ]
+   }
+]
 {% endhighlight %}
 
 
@@ -110,14 +114,16 @@ Sending a request to this endpoint, will return an array of NewMediaAssetRespons
 If performing direct file uploads, then this is a 2 step process. The request is sent to the Network API, which will return a pre-signed URL for the file to be uploaded to. An example of the request DTO in this scenario is:
 
 {% highlight javascript %}
-{
-   “type”: {
-     “type”: “fileupload”
-   },
-   “mediaAsset”: {
-     “name”: “filename and extension”
-   }
-}
+[
+  {
+     “type”: {
+       “type”: “fileupload”
+     },
+     “mediaAsset”: {
+       “name”: “filename and extension”
+     }
+  }
+]
 {% endhighlight %}
 
 Sending this request will return a NewMediaAssetResponse DTO, and this will include an upload URL, if the success field is set to true.
@@ -157,16 +163,18 @@ IPTV Stream
 Example request DTO:
 
 {% highlight javascript %}
-{
-   “type”: {
-     “type”: “nonfileasset”
-   },
-   “mediaAsset”: {
-     “name”: “”,
-     “url”: “”,
-     “type”: “rss” / “web” / “stream”
-   }
-}
+[
+  {
+     “type”: {
+       “type”: “nonfileasset”
+     },
+     “mediaAsset”: {
+       “name”: “”,
+       “url”: “”,
+       “type”: “rss” / “web” / “stream”
+     }
+  }
+]
 {% endhighlight %}
 
 This will return an array of NewMediaAssetResponse DTOs, if the asset creation was successful, then the success field of each object will be true. If it is false, then the reason will be set in the errorMessage field and the reason code will be in the errorCode field. The errorCode field matches HTTP response codes.
@@ -192,12 +200,14 @@ The most likely error you will receive is 409 (Conflict) and this will be becaus
 Remote File Uploads will continue to work as defined here. But using the new method, you must include the Remote Sync request DTO as a property of a NewMediaAssetRequest DTO object in the body of the request to the Add API method.
 
 {% highlight javascript %}
-{
-  “type”: {
-     “type”: “remotefileupload”
-   },
-   “remoteRequest”: RemoteSyncRequestDTO
-}
+[
+  {
+    “type”: {
+       “type”: “remotefileupload”
+     },
+     “remoteRequest”: RemoteSyncRequestDTO
+  }
+]
 {% endhighlight %}
 
 This will return an array of NewMediaAssetRespone DTOs which will contain the same data as the original RemoteSyncRequestResponseDTO with the fields mapping as follows.
@@ -3613,9 +3623,9 @@ Note that calls to Proof of Play will return ‘Unauthorized’ if Proof of Play
 |----------------------|------------------------------------------------------------------------------------------------------------------|
 | HTTP METHOD          | POST                                                                                                             |
 | URL                  | /mediaassets/add                                                                                                 |
-| REQUEST BODY         | New Media Asset Request Object                                                                                   |
+| REQUEST BODY         | An array of New Media Asset Request Objects                                                                      |
 | NORMAL RESPONSE CODE | 201                                                                                                              |
-| RESPONSE BODY        | New Media Asset Response                                                                                         |
+| RESPONSE BODY        | An array of New Media Asset Response Objects                                                                     |
 
 
 ### Add Media Asset from a Digital Asset Management Tool
@@ -3626,9 +3636,9 @@ Signagelive have added a mechanism to be able to add content using a URL pointin
 |----------------------|--------------------------------------------------------------------|
 | HTTP METHOD          | POST                                                               |
 | URL                  | /mediaassets/add                                                |
-| REQUEST BODY         | New Media Asset Request Object |
+| REQUEST BODY         | An array of New Media Asset Request Objects |
 | NORMAL RESPONSE CODE | 201                                                                |
-| RESPONSE BODY        | New Media Asset Response                                                 |
+| RESPONSE BODY        | An array of New Media Asset Response Objects                       |
 
 Once Signagelive has processed the request, we will send the outcome to the configured webHook. The body included will be a Remote Sync Media Asset Status object. If success is true, the asset is ready to be used and the ID is included.
 
