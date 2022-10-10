@@ -70,9 +70,7 @@ This takes an array of NewMediaAssetRequest DTOs in the body of the request, thi
 {% highlight javascript %}
 [
    {
-     “type”: {
-       “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”
-     },
+     “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”,
      “mediaAsset”: {
        Media Asset DTO as defined here
      },
@@ -90,9 +88,7 @@ Sending a request to this endpoint, will return an array of NewMediaAssetRespons
 {% highlight javascript %}
 [
    {
-     “type”: {
-       “type”: “fileupload” / “nonfileasset” / “remotefileupload”
-     },
+     “type”: “fileupload” / “nonfileasset” / “remotefileupload”,
      “success”: true/false,
      “errorCode”: “”,
      “errorMessage”: “”,
@@ -116,9 +112,7 @@ If performing direct file uploads, then this is a 2 step process. The request is
 {% highlight javascript %}
 [
   {
-     “type”: {
-       “type”: “fileupload”
-     },
+     “type”: “fileupload”,
      “mediaAsset”: {
        “name”: “filename and extension”
      }
@@ -137,9 +131,7 @@ The NewMediaAssetResponseDTO will include the MediaAssetDTO of the created Media
 {% highlight javascript %}
 [
    {
-      “type”: {
-        “type”: “fileupload”
-      },
+      “type”: “fileupload”,
       “success”: true/false,
       “errorCode”: “”,
       “errorMessage”: “”,
@@ -165,9 +157,7 @@ Example request DTO:
 {% highlight javascript %}
 [
   {
-     “type”: {
-       “type”: “nonfileasset”
-     },
+     “type”: “nonfileasset”,
      “mediaAsset”: {
        “name”: “”,
        “url”: “”,
@@ -184,9 +174,7 @@ The most likely error you will receive is 409 (Conflict) and this will be becaus
 {% highlight javascript %}
 [
    {
-      “type”: {
-        “type”: “nonfileasset”
-      },
+      “type”: “nonfileasset”,
       “success”: true/false,
       “errorCode”: “”,
       “errorMessage”: “”,
@@ -202,9 +190,7 @@ Remote File Uploads will continue to work as defined here. But using the new met
 {% highlight javascript %}
 [
   {
-    “type”: {
-       “type”: “remotefileupload”
-     },
+     “type”: “remotefileupload”,
      “remoteRequest”: RemoteSyncRequestDTO
   }
 ]
@@ -221,9 +207,7 @@ An example response DTO is:
 {% highlight javascript %}
 [
    {
-      “type”: {
-        “type”: “remotefileupload”
-      },
+      “type”: “remotefileupload”,
       “success”: true/false,
       “errorCode”: “”,
       “errorMessage”: “”,
@@ -2486,9 +2470,7 @@ An object containing the URL to a player screenshot and details about the screen
 
 {% highlight javascript %}
 {
-   “type”: {
-     “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”
-   },
+   “type”: “fileupload”, “nonfileasset” (web site, RSS, MRSS, IPTV), “remotefileupload”,
    “mediaAsset”: {
      Media Asset DTO as defined here
    },
@@ -2502,9 +2484,7 @@ An object containing the URL to a player screenshot and details about the screen
 
 {% highlight javascript %}
 {
-   “type”: {
-     “type”: “fileupload”
-   },
+   “type”: “fileupload”,
    “mediaAsset”: {
      “name”: “filename and extension”
    }
@@ -2515,9 +2495,7 @@ An object containing the URL to a player screenshot and details about the screen
 
 {% highlight javascript %}
 {
-   “type”: {
-     “type”: “nonfileasset”
-   },
+   “type”: “nonfileasset”,
    “mediaAsset”: {
      “name”: “”,
      “url”: “”,
@@ -2530,9 +2508,7 @@ An object containing the URL to a player screenshot and details about the screen
 
 {% highlight javascript %}
 {
-   “type”: {
-     “type”: “remotefileupload”
-   },
+   “type”: “remotefileupload”,
    “remoteRequest”: RemoteSyncRequestDTO
 }
 {% endhighlight %}
@@ -2556,9 +2532,7 @@ An object containing the URL to a player screenshot and details about the screen
 {% highlight javascript %}
 [
    {
-      “type”: {
-        “type”: “fileupload”
-      },
+      “type”: “fileupload”,
       “success”: true/false,
       “errorCode”: “”,
       “errorMessage”: “”,
