@@ -322,6 +322,8 @@ $("#generate").click(function () {
 
     if($('#multipleOutputDevice').val() == "XC4055") {
       self.screens = ["HDMI-1", "HDMI-2", "HDMI-3", "HDMI-4", "TypeC-1"];
+    } else {
+      self.screens = ["HDMI-1", "HDMI-2"];
     }
 
     self.screens.forEach(function (screen, ind) {
