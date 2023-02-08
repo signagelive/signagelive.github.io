@@ -1,3 +1,25 @@
 * {
    font-family: 'Arimo', sans-serif;
 }
+
+.flex {
+   display: flex;
+   display: -webkit-flex;
+   width: 100%;
+}
+
+.col {
+   flex-direction: column;
+   -webkit-flex-direction: column;
+   flex-basis: 20%;
+   -webkit-flex-basis: 20%;
+}
+
+.row {
+   flex-direction: row;
+   -webkit-flex-direction: row;
+}
+
+.bold {
+   font-weight: bold;
+}
