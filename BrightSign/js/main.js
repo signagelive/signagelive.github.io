@@ -316,7 +316,7 @@ $("#generate").click(function () {
   } else {
     settings.rotation = new Object();
     settings.rotation.displayName = "Custom rotation";
-    settings.rotation.angle = [];
+    settings.rotation.angle = 0;
 
     settings.screenConfig = new Array();
 
@@ -338,7 +338,7 @@ $("#generate").click(function () {
           transform: $('#rotationScreen' + (ind + 1)).val(),
           videoMode: $('#videomodeScreen' + (ind + 1)).val(),
         };
-        settings.rotation.angle.push(Number(settings.screenConfig[ind].transform));
+        
         if(settings.screenConfig[ind].transform == 0) { settings.screenConfig[ind].transform = "normal"; };
       } else {
         settings.screenConfig[ind] = {
