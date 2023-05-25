@@ -118,128 +118,144 @@ $("#videomodeScreen4").change(function () {
 });
 
 $("#enabledScreen1").change(function () {
-  var selectedItem = $("#enabledScreen1").is(":checked");
-  var videoModeselectedItem = $("#videomodeScreen1")[0].selectedIndex;
-
-  if (!selectedItem) {
-    $("#rotationScreen1").prop("disabled", true);
-    $("#colorspaceScreen1").prop("disabled", true);
-    $("#bitdepthScreen1").prop("disabled", true);
-    $("#videomodeScreen1").prop("disabled", true);
-    $("#screenXScreen1").prop("disabled", true);
-    $("#screenYScreen1").prop("disabled", true);
-    $("#audioScreen1").prop("disabled", true);
-    $("#audioScreen1").prop("checked", false);
-  } else {
-    $("#rotationScreen1").prop("disabled", false);
-    $("#videomodeScreen1").prop("disabled", false);
-    $("#screenXScreen1").prop("disabled", false);
-    $("#screenYScreen1").prop("disabled", false);
-    $("#audioScreen1").prop("disabled", false);
-    $("#audioScreen1").prop("checked", true);
-
-    if (videoModeselectedItem == 0) {
+    var checked = $("#enabledScreen1").is(":checked");
+    var videoModeselectedItem = $("#videomodeScreen1")[0].selectedIndex;
+    var selectedItem = $("#audioChannel").val();
+    
+    if (!checked) {
+      $("#rotationScreen1").prop("disabled", true);
       $("#colorspaceScreen1").prop("disabled", true);
       $("#bitdepthScreen1").prop("disabled", true);
-    } else {
-      $("#colorspaceScreen1").prop("disabled", false);
-      $("#bitdepthScreen1").prop("disabled", false);
-    }
+      $("#videomodeScreen1").prop("disabled", true);
+      $("#screenXScreen1").prop("disabled", true);
+      $("#screenYScreen1").prop("disabled", true);
+      $("#audioScreen1").prop("disabled", true);
+      $("#audioScreen1").prop("checked", false);
+  } else {
+      $("#rotationScreen1").prop("disabled", false);
+      $("#videomodeScreen1").prop("disabled", false);
+      $("#screenXScreen1").prop("disabled", false);
+      $("#screenYScreen1").prop("disabled", false);
+      
+      if (selectedItem === "hdmi") {
+      $("#audioScreen1").prop("disabled", false);
+      $("#audioScreen1").prop("checked", true);
   }
-});
+  
+      if (videoModeselectedItem == 0) {
+        $("#colorspaceScreen1").prop("disabled", true);
+        $("#bitdepthScreen1").prop("disabled", true);
+      } else {
+        $("#colorspaceScreen1").prop("disabled", false);
+        $("#bitdepthScreen1").prop("disabled", false);
+      }
+    }
+  });
 
 $("#enabledScreen2").change(function () {
-  var selectedItem = $("#enabledScreen2").is(":checked");
-  var videoModeselectedItem = $("#videomodeScreen2")[0].selectedIndex;
-
-  if (!selectedItem) {
-    $("#rotationScreen2").prop("disabled", true);
-    $("#colorspaceScreen2").prop("disabled", true);
-    $("#bitdepthScreen2").prop("disabled", true);
-    $("#videomodeScreen2").prop("disabled", true);
-    $("#screenXScreen2").prop("disabled", true);
-    $("#screenYScreen2").prop("disabled", true);
-    $("#audioScreen2").prop("disabled", true);
-    $("#audioScreen2").prop("checked", false);
-  } else {
-    $("#rotationScreen2").prop("disabled", false);
-    $("#videomodeScreen2").prop("disabled", false);
-    $("#screenXScreen2").prop("disabled", false);
-    $("#screenYScreen2").prop("disabled", false);
-    $("#audioScreen2").prop("disabled", false);
-    $("#audioScreen2").prop("checked", true);
-
-    if (videoModeselectedItem == 0) {
+    var checked = $("#enabledScreen2").is(":checked");
+    var videoModeselectedItem = $("#videomodeScreen2")[0].selectedIndex;
+    var selectedItem = $("#audioChannel").val();
+    
+    if (!checked) {
+      $("#rotationScreen2").prop("disabled", true);
       $("#colorspaceScreen2").prop("disabled", true);
       $("#bitdepthScreen2").prop("disabled", true);
-    } else {
-      $("#colorspaceScreen2").prop("disabled", false);
-      $("#bitdepthScreen2").prop("disabled", false);
-    }
+      $("#videomodeScreen2").prop("disabled", true);
+      $("#screenXScreen2").prop("disabled", true);
+      $("#screenYScreen2").prop("disabled", true);
+      $("#audioScreen2").prop("disabled", true);
+      $("#audioScreen2").prop("checked", false);
+  } else {
+      $("#rotationScreen2").prop("disabled", false);
+      $("#videomodeScreen2").prop("disabled", false);
+      $("#screenXScreen2").prop("disabled", false);
+      $("#screenYScreen2").prop("disabled", false);
+      
+      if (selectedItem === "hdmi") {
+      $("#audioScreen2").prop("disabled", false);
+      $("#audioScreen2").prop("checked", true);
   }
-});
+  
+      if (videoModeselectedItem == 0) {
+        $("#colorspaceScreen2").prop("disabled", true);
+        $("#bitdepthScreen2").prop("disabled", true);
+      } else {
+        $("#colorspaceScreen2").prop("disabled", false);
+        $("#bitdepthScreen2").prop("disabled", false);
+      }
+    }
+  });
 
 $("#enabledScreen3").change(function () {
-  var selectedItem = $("#enabledScreen3").is(":checked");
-  var videoModeselectedItem = $("#videomodeScreen3")[0].selectedIndex;
-
-  if (!selectedItem) {
-    $("#rotationScreen3").prop("disabled", true);
-    $("#colorspaceScreen3").prop("disabled", true);
-    $("#bitdepthScreen3").prop("disabled", true);
-    $("#videomodeScreen3").prop("disabled", true);
-    $("#screenXScreen3").prop("disabled", true);
-    $("#screenYScreen3").prop("disabled", true);
-    $("#audioScreen3").prop("disabled", true);
-    $("#audioScreen3").prop("checked", false);
-  } else {
-    $("#rotationScreen3").prop("disabled", false);
-    $("#videomodeScreen3").prop("disabled", false);
-    $("#screenXScreen3").prop("disabled", false);
-    $("#screenYScreen3").prop("disabled", false);
-    $("#audioScreen3").prop("disabled", false);
-    $("#audioScreen3").prop("checked", true);
-
-    if (videoModeselectedItem == 0) {
+    var checked = $("#enabledScreen3").is(":checked");
+    var videoModeselectedItem = $("#videomodeScreen3")[0].selectedIndex;
+    var selectedItem = $("#audioChannel").val();
+    
+    if (!checked) {
+      $("#rotationScreen3").prop("disabled", true);
       $("#colorspaceScreen3").prop("disabled", true);
       $("#bitdepthScreen3").prop("disabled", true);
-    } else {
-      $("#colorspaceScreen3").prop("disabled", false);
-      $("#bitdepthScreen3").prop("disabled", false);
-    }
+      $("#videomodeScreen3").prop("disabled", true);
+      $("#screenXScreen3").prop("disabled", true);
+      $("#screenYScreen3").prop("disabled", true);
+      $("#audioScreen3").prop("disabled", true);
+      $("#audioScreen3").prop("checked", false);
+  } else {
+      $("#rotationScreen3").prop("disabled", false);
+      $("#videomodeScreen3").prop("disabled", false);
+      $("#screenXScreen3").prop("disabled", false);
+      $("#screenYScreen3").prop("disabled", false);
+      
+      if (selectedItem === "hdmi") {
+      $("#audioScreen3").prop("disabled", false);
+      $("#audioScreen3").prop("checked", true);
   }
-});
+  
+      if (videoModeselectedItem == 0) {
+        $("#colorspaceScreen3").prop("disabled", true);
+        $("#bitdepthScreen3").prop("disabled", true);
+      } else {
+        $("#colorspaceScreen3").prop("disabled", false);
+        $("#bitdepthScreen3").prop("disabled", false);
+      }
+    }
+  });
 
 $("#enabledScreen4").change(function () {
-  var selectedItem = $("#enabledScreen4").is(":checked");
-  var videoModeselectedItem = $("#videomodeScreen4")[0].selectedIndex;
-
-  if (!selectedItem) {
-    $("#rotationScreen4").prop("disabled", true);
-    $("#colorspaceScreen4").prop("disabled", true);
-    $("#bitdepthScreen4").prop("disabled", true);
-    $("#videomodeScreen4").prop("disabled", true);
-    $("#screenXScreen4").prop("disabled", true);
-    $("#screenYScreen4").prop("disabled", true);
-    $("#audioScreen4").prop("disabled", true);
-    $("#audioScreen4").prop("checked", false);
-  } else {
-    $("#rotationScreen4").prop("disabled", false);
-    $("#videomodeScreen4").prop("disabled", false);
-    $("#screenXScreen4").prop("disabled", false);
-    $("#screenYScreen4").prop("disabled", false);
-    $("#audioScreen4").prop("disabled", false);
-    $("#audioScreen4").prop("checked", true);
-
-    if (videoModeselectedItem == 0) {
+    var checked = $("#enabledScreen4").is(":checked");
+    var videoModeselectedItem = $("#videomodeScreen4")[0].selectedIndex;
+    var selectedItem = $("#audioChannel").val();
+    
+    if (!checked) {
+      $("#rotationScreen4").prop("disabled", true);
       $("#colorspaceScreen4").prop("disabled", true);
       $("#bitdepthScreen4").prop("disabled", true);
-    } else {
-      $("#colorspaceScreen4").prop("disabled", false);
-      $("#bitdepthScreen4").prop("disabled", false);
-    }
+      $("#videomodeScreen4").prop("disabled", true);
+      $("#screenXScreen4").prop("disabled", true);
+      $("#screenYScreen4").prop("disabled", true);
+      $("#audioScreen4").prop("disabled", true);
+      $("#audioScreen4").prop("checked", false);
+  } else {
+      $("#rotationScreen4").prop("disabled", false);
+      $("#videomodeScreen4").prop("disabled", false);
+      $("#screenXScreen4").prop("disabled", false);
+      $("#screenYScreen4").prop("disabled", false);
+      
+      if (selectedItem === "hdmi") {
+      $("#audioScreen4").prop("disabled", false);
+      $("#audioScreen4").prop("checked", true);
   }
-});
+  
+      if (videoModeselectedItem == 0) {
+        $("#colorspaceScreen4").prop("disabled", true);
+        $("#bitdepthScreen4").prop("disabled", true);
+      } else {
+        $("#colorspaceScreen4").prop("disabled", false);
+        $("#bitdepthScreen4").prop("disabled", false);
+      }
+    }
+  });
 
 $("#audioChannel").change(function () {
   var selectedItem = $("#audioChannel").val();
