@@ -375,7 +375,7 @@ $("#generate").click(function () {
     settings.screenConfig = new Array();
 
     if ($("#multipleOutputDevice").val() == "XC4055") {
-      self.screens = ["HDMI-1", "HDMI-2", "HDMI-3", "HDMI-4", "TypeC-1"];
+      self.screens = ["HDMI-1", "HDMI-2", "HDMI-3", "HDMI-4"];
     } else if ($("#multipleOutputDevice").val() == "XC2055") {
       self.screens = ["HDMI-1", "HDMI-2"];
     } else {
@@ -479,7 +479,6 @@ function loadDefaultConfigurationOptions() {
   $("#screen2").hide();
   $("#screen3").hide();
   $("#screen4").hide();
-  $("#screen5").hide();
 }
 
 function loadMultiScreenConfigurationOptions() {
@@ -490,15 +489,12 @@ function loadMultiScreenConfigurationOptions() {
   if ($("#multipleOutputDevice").val() == "XC4055") {
     $("#screen3").show();
     $("#screen4").show();
-    $("#screen5").show();
   } else if ($("#multipleOutputDevice").val() == "XC2055") {
     $("#screen3").hide();
     $("#screen4").hide();
-    $("#screen5").hide();
   } else {
     $("#screen2").hide();
     $("#screen3").hide();
     $("#screen4").hide();
-    $("#screen5").hide();
   }
 }
