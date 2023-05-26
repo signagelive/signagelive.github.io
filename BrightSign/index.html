@@ -1,778 +1,922 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BrightSign Config Generator</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/timezones.js"></script>
+    <style></style>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>BrightSign Config Generator</title>
-  <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="js/timezones.js"></script>
-  <style>
-  </style>
-</head>
+  <body>
+    <h1>BrightSign Config Generator</h1>
+    <form>
+      <fieldset>
+        <legend>Configuration</legend>
+        <p>
+          <label>Timezone:</label>
+          <select id="timezoneList"></select>
+        </p>
+        <p id="globalAudioEnabledControl">
+          <label>Audio Enabled:</label>
+          <input type="checkbox" id="audioEnabled" checked /><br />
+        </p>
+        <p id="audioChannelControl" hidden="true">
+          <label>Audio Channel:</label>
+          <select id="audioChannel">
+            <option value="hdmi">HDMI</option>
+            <option value="spdif">s/pdif</option>
+            <option value="analog">analog</option>
+            <option value="usb">USB</option>
+            <option value="none">none</option>
+          </select>
+        </p>
+        <p>
+          <label>Video Transparency (XT3/XT4 Series only):</label>
+          <input type="checkbox" id="transparencyEnabled" /><br />
+        </p>
+        <p>
+          <label>Kiosk Mode:</label>
+          <input type="checkbox" id="kioskModeEnabled" /><br />
+        </p>
+        <p>
+          <label>Kiosk Inactivity Timeout (seconds):</label>
+          <input
+            type="number"
+            id="inactivityTimeout"
+            value="15"
+            disabled
+          /><br />
+        </p>
+        <hr
+          style="
+            height: 1px;
+            border-width: 0;
+            color: threedface;
+            background-color: threedface;
+          "
+        />
+        <p>
+          <label>Is Series 5 Device (XC5, XT5, XD5, HD5, LS5)?</label>
+          <select id="multipleOutputEnabled">
+            <option value="No" selected>No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </p>
+        <p id="outputDevice" hidden>
+          <label>Select Device:</label>
+          <select id="multipleOutputDevice">
+            <option value="XC2055" selected>XC2055</option>
+            <option value="XC4055">XC4055</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+        <div class="flex row">
+          <div id="screen1" class="col">
+            <p>
+              <label class="title bold" hidden>HDMI-1</label>
+            </p>
+            <p>
+              <label>Enabled:</label>
+              <input type="checkbox" id="enabledScreen1" checked /><br />
+            </p>
+            <p id="screen1AudioEnabledControl" hidden>
+              <label>Audio:</label>
+              <input type="checkbox" id="audioScreen1" checked /><br />
+            </p>
+            <p>
+              <label>Screen Rotation:</label>
+              <select id="rotationScreen1">
+                <option value="0">Landscape</option>
+                <option value="90">Portrait</option>
+                <option value="270">Portrait (270)</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Resolution:</label>
+              <select id="videomodeScreen1">
+                <option value="auto">Automatic (screen will detect)</option>
+                <option value="640x480x60p">640x480x60p</option>
+                <option value="720x480x60i">720x480x60i</option>
+                <option value="720x576x50i">720x576x50i</option>
+                <option value="848x480x60p">848x480x60p</option>
+                <option value="800x600x60p">800x600x60p</option>
+                <option value="800x600x75p">800x600x75p</option>
+                <option value="960x960x60p">960x960x60p</option>
+                <option value="1024x768x60p">1024x768x60p</option>
+                <option value="1024x768x75p">1024x768x75p</option>
+                <option value="1280x768x60p">1280x768x60p</option>
+                <option value="1280x800x60p">1280x800x60p</option>
+                <option value="1280x800x75p">1280x800x75p</option>
+                <option value="1360x768x60p">1360x768x60p</option>
+                <option value="800x1280x60p">800x1280x60p</option>
+                <option value="1200x1920x60p">1200x1920x60p</option>
+                <option value="1366x768x60p">1366x768x60p</option>
+                <option value="1280x960x60p">1280x960x60p</option>
+                <option value="1280x1024x60p">1280x1024x60p</option>
+                <option value="1280x1024x75p">1280x1024x75p</option>
+                <option value="1440x900x60p">1440x900x60p</option>
+                <option value="1440x900x75p">1440x900x75p</option>
+                <option value="1400x1050x60p">1400x1050x60p</option>
+                <option value="1400x1050x75p">1400x1050x75p</option>
+                <option value="1600x900x60p">1600x900x60p</option>
+                <option value="1600x1200x60p">1600x1200x60p</option>
+                <option value="1680x1050x60p">1680x1050x60p</option>
+                <option value="1920x540x60p">1920x540x60p</option>
+                <option value="1920x1200x60p">1920x1200x60p</option>
+                <option value="2048x1152x60p">2048x1152x60p</option>
+                <option value="2560x1080x60p">2560x1080x60p</option>
+                <option value="2560x1440x30p">2560x1440x30p</option>
+                <option value="2560x1440x60p">2560x1440x60p</option>
+                <option value="2560x1600x60p">2560x1600x60p</option>
+                <option value="3440x1440x30p">3440x1440x30p</option>
+                <option value="3440x1440x50p">3440x1440x50p</option>
+                <option value="3440x1440x60p">3440x1440x60p</option>
+                <option value="720x576x50p">720x576x50p</option>
+                <option value="720x480x59.94p">720x480x59.94p</option>
+                <option value="720x480x60p">720x480x60p</option>
+                <option value="1280x720x24p">1280x720x24p</option>
+                <option value="1280x720x23.976p">1280x720x23.976p</option>
+                <option value="1280x720x25p">1280x720x25p</option>
+                <option value="1280x720x50p">1280x720x50p</option>
+                <option value="1280x720x59.94p">1280x720x59.94p</option>
+                <option value="1280x720x60p">1280x720x60p</option>
+                <option value="1920x1080x50i">1920x1080x50i</option>
+                <option value="1920x1080x59.94i">1920x1080x59.94i</option>
+                <option value="1920x1080x60i">1920x1080x60i</option>
+                <option value="1920x1080x24p">1920x1080x24p</option>
+                <option value="1920x1080x23.976p">1920x1080x23.976p</option>
+                <option value="1920x1080x25p">1920x1080x25p</option>
+                <option value="1920x1080x29.97p">1920x1080x29.97p</option>
+                <option value="1920x1080x30p">1920x1080x30p</option>
+                <option value="1920x1080x50p">1920x1080x50p</option>
+                <option value="1920x1080x59.94p">1920x1080x59.94p</option>
+                <option value="1920x1080x60p">1920x1080x60p</option>
+                <option value="1920x1920x60p">1920x1920x60p</option>
+                <option value="3840x600x60p">3840x600x60p</option>
+                <option value="3840x1080x25p">3840x1080x25p</option>
+                <option value="3840x1080x30p">3840x1080x30p</option>
+                <option value="3840x2160x23.976p">3840x2160x23.976p</option>
+                <option value="3840x2160x24p">3840x2160x24p</option>
+                <option value="3840x2160x25p">3840x2160x25p</option>
+                <option value="3840x2160x29.97p">3840x2160x29.97p</option>
+                <option value="3840x2160x30p">3840x2160x30p</option>
+                <option value="3840x1080x50p">3840x1080x50p</option>
+                <option value="3840x1080x60p">3840x1080x60p</option>
+                <option value="3840x2160x50p">3840x2160x50p</option>
+                <option value="3840x2160x59.94p">3840x2160x59.94p</option>
+                <option value="3840x2160x60p">3840x2160x60p</option>
+                <option value="4096x2160x23.976p">4096x2160x23.976p</option>
+                <option value="4096x2160x24p">4096x2160x24p</option>
+                <option value="4096x2160x25p">4096x2160x25p</option>
+                <option value="4096x2160x29.97p">4096x2160x29.97p</option>
+                <option value="4096x2160x30p">4096x2160x30p</option>
+                <option value="4096x2160x50p">4096x2160x50p</option>
+                <option value="4096x2160x59.94p">4096x2160x59.94p</option>
+                <option value="4096x2160x60p">4096x2160x60p</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Color Space:</label>
+              <select id="colorspaceScreen1" disabled>
+                <option value="rgb">RGB</option>
+                <option value="420">YUV 420</option>
+                <option value="422">YUV 422</option>
+              </select>
 
-<body>
-  <h1>BrightSign Config Generator</h1>
-  <form>
-    <fieldset>
-      <legend>Configuration</legend>
-      <p>
-        <label>Timezone:</label>
-        <select id="timezoneList">
-        </select>
-      </p>
-      <p>
-        <label>Audio Enabled:</label>
-        <input type="checkbox" id="audioEnabled" checked><br />
-      </p>
-      <p>
-        <label>Video Transparency (XT3/XT4 Series only):</label>
-        <input type="checkbox" id="transparencyEnabled"><br />
-      </p>
-      <p>
-        <label>Kiosk Mode:</label>
-        <input type="checkbox" id="kioskModeEnabled"><br />
-      </p>
-      <p>
-        <label>Kiosk Inactivity Timeout (seconds):</label>
-        <input type="number" id="inactivityTimeout" value="15" disabled><br />
-      </p>
-      <hr style="height:1px;border-width:0;color:threedface;background-color:threedface">
-      <p>
-        <label>Is Series 5 Device (XC5, XT5, XD5, HD5, LS5)?</label>
-        <select id="multipleOutputEnabled">
-          <option value="No" selected>No</option>
-          <option value="Yes">Yes</option>
-        </select>
-      </p>
-      <p id="outputDevice" hidden>
-        <label>Select Device:</label>
-        <select id="multipleOutputDevice">
-          <option value="XC2055" selected>XC2055</option>
-          <option value="XC4055">XC4055</option>
-          <option value="other">Other</option>
-        </select>
-      </p>
-      <div class="flex row">
-        <div id="screen1" class="col">
-          <p>
-            <label class="title bold" hidden>HDMI-1</label>
-          </p>
-          <p>
-            <label>Enabled:</label>
-            <input type="checkbox" id="enabledScreen1" checked><br />
-          </p>
-          <p>
-            <label>Screen Rotation:</label>
-            <select id="rotationScreen1">
-              <option value="0">Landscape</option>
-              <option value="90">Portrait</option>
-              <option value="270">Portrait (270)</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Resolution:</label>
-            <select id="videomodeScreen1">
-              <option value="auto">Automatic (screen will detect)</option>
-              <option value="640x480x60p">640x480x60p</option>
-              <option value="720x480x60i">720x480x60i</option>
-              <option value="720x576x50i">720x576x50i</option>
-              <option value="848x480x60p">848x480x60p</option>
-              <option value="800x600x60p">800x600x60p</option>
-              <option value="800x600x75p">800x600x75p</option>
-              <option value="960x960x60p">960x960x60p</option>
-              <option value="1024x768x60p">1024x768x60p</option>
-              <option value="1024x768x75p">1024x768x75p</option>
-              <option value="1280x768x60p">1280x768x60p</option>
-              <option value="1280x800x60p">1280x800x60p</option>
-              <option value="1280x800x75p">1280x800x75p</option>
-              <option value="1360x768x60p">1360x768x60p</option>
-              <option value="800x1280x60p">800x1280x60p</option>
-              <option value="1200x1920x60p">1200x1920x60p</option>
-              <option value="1366x768x60p">1366x768x60p</option>
-              <option value="1280x960x60p">1280x960x60p</option>
-              <option value="1280x1024x60p">1280x1024x60p</option>
-              <option value="1280x1024x75p">1280x1024x75p</option>
-              <option value="1440x900x60p">1440x900x60p</option>
-              <option value="1440x900x75p">1440x900x75p</option>
-              <option value="1400x1050x60p">1400x1050x60p</option>
-              <option value="1400x1050x75p">1400x1050x75p</option>
-              <option value="1600x900x60p">1600x900x60p</option>
-              <option value="1600x1200x60p">1600x1200x60p</option>
-              <option value="1680x1050x60p">1680x1050x60p</option>
-              <option value="1920x540x60p">1920x540x60p</option>
-              <option value="1920x1200x60p">1920x1200x60p</option>
-              <option value="2048x1152x60p">2048x1152x60p</option>
-              <option value="2560x1080x60p">2560x1080x60p</option>
-              <option value="2560x1440x30p">2560x1440x30p</option>
-              <option value="2560x1440x60p">2560x1440x60p</option>
-              <option value="2560x1600x60p">2560x1600x60p</option>
-              <option value="3440x1440x30p">3440x1440x30p</option>
-              <option value="3440x1440x50p">3440x1440x50p</option>
-              <option value="3440x1440x60p">3440x1440x60p</option>
-              <option value="720x576x50p">720x576x50p</option>
-              <option value="720x480x59.94p">720x480x59.94p</option>
-              <option value="720x480x60p">720x480x60p</option>
-              <option value="1280x720x24p">1280x720x24p</option>
-              <option value="1280x720x23.976p">1280x720x23.976p</option>
-              <option value="1280x720x25p">1280x720x25p</option>
-              <option value="1280x720x50p">1280x720x50p</option>
-              <option value="1280x720x59.94p">1280x720x59.94p</option>
-              <option value="1280x720x60p">1280x720x60p</option>
-              <option value="1920x1080x50i">1920x1080x50i</option>
-              <option value="1920x1080x59.94i">1920x1080x59.94i</option>
-              <option value="1920x1080x60i">1920x1080x60i</option>
-              <option value="1920x1080x24p">1920x1080x24p</option>
-              <option value="1920x1080x23.976p">1920x1080x23.976p</option>
-              <option value="1920x1080x25p">1920x1080x25p</option>
-              <option value="1920x1080x29.97p">1920x1080x29.97p</option>
-              <option value="1920x1080x30p">1920x1080x30p</option>
-              <option value="1920x1080x50p">1920x1080x50p</option>
-              <option value="1920x1080x59.94p">1920x1080x59.94p</option>
-              <option value="1920x1080x60p">1920x1080x60p</option>
-              <option value="1920x1920x60p">1920x1920x60p</option>
-              <option value="3840x600x60p">3840x600x60p</option>
-              <option value="3840x1080x25p">3840x1080x25p</option>
-              <option value="3840x1080x30p">3840x1080x30p</option>
-              <option value="3840x2160x23.976p">3840x2160x23.976p</option>
-              <option value="3840x2160x24p">3840x2160x24p</option>
-              <option value="3840x2160x25p">3840x2160x25p</option>
-              <option value="3840x2160x29.97p">3840x2160x29.97p</option>
-              <option value="3840x2160x30p">3840x2160x30p</option>
-              <option value="3840x1080x50p">3840x1080x50p</option>
-              <option value="3840x1080x60p">3840x1080x60p</option>
-              <option value="3840x2160x50p">3840x2160x50p</option>
-              <option value="3840x2160x59.94p">3840x2160x59.94p</option>
-              <option value="3840x2160x60p">3840x2160x60p</option>
-              <option value="4096x2160x23.976p">4096x2160x23.976p</option>
-              <option value="4096x2160x24p">4096x2160x24p</option>
-              <option value="4096x2160x25p">4096x2160x25p</option>
-              <option value="4096x2160x29.97p">4096x2160x29.97p</option>
-              <option value="4096x2160x30p">4096x2160x30p</option>
-              <option value="4096x2160x50p">4096x2160x50p</option>
-              <option value="4096x2160x59.94p">4096x2160x59.94p</option>
-              <option value="4096x2160x60p">4096x2160x60p</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Color Space:</label>
-            <select id="colorspaceScreen1" disabled>
-              <option value="rgb">RGB</option>
-              <option value="420">YUV 420</option>
-              <option value="422">YUV 422</option>
-            </select>
+              <br />
+            </p>
+            <p>
+              <label>Bit Depth:</label>
+              <select id="bitdepthScreen1" disabled>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+              </select>
+              <br />
+            </p>
+            <div class="Screen1Coords" hidden>
+              <p>
+                <label>Screen X Co-ordinate:</label>
+                <input
+                  type="number"
+                  id="screenXScreen1"
+                  min="0"
+                  max="99999"
+                  value="0"
+                  required
+                /><br />
+              </p>
+              <p>
+                <label>Screen Y Co-ordinate:</label>
+                <input
+                  type="number"
+                  id="screenYScreen1"
+                  min="0"
+                  max="99999"
+                  value="0"
+                  required
+                /><br />
+              </p>
+            </div>
+          </div>
+          <div id="screen2" class="col" hidden>
+            <p>
+              <label class="bold">HDMI-2</label>
+            </p>
+            <p>
+              <label>Enabled:</label>
+              <input type="checkbox" id="enabledScreen2" /><br />
+            </p>
+            <p id="screen2AudioEnabledControl">
+              <label>Audio:</label>
+              <input type="checkbox" id="audioScreen2" disabled /><br />
+            </p>
+            <p>
+              <label>Screen Rotation:</label>
+              <select id="rotationScreen2" disabled>
+                <option value="0">Landscape</option>
+                <option value="90">Portrait</option>
+                <option value="270">Portrait (270)</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Resolution:</label>
+              <select id="videomodeScreen2" disabled>
+                <option value="auto">Automatic (screen will detect)</option>
+                <option value="640x480x60p">640x480x60p</option>
+                <option value="720x480x60i">720x480x60i</option>
+                <option value="720x576x50i">720x576x50i</option>
+                <option value="848x480x60p">848x480x60p</option>
+                <option value="800x600x60p">800x600x60p</option>
+                <option value="800x600x75p">800x600x75p</option>
+                <option value="960x960x60p">960x960x60p</option>
+                <option value="1024x768x60p">1024x768x60p</option>
+                <option value="1024x768x75p">1024x768x75p</option>
+                <option value="1280x768x60p">1280x768x60p</option>
+                <option value="1280x800x60p">1280x800x60p</option>
+                <option value="1280x800x75p">1280x800x75p</option>
+                <option value="1360x768x60p">1360x768x60p</option>
+                <option value="800x1280x60p">800x1280x60p</option>
+                <option value="1200x1920x60p">1200x1920x60p</option>
+                <option value="1366x768x60p">1366x768x60p</option>
+                <option value="1280x960x60p">1280x960x60p</option>
+                <option value="1280x1024x60p">1280x1024x60p</option>
+                <option value="1280x1024x75p">1280x1024x75p</option>
+                <option value="1440x900x60p">1440x900x60p</option>
+                <option value="1440x900x75p">1440x900x75p</option>
+                <option value="1400x1050x60p">1400x1050x60p</option>
+                <option value="1400x1050x75p">1400x1050x75p</option>
+                <option value="1600x900x60p">1600x900x60p</option>
+                <option value="1600x1200x60p">1600x1200x60p</option>
+                <option value="1680x1050x60p">1680x1050x60p</option>
+                <option value="1920x540x60p">1920x540x60p</option>
+                <option value="1920x1200x60p">1920x1200x60p</option>
+                <option value="2048x1152x60p">2048x1152x60p</option>
+                <option value="2560x1080x60p">2560x1080x60p</option>
+                <option value="2560x1440x30p">2560x1440x30p</option>
+                <option value="2560x1440x60p">2560x1440x60p</option>
+                <option value="2560x1600x60p">2560x1600x60p</option>
+                <option value="3440x1440x30p">3440x1440x30p</option>
+                <option value="3440x1440x50p">3440x1440x50p</option>
+                <option value="3440x1440x60p">3440x1440x60p</option>
+                <option value="720x576x50p">720x576x50p</option>
+                <option value="720x480x59.94p">720x480x59.94p</option>
+                <option value="720x480x60p">720x480x60p</option>
+                <option value="1280x720x24p">1280x720x24p</option>
+                <option value="1280x720x23.976p">1280x720x23.976p</option>
+                <option value="1280x720x25p">1280x720x25p</option>
+                <option value="1280x720x50p">1280x720x50p</option>
+                <option value="1280x720x59.94p">1280x720x59.94p</option>
+                <option value="1280x720x60p">1280x720x60p</option>
+                <option value="1920x1080x50i">1920x1080x50i</option>
+                <option value="1920x1080x59.94i">1920x1080x59.94i</option>
+                <option value="1920x1080x60i">1920x1080x60i</option>
+                <option value="1920x1080x24p">1920x1080x24p</option>
+                <option value="1920x1080x23.976p">1920x1080x23.976p</option>
+                <option value="1920x1080x25p">1920x1080x25p</option>
+                <option value="1920x1080x29.97p">1920x1080x29.97p</option>
+                <option value="1920x1080x30p">1920x1080x30p</option>
+                <option value="1920x1080x50p">1920x1080x50p</option>
+                <option value="1920x1080x59.94p">1920x1080x59.94p</option>
+                <option value="1920x1080x60p">1920x1080x60p</option>
+                <option value="1920x1920x60p">1920x1920x60p</option>
+                <option value="3840x600x60p">3840x600x60p</option>
+                <option value="3840x1080x25p">3840x1080x25p</option>
+                <option value="3840x1080x30p">3840x1080x30p</option>
+                <option value="3840x2160x23.976p">3840x2160x23.976p</option>
+                <option value="3840x2160x24p">3840x2160x24p</option>
+                <option value="3840x2160x25p">3840x2160x25p</option>
+                <option value="3840x2160x29.97p">3840x2160x29.97p</option>
+                <option value="3840x2160x30p">3840x2160x30p</option>
+                <option value="3840x1080x50p">3840x1080x50p</option>
+                <option value="3840x1080x60p">3840x1080x60p</option>
+                <option value="3840x2160x50p">3840x2160x50p</option>
+                <option value="3840x2160x59.94p">3840x2160x59.94p</option>
+                <option value="3840x2160x60p">3840x2160x60p</option>
+                <option value="4096x2160x23.976p">4096x2160x23.976p</option>
+                <option value="4096x2160x24p">4096x2160x24p</option>
+                <option value="4096x2160x25p">4096x2160x25p</option>
+                <option value="4096x2160x29.97p">4096x2160x29.97p</option>
+                <option value="4096x2160x30p">4096x2160x30p</option>
+                <option value="4096x2160x50p">4096x2160x50p</option>
+                <option value="4096x2160x59.94p">4096x2160x59.94p</option>
+                <option value="4096x2160x60p">4096x2160x60p</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Color Space:</label>
+              <select id="colorspaceScreen2" disabled>
+                <option value="rgb">RGB</option>
+                <option value="420">YUV 420</option>
+                <option value="422">YUV 422</option>
+              </select>
 
-            <br />
-          </p>
-          <p>
-            <label>Bit Depth:</label>
-            <select id="bitdepthScreen1" disabled>
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12">12</option>
-            </select>
-            <br />
-          </p>
-          <div class="Screen1Coords" hidden>
+              <br />
+            </p>
+            <p>
+              <label>Bit Depth:</label>
+              <select id="bitdepthScreen2" disabled>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+              </select>
+              <br />
+            </p>
             <p>
               <label>Screen X Co-ordinate:</label>
-              <input type="number" id="screenXScreen1" min="0" max="99999" value="0" required><br />
+              <input
+                disabled
+                type="number"
+                id="screenXScreen2"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
             </p>
             <p>
               <label>Screen Y Co-ordinate:</label>
-              <input type="number" id="screenYScreen1" min="0" max="99999" value="0" required><br />
+              <input
+                disabled
+                type="number"
+                id="screenYScreen2"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
+            </p>
+          </div>
+          <div id="screen3" class="col" hidden>
+            <p>
+              <label class="bold">HDMI-3</label>
+            </p>
+            <p>
+              <label>Enabled:</label>
+              <input type="checkbox" id="enabledScreen3" /><br />
+            </p>
+            <p id="screen3AudioEnabledControl">
+              <label>Audio:</label>
+              <input type="checkbox" id="audioScreen3" disabled /><br />
+            </p>
+            <p>
+              <label>Screen Rotation:</label>
+              <select id="rotationScreen3" disabled>
+                <option value="0">Landscape</option>
+                <option value="90">Portrait</option>
+                <option value="270">Portrait (270)</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Resolution:</label>
+              <select id="videomodeScreen3" disabled>
+                <option value="auto">Automatic (screen will detect)</option>
+                <option value="640x480x60p">640x480x60p</option>
+                <option value="720x480x60i">720x480x60i</option>
+                <option value="720x576x50i">720x576x50i</option>
+                <option value="848x480x60p">848x480x60p</option>
+                <option value="800x600x60p">800x600x60p</option>
+                <option value="800x600x75p">800x600x75p</option>
+                <option value="960x960x60p">960x960x60p</option>
+                <option value="1024x768x60p">1024x768x60p</option>
+                <option value="1024x768x75p">1024x768x75p</option>
+                <option value="1280x768x60p">1280x768x60p</option>
+                <option value="1280x800x60p">1280x800x60p</option>
+                <option value="1280x800x75p">1280x800x75p</option>
+                <option value="1360x768x60p">1360x768x60p</option>
+                <option value="800x1280x60p">800x1280x60p</option>
+                <option value="1200x1920x60p">1200x1920x60p</option>
+                <option value="1366x768x60p">1366x768x60p</option>
+                <option value="1280x960x60p">1280x960x60p</option>
+                <option value="1280x1024x60p">1280x1024x60p</option>
+                <option value="1280x1024x75p">1280x1024x75p</option>
+                <option value="1440x900x60p">1440x900x60p</option>
+                <option value="1440x900x75p">1440x900x75p</option>
+                <option value="1400x1050x60p">1400x1050x60p</option>
+                <option value="1400x1050x75p">1400x1050x75p</option>
+                <option value="1600x900x60p">1600x900x60p</option>
+                <option value="1600x1200x60p">1600x1200x60p</option>
+                <option value="1680x1050x60p">1680x1050x60p</option>
+                <option value="1920x540x60p">1920x540x60p</option>
+                <option value="1920x1200x60p">1920x1200x60p</option>
+                <option value="2048x1152x60p">2048x1152x60p</option>
+                <option value="2560x1080x60p">2560x1080x60p</option>
+                <option value="2560x1440x30p">2560x1440x30p</option>
+                <option value="2560x1440x60p">2560x1440x60p</option>
+                <option value="2560x1600x60p">2560x1600x60p</option>
+                <option value="3440x1440x30p">3440x1440x30p</option>
+                <option value="3440x1440x50p">3440x1440x50p</option>
+                <option value="3440x1440x60p">3440x1440x60p</option>
+                <option value="720x576x50p">720x576x50p</option>
+                <option value="720x480x59.94p">720x480x59.94p</option>
+                <option value="720x480x60p">720x480x60p</option>
+                <option value="1280x720x24p">1280x720x24p</option>
+                <option value="1280x720x23.976p">1280x720x23.976p</option>
+                <option value="1280x720x25p">1280x720x25p</option>
+                <option value="1280x720x50p">1280x720x50p</option>
+                <option value="1280x720x59.94p">1280x720x59.94p</option>
+                <option value="1280x720x60p">1280x720x60p</option>
+                <option value="1920x1080x50i">1920x1080x50i</option>
+                <option value="1920x1080x59.94i">1920x1080x59.94i</option>
+                <option value="1920x1080x60i">1920x1080x60i</option>
+                <option value="1920x1080x24p">1920x1080x24p</option>
+                <option value="1920x1080x23.976p">1920x1080x23.976p</option>
+                <option value="1920x1080x25p">1920x1080x25p</option>
+                <option value="1920x1080x29.97p">1920x1080x29.97p</option>
+                <option value="1920x1080x30p">1920x1080x30p</option>
+                <option value="1920x1080x50p">1920x1080x50p</option>
+                <option value="1920x1080x59.94p">1920x1080x59.94p</option>
+                <option value="1920x1080x60p">1920x1080x60p</option>
+                <option value="1920x1920x60p">1920x1920x60p</option>
+                <option value="3840x600x60p">3840x600x60p</option>
+                <option value="3840x1080x25p">3840x1080x25p</option>
+                <option value="3840x1080x30p">3840x1080x30p</option>
+                <option value="3840x2160x23.976p">3840x2160x23.976p</option>
+                <option value="3840x2160x24p">3840x2160x24p</option>
+                <option value="3840x2160x25p">3840x2160x25p</option>
+                <option value="3840x2160x29.97p">3840x2160x29.97p</option>
+                <option value="3840x2160x30p">3840x2160x30p</option>
+                <option value="3840x1080x50p">3840x1080x50p</option>
+                <option value="3840x1080x60p">3840x1080x60p</option>
+                <option value="3840x2160x50p">3840x2160x50p</option>
+                <option value="3840x2160x59.94p">3840x2160x59.94p</option>
+                <option value="3840x2160x60p">3840x2160x60p</option>
+                <option value="4096x2160x23.976p">4096x2160x23.976p</option>
+                <option value="4096x2160x24p">4096x2160x24p</option>
+                <option value="4096x2160x25p">4096x2160x25p</option>
+                <option value="4096x2160x29.97p">4096x2160x29.97p</option>
+                <option value="4096x2160x30p">4096x2160x30p</option>
+                <option value="4096x2160x50p">4096x2160x50p</option>
+                <option value="4096x2160x59.94p">4096x2160x59.94p</option>
+                <option value="4096x2160x60p">4096x2160x60p</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Color Space:</label>
+              <select id="colorspaceScreen3" disabled>
+                <option value="rgb">RGB</option>
+                <option value="420">YUV 420</option>
+                <option value="422">YUV 422</option>
+              </select>
+
+              <br />
+            </p>
+            <p>
+              <label>Bit Depth:</label>
+              <select id="bitdepthScreen3" disabled>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Screen X Co-ordinate:</label>
+              <input
+                disabled
+                type="number"
+                id="screenXScreen3"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
+            </p>
+            <p>
+              <label>Screen Y Co-ordinate:</label>
+              <input
+                disabled
+                type="number"
+                id="screenYScreen3"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
+            </p>
+          </div>
+          <div id="screen4" class="col" hidden>
+            <p>
+              <label class="bold">HDMI-4</label>
+            </p>
+            <p>
+              <label>Enabled:</label>
+              <input type="checkbox" id="enabledScreen4" /><br />
+            </p>
+            <p id="screen4AudioEnabledControl">
+              <label>Audio:</label>
+              <input type="checkbox" id="audioScreen4" disabled /><br />
+            </p>
+            <p>
+              <label>Screen Rotation:</label>
+              <select id="rotationScreen4" disabled>
+                <option value="0">Landscape</option>
+                <option value="90">Portrait</option>
+                <option value="270">Portrait (270)</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Resolution:</label>
+              <select id="videomodeScreen4" disabled>
+                <option value="auto">Automatic (screen will detect)</option>
+                <option value="640x480x60p">640x480x60p</option>
+                <option value="720x480x60i">720x480x60i</option>
+                <option value="720x576x50i">720x576x50i</option>
+                <option value="848x480x60p">848x480x60p</option>
+                <option value="800x600x60p">800x600x60p</option>
+                <option value="800x600x75p">800x600x75p</option>
+                <option value="960x960x60p">960x960x60p</option>
+                <option value="1024x768x60p">1024x768x60p</option>
+                <option value="1024x768x75p">1024x768x75p</option>
+                <option value="1280x768x60p">1280x768x60p</option>
+                <option value="1280x800x60p">1280x800x60p</option>
+                <option value="1280x800x75p">1280x800x75p</option>
+                <option value="1360x768x60p">1360x768x60p</option>
+                <option value="800x1280x60p">800x1280x60p</option>
+                <option value="1200x1920x60p">1200x1920x60p</option>
+                <option value="1366x768x60p">1366x768x60p</option>
+                <option value="1280x960x60p">1280x960x60p</option>
+                <option value="1280x1024x60p">1280x1024x60p</option>
+                <option value="1280x1024x75p">1280x1024x75p</option>
+                <option value="1440x900x60p">1440x900x60p</option>
+                <option value="1440x900x75p">1440x900x75p</option>
+                <option value="1400x1050x60p">1400x1050x60p</option>
+                <option value="1400x1050x75p">1400x1050x75p</option>
+                <option value="1600x900x60p">1600x900x60p</option>
+                <option value="1600x1200x60p">1600x1200x60p</option>
+                <option value="1680x1050x60p">1680x1050x60p</option>
+                <option value="1920x540x60p">1920x540x60p</option>
+                <option value="1920x1200x60p">1920x1200x60p</option>
+                <option value="2048x1152x60p">2048x1152x60p</option>
+                <option value="2560x1080x60p">2560x1080x60p</option>
+                <option value="2560x1440x30p">2560x1440x30p</option>
+                <option value="2560x1440x60p">2560x1440x60p</option>
+                <option value="2560x1600x60p">2560x1600x60p</option>
+                <option value="3440x1440x30p">3440x1440x30p</option>
+                <option value="3440x1440x50p">3440x1440x50p</option>
+                <option value="3440x1440x60p">3440x1440x60p</option>
+                <option value="720x576x50p">720x576x50p</option>
+                <option value="720x480x59.94p">720x480x59.94p</option>
+                <option value="720x480x60p">720x480x60p</option>
+                <option value="1280x720x24p">1280x720x24p</option>
+                <option value="1280x720x23.976p">1280x720x23.976p</option>
+                <option value="1280x720x25p">1280x720x25p</option>
+                <option value="1280x720x50p">1280x720x50p</option>
+                <option value="1280x720x59.94p">1280x720x59.94p</option>
+                <option value="1280x720x60p">1280x720x60p</option>
+                <option value="1920x1080x50i">1920x1080x50i</option>
+                <option value="1920x1080x59.94i">1920x1080x59.94i</option>
+                <option value="1920x1080x60i">1920x1080x60i</option>
+                <option value="1920x1080x24p">1920x1080x24p</option>
+                <option value="1920x1080x23.976p">1920x1080x23.976p</option>
+                <option value="1920x1080x25p">1920x1080x25p</option>
+                <option value="1920x1080x29.97p">1920x1080x29.97p</option>
+                <option value="1920x1080x30p">1920x1080x30p</option>
+                <option value="1920x1080x50p">1920x1080x50p</option>
+                <option value="1920x1080x59.94p">1920x1080x59.94p</option>
+                <option value="1920x1080x60p">1920x1080x60p</option>
+                <option value="1920x1920x60p">1920x1920x60p</option>
+                <option value="3840x600x60p">3840x600x60p</option>
+                <option value="3840x1080x25p">3840x1080x25p</option>
+                <option value="3840x1080x30p">3840x1080x30p</option>
+                <option value="3840x2160x23.976p">3840x2160x23.976p</option>
+                <option value="3840x2160x24p">3840x2160x24p</option>
+                <option value="3840x2160x25p">3840x2160x25p</option>
+                <option value="3840x2160x29.97p">3840x2160x29.97p</option>
+                <option value="3840x2160x30p">3840x2160x30p</option>
+                <option value="3840x1080x50p">3840x1080x50p</option>
+                <option value="3840x1080x60p">3840x1080x60p</option>
+                <option value="3840x2160x50p">3840x2160x50p</option>
+                <option value="3840x2160x59.94p">3840x2160x59.94p</option>
+                <option value="3840x2160x60p">3840x2160x60p</option>
+                <option value="4096x2160x23.976p">4096x2160x23.976p</option>
+                <option value="4096x2160x24p">4096x2160x24p</option>
+                <option value="4096x2160x25p">4096x2160x25p</option>
+                <option value="4096x2160x29.97p">4096x2160x29.97p</option>
+                <option value="4096x2160x30p">4096x2160x30p</option>
+                <option value="4096x2160x50p">4096x2160x50p</option>
+                <option value="4096x2160x59.94p">4096x2160x59.94p</option>
+                <option value="4096x2160x60p">4096x2160x60p</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Color Space:</label>
+              <select id="colorspaceScreen4" disabled>
+                <option value="rgb">RGB</option>
+                <option value="420">YUV 420</option>
+                <option value="422">YUV 422</option>
+              </select>
+
+              <br />
+            </p>
+            <p>
+              <label>Bit Depth:</label>
+              <select id="bitdepthScreen4" disabled>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Screen X Co-ordinate:</label>
+              <input
+                disabled
+                type="number"
+                id="screenXScreen4"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
+            </p>
+            <p>
+              <label>Screen Y Co-ordinate:</label>
+              <input
+                disabled
+                type="number"
+                id="screenYScreen4"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
+            </p>
+          </div>
+          <div id="screen5" class="col" hidden>
+            <p>
+              <label class="bold">TypeC-1</label>
+            </p>
+            <p>
+              <label>Enabled:</label>
+              <input type="checkbox" id="enabledScreen5" /><br />
+            </p>
+            <p id="screen5AudioEnabledControl">
+              <label>Audio:</label>
+              <input type="checkbox" id="audioScreen5" disabled /><br />
+            </p>
+            <p>
+              <label>Screen Rotation:</label>
+              <select id="rotationScreen5" disabled>
+                <option value="0">Landscape</option>
+                <option value="90">Portrait</option>
+                <option value="270">Portrait (270)</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Resolution:</label>
+              <select id="videomodeScreen5" disabled>
+                <option value="auto">Automatic (screen will detect)</option>
+                <option value="640x480x60p">640x480x60p</option>
+                <option value="720x480x60i">720x480x60i</option>
+                <option value="720x576x50i">720x576x50i</option>
+                <option value="848x480x60p">848x480x60p</option>
+                <option value="800x600x60p">800x600x60p</option>
+                <option value="800x600x75p">800x600x75p</option>
+                <option value="960x960x60p">960x960x60p</option>
+                <option value="1024x768x60p">1024x768x60p</option>
+                <option value="1024x768x75p">1024x768x75p</option>
+                <option value="1280x768x60p">1280x768x60p</option>
+                <option value="1280x800x60p">1280x800x60p</option>
+                <option value="1280x800x75p">1280x800x75p</option>
+                <option value="1360x768x60p">1360x768x60p</option>
+                <option value="800x1280x60p">800x1280x60p</option>
+                <option value="1200x1920x60p">1200x1920x60p</option>
+                <option value="1366x768x60p">1366x768x60p</option>
+                <option value="1280x960x60p">1280x960x60p</option>
+                <option value="1280x1024x60p">1280x1024x60p</option>
+                <option value="1280x1024x75p">1280x1024x75p</option>
+                <option value="1440x900x60p">1440x900x60p</option>
+                <option value="1440x900x75p">1440x900x75p</option>
+                <option value="1400x1050x60p">1400x1050x60p</option>
+                <option value="1400x1050x75p">1400x1050x75p</option>
+                <option value="1600x900x60p">1600x900x60p</option>
+                <option value="1600x1200x60p">1600x1200x60p</option>
+                <option value="1680x1050x60p">1680x1050x60p</option>
+                <option value="1920x540x60p">1920x540x60p</option>
+                <option value="1920x1200x60p">1920x1200x60p</option>
+                <option value="2048x1152x60p">2048x1152x60p</option>
+                <option value="2560x1080x60p">2560x1080x60p</option>
+                <option value="2560x1440x30p">2560x1440x30p</option>
+                <option value="2560x1440x60p">2560x1440x60p</option>
+                <option value="2560x1600x60p">2560x1600x60p</option>
+                <option value="3440x1440x30p">3440x1440x30p</option>
+                <option value="3440x1440x50p">3440x1440x50p</option>
+                <option value="3440x1440x60p">3440x1440x60p</option>
+                <option value="720x576x50p">720x576x50p</option>
+                <option value="720x480x59.94p">720x480x59.94p</option>
+                <option value="720x480x60p">720x480x60p</option>
+                <option value="1280x720x24p">1280x720x24p</option>
+                <option value="1280x720x23.976p">1280x720x23.976p</option>
+                <option value="1280x720x25p">1280x720x25p</option>
+                <option value="1280x720x50p">1280x720x50p</option>
+                <option value="1280x720x59.94p">1280x720x59.94p</option>
+                <option value="1280x720x60p">1280x720x60p</option>
+                <option value="1920x1080x50i">1920x1080x50i</option>
+                <option value="1920x1080x59.94i">1920x1080x59.94i</option>
+                <option value="1920x1080x60i">1920x1080x60i</option>
+                <option value="1920x1080x24p">1920x1080x24p</option>
+                <option value="1920x1080x23.976p">1920x1080x23.976p</option>
+                <option value="1920x1080x25p">1920x1080x25p</option>
+                <option value="1920x1080x29.97p">1920x1080x29.97p</option>
+                <option value="1920x1080x30p">1920x1080x30p</option>
+                <option value="1920x1080x50p">1920x1080x50p</option>
+                <option value="1920x1080x59.94p">1920x1080x59.94p</option>
+                <option value="1920x1080x60p">1920x1080x60p</option>
+                <option value="1920x1920x60p">1920x1920x60p</option>
+                <option value="3840x600x60p">3840x600x60p</option>
+                <option value="3840x1080x25p">3840x1080x25p</option>
+                <option value="3840x1080x30p">3840x1080x30p</option>
+                <option value="3840x2160x23.976p">3840x2160x23.976p</option>
+                <option value="3840x2160x24p">3840x2160x24p</option>
+                <option value="3840x2160x25p">3840x2160x25p</option>
+                <option value="3840x2160x29.97p">3840x2160x29.97p</option>
+                <option value="3840x2160x30p">3840x2160x30p</option>
+                <option value="3840x1080x50p">3840x1080x50p</option>
+                <option value="3840x1080x60p">3840x1080x60p</option>
+                <option value="3840x2160x50p">3840x2160x50p</option>
+                <option value="3840x2160x59.94p">3840x2160x59.94p</option>
+                <option value="3840x2160x60p">3840x2160x60p</option>
+                <option value="4096x2160x23.976p">4096x2160x23.976p</option>
+                <option value="4096x2160x24p">4096x2160x24p</option>
+                <option value="4096x2160x25p">4096x2160x25p</option>
+                <option value="4096x2160x29.97p">4096x2160x29.97p</option>
+                <option value="4096x2160x30p">4096x2160x30p</option>
+                <option value="4096x2160x50p">4096x2160x50p</option>
+                <option value="4096x2160x59.94p">4096x2160x59.94p</option>
+                <option value="4096x2160x60p">4096x2160x60p</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Color Space:</label>
+              <select id="colorspaceScreen5" disabled>
+                <option value="rgb">RGB</option>
+                <option value="420">YUV 420</option>
+                <option value="422">YUV 422</option>
+              </select>
+
+              <br />
+            </p>
+            <p>
+              <label>Bit Depth:</label>
+              <select id="bitdepthScreen5" disabled>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Screen X Co-ordinate:</label>
+              <input
+                disabled
+                type="number"
+                id="screenXScreen5"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
+            </p>
+            <p>
+              <label>Screen Y Co-ordinate:</label>
+              <input
+                disabled
+                type="number"
+                id="screenYScreen5"
+                min="0"
+                max="99999"
+                value="0"
+                required
+              /><br />
             </p>
           </div>
         </div>
-        <div id="screen2" class="col" hidden>
-          <p>
-            <label class="bold">HDMI-2</label>
-          </p>
-          <p>
-            <label>Enabled:</label>
-            <input type="checkbox" id="enabledScreen2"><br />
-          </p>
-          <p>
-            <label>Screen Rotation:</label>
-            <select id="rotationScreen2" disabled>
-              <option value="0">Landscape</option>
-              <option value="90">Portrait</option>
-              <option value="270">Portrait (270)</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Resolution:</label>
-            <select id="videomodeScreen2" disabled>
-              <option value="auto">Automatic (screen will detect)</option>
-              <option value="640x480x60p">640x480x60p</option>
-              <option value="720x480x60i">720x480x60i</option>
-              <option value="720x576x50i">720x576x50i</option>
-              <option value="848x480x60p">848x480x60p</option>
-              <option value="800x600x60p">800x600x60p</option>
-              <option value="800x600x75p">800x600x75p</option>
-              <option value="960x960x60p">960x960x60p</option>
-              <option value="1024x768x60p">1024x768x60p</option>
-              <option value="1024x768x75p">1024x768x75p</option>
-              <option value="1280x768x60p">1280x768x60p</option>
-              <option value="1280x800x60p">1280x800x60p</option>
-              <option value="1280x800x75p">1280x800x75p</option>
-              <option value="1360x768x60p">1360x768x60p</option>
-              <option value="800x1280x60p">800x1280x60p</option>
-              <option value="1200x1920x60p">1200x1920x60p</option>
-              <option value="1366x768x60p">1366x768x60p</option>
-              <option value="1280x960x60p">1280x960x60p</option>
-              <option value="1280x1024x60p">1280x1024x60p</option>
-              <option value="1280x1024x75p">1280x1024x75p</option>
-              <option value="1440x900x60p">1440x900x60p</option>
-              <option value="1440x900x75p">1440x900x75p</option>
-              <option value="1400x1050x60p">1400x1050x60p</option>
-              <option value="1400x1050x75p">1400x1050x75p</option>
-              <option value="1600x900x60p">1600x900x60p</option>
-              <option value="1600x1200x60p">1600x1200x60p</option>
-              <option value="1680x1050x60p">1680x1050x60p</option>
-              <option value="1920x540x60p">1920x540x60p</option>
-              <option value="1920x1200x60p">1920x1200x60p</option>
-              <option value="2048x1152x60p">2048x1152x60p</option>
-              <option value="2560x1080x60p">2560x1080x60p</option>
-              <option value="2560x1440x30p">2560x1440x30p</option>
-              <option value="2560x1440x60p">2560x1440x60p</option>
-              <option value="2560x1600x60p">2560x1600x60p</option>
-              <option value="3440x1440x30p">3440x1440x30p</option>
-              <option value="3440x1440x50p">3440x1440x50p</option>
-              <option value="3440x1440x60p">3440x1440x60p</option>
-              <option value="720x576x50p">720x576x50p</option>
-              <option value="720x480x59.94p">720x480x59.94p</option>
-              <option value="720x480x60p">720x480x60p</option>
-              <option value="1280x720x24p">1280x720x24p</option>
-              <option value="1280x720x23.976p">1280x720x23.976p</option>
-              <option value="1280x720x25p">1280x720x25p</option>
-              <option value="1280x720x50p">1280x720x50p</option>
-              <option value="1280x720x59.94p">1280x720x59.94p</option>
-              <option value="1280x720x60p">1280x720x60p</option>
-              <option value="1920x1080x50i">1920x1080x50i</option>
-              <option value="1920x1080x59.94i">1920x1080x59.94i</option>
-              <option value="1920x1080x60i">1920x1080x60i</option>
-              <option value="1920x1080x24p">1920x1080x24p</option>
-              <option value="1920x1080x23.976p">1920x1080x23.976p</option>
-              <option value="1920x1080x25p">1920x1080x25p</option>
-              <option value="1920x1080x29.97p">1920x1080x29.97p</option>
-              <option value="1920x1080x30p">1920x1080x30p</option>
-              <option value="1920x1080x50p">1920x1080x50p</option>
-              <option value="1920x1080x59.94p">1920x1080x59.94p</option>
-              <option value="1920x1080x60p">1920x1080x60p</option>
-              <option value="1920x1920x60p">1920x1920x60p</option>
-              <option value="3840x600x60p">3840x600x60p</option>
-              <option value="3840x1080x25p">3840x1080x25p</option>
-              <option value="3840x1080x30p">3840x1080x30p</option>
-              <option value="3840x2160x23.976p">3840x2160x23.976p</option>
-              <option value="3840x2160x24p">3840x2160x24p</option>
-              <option value="3840x2160x25p">3840x2160x25p</option>
-              <option value="3840x2160x29.97p">3840x2160x29.97p</option>
-              <option value="3840x2160x30p">3840x2160x30p</option>
-              <option value="3840x1080x50p">3840x1080x50p</option>
-              <option value="3840x1080x60p">3840x1080x60p</option>
-              <option value="3840x2160x50p">3840x2160x50p</option>
-              <option value="3840x2160x59.94p">3840x2160x59.94p</option>
-              <option value="3840x2160x60p">3840x2160x60p</option>
-              <option value="4096x2160x23.976p">4096x2160x23.976p</option>
-              <option value="4096x2160x24p">4096x2160x24p</option>
-              <option value="4096x2160x25p">4096x2160x25p</option>
-              <option value="4096x2160x29.97p">4096x2160x29.97p</option>
-              <option value="4096x2160x30p">4096x2160x30p</option>
-              <option value="4096x2160x50p">4096x2160x50p</option>
-              <option value="4096x2160x59.94p">4096x2160x59.94p</option>
-              <option value="4096x2160x60p">4096x2160x60p</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Color Space:</label>
-            <select id="colorspaceScreen2" disabled>
-              <option value="rgb">RGB</option>
-              <option value="420">YUV 420</option>
-              <option value="422">YUV 422</option>
-            </select>
 
-            <br />
-          </p>
-          <p>
-            <label>Bit Depth:</label>
-            <select id="bitdepthScreen2" disabled>
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12">12</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Screen X Co-ordinate:</label>
-            <input disabled type="number" id="screenXScreen2" min="0" max="99999" value="0" required><br />
-          </p>
-          <p>
-            <label>Screen Y Co-ordinate:</label>
-            <input disabled type="number" id="screenYScreen2" min="0" max="99999" value="0" required><br />
-          </p>
-        </div>
-        <div id="screen3" class="col" hidden>
-          <p>
-            <label class="bold">HDMI-3</label>
-          </p>
-          <p>
-            <label>Enabled:</label>
-            <input type="checkbox" id="enabledScreen3"><br />
-          </p>
-          <p>
-            <label>Screen Rotation:</label>
-            <select id="rotationScreen3" disabled>
-              <option value="0">Landscape</option>
-              <option value="90">Portrait</option>
-              <option value="270">Portrait (270)</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Resolution:</label>
-            <select id="videomodeScreen3" disabled>
-              <option value="auto">Automatic (screen will detect)</option>
-              <option value="640x480x60p">640x480x60p</option>
-              <option value="720x480x60i">720x480x60i</option>
-              <option value="720x576x50i">720x576x50i</option>
-              <option value="848x480x60p">848x480x60p</option>
-              <option value="800x600x60p">800x600x60p</option>
-              <option value="800x600x75p">800x600x75p</option>
-              <option value="960x960x60p">960x960x60p</option>
-              <option value="1024x768x60p">1024x768x60p</option>
-              <option value="1024x768x75p">1024x768x75p</option>
-              <option value="1280x768x60p">1280x768x60p</option>
-              <option value="1280x800x60p">1280x800x60p</option>
-              <option value="1280x800x75p">1280x800x75p</option>
-              <option value="1360x768x60p">1360x768x60p</option>
-              <option value="800x1280x60p">800x1280x60p</option>
-              <option value="1200x1920x60p">1200x1920x60p</option>
-              <option value="1366x768x60p">1366x768x60p</option>
-              <option value="1280x960x60p">1280x960x60p</option>
-              <option value="1280x1024x60p">1280x1024x60p</option>
-              <option value="1280x1024x75p">1280x1024x75p</option>
-              <option value="1440x900x60p">1440x900x60p</option>
-              <option value="1440x900x75p">1440x900x75p</option>
-              <option value="1400x1050x60p">1400x1050x60p</option>
-              <option value="1400x1050x75p">1400x1050x75p</option>
-              <option value="1600x900x60p">1600x900x60p</option>
-              <option value="1600x1200x60p">1600x1200x60p</option>
-              <option value="1680x1050x60p">1680x1050x60p</option>
-              <option value="1920x540x60p">1920x540x60p</option>
-              <option value="1920x1200x60p">1920x1200x60p</option>
-              <option value="2048x1152x60p">2048x1152x60p</option>
-              <option value="2560x1080x60p">2560x1080x60p</option>
-              <option value="2560x1440x30p">2560x1440x30p</option>
-              <option value="2560x1440x60p">2560x1440x60p</option>
-              <option value="2560x1600x60p">2560x1600x60p</option>
-              <option value="3440x1440x30p">3440x1440x30p</option>
-              <option value="3440x1440x50p">3440x1440x50p</option>
-              <option value="3440x1440x60p">3440x1440x60p</option>
-              <option value="720x576x50p">720x576x50p</option>
-              <option value="720x480x59.94p">720x480x59.94p</option>
-              <option value="720x480x60p">720x480x60p</option>
-              <option value="1280x720x24p">1280x720x24p</option>
-              <option value="1280x720x23.976p">1280x720x23.976p</option>
-              <option value="1280x720x25p">1280x720x25p</option>
-              <option value="1280x720x50p">1280x720x50p</option>
-              <option value="1280x720x59.94p">1280x720x59.94p</option>
-              <option value="1280x720x60p">1280x720x60p</option>
-              <option value="1920x1080x50i">1920x1080x50i</option>
-              <option value="1920x1080x59.94i">1920x1080x59.94i</option>
-              <option value="1920x1080x60i">1920x1080x60i</option>
-              <option value="1920x1080x24p">1920x1080x24p</option>
-              <option value="1920x1080x23.976p">1920x1080x23.976p</option>
-              <option value="1920x1080x25p">1920x1080x25p</option>
-              <option value="1920x1080x29.97p">1920x1080x29.97p</option>
-              <option value="1920x1080x30p">1920x1080x30p</option>
-              <option value="1920x1080x50p">1920x1080x50p</option>
-              <option value="1920x1080x59.94p">1920x1080x59.94p</option>
-              <option value="1920x1080x60p">1920x1080x60p</option>
-              <option value="1920x1920x60p">1920x1920x60p</option>
-              <option value="3840x600x60p">3840x600x60p</option>
-              <option value="3840x1080x25p">3840x1080x25p</option>
-              <option value="3840x1080x30p">3840x1080x30p</option>
-              <option value="3840x2160x23.976p">3840x2160x23.976p</option>
-              <option value="3840x2160x24p">3840x2160x24p</option>
-              <option value="3840x2160x25p">3840x2160x25p</option>
-              <option value="3840x2160x29.97p">3840x2160x29.97p</option>
-              <option value="3840x2160x30p">3840x2160x30p</option>
-              <option value="3840x1080x50p">3840x1080x50p</option>
-              <option value="3840x1080x60p">3840x1080x60p</option>
-              <option value="3840x2160x50p">3840x2160x50p</option>
-              <option value="3840x2160x59.94p">3840x2160x59.94p</option>
-              <option value="3840x2160x60p">3840x2160x60p</option>
-              <option value="4096x2160x23.976p">4096x2160x23.976p</option>
-              <option value="4096x2160x24p">4096x2160x24p</option>
-              <option value="4096x2160x25p">4096x2160x25p</option>
-              <option value="4096x2160x29.97p">4096x2160x29.97p</option>
-              <option value="4096x2160x30p">4096x2160x30p</option>
-              <option value="4096x2160x50p">4096x2160x50p</option>
-              <option value="4096x2160x59.94p">4096x2160x59.94p</option>
-              <option value="4096x2160x60p">4096x2160x60p</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Color Space:</label>
-            <select id="colorspaceScreen3" disabled>
-              <option value="rgb">RGB</option>
-              <option value="420">YUV 420</option>
-              <option value="422">YUV 422</option>
-            </select>
+        <p>
+          <input id="generate" type="button" value="Generate" />
+        </p>
+      </fieldset>
+    </form>
+    <form id="networkForm">
+      <fieldset style="margin-top: 35px">
+        <legend>Networking</legend>
+        <p>
+          <label>Networking Mode:</label>
+          <select id="mode">
+            <option value="0">DHCP</option>
+            <option value="1">Static IP</option>
+          </select>
+        </p>
+        <p>
+          <label>IP Address:</label>
+          <input
+            type="text"
+            id="ipAddress"
+            placeholder="192.168.0.2"
+            value=""
+            disabled
+          /><br />
+        </p>
+        <p>
+          <label>Subnet Mask:</label>
+          <input
+            type="text"
+            id="subnet"
+            placeholder="255.255.255.0"
+            value=""
+            disabled
+          /><br />
+        </p>
+        <p>
+          <label>Default Gateway:</label>
+          <input
+            type="text"
+            id="gateway"
+            placeholder="192.168.0.1"
+            value=""
+            disabled
+          /><br />
+        </p>
+        <p>
+          <label>DNS1:</label>
+          <input type="text" id="dns1" value="8.8.8.8" disabled /><br />
+        </p>
+        <p>
+          <label>DNS2:</label>
+          <input type="text" id="dns2" value="8.8.4.4" disabled /><br />
+        </p>
+        <p>
+          <label>Connection Type:</label>
+          <select id="connection">
+            <option value="0">Ethernet</option>
+            <option value="1">Wifi</option>
+          </select>
+        </p>
+        <p>
+          <label>SSID:</label>
+          <input type="text" id="ssid" value="" disabled /><br />
+        </p>
+        <p>
+          <label>Passphrase:</label>
+          <input type="text" id="passphrase" value="" disabled /><br />
+        </p>
+        <p>
+          <label>Proxy Server:</label>
+          <input type="text" id="proxy" value="" style="width: 210px" /><br />
+        </p>
+        <p>
+          <label>Time Server:</label>
+          <input
+            type="text"
+            id="timeserver"
+            value="ntp://time.brightsignnetwork.com"
+            style="width: 210px"
+          /><br />
+        </p>
+        <p>
+          <input id="generateNetworkConfig" type="button" value="Generate" />
+        </p>
+      </fieldset>
+    </form>
 
-            <br />
-          </p>
-          <p>
-            <label>Bit Depth:</label>
-            <select id="bitdepthScreen3" disabled>
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12">12</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Screen X Co-ordinate:</label>
-            <input disabled type="number" id="screenXScreen3" min="0" max="99999" value="0" required><br />
-          </p>
-          <p>
-            <label>Screen Y Co-ordinate:</label>
-            <input disabled type="number" id="screenYScreen3" min="0" max="99999" value="0" required><br />
-          </p>
-        </div>
-        <div id="screen4" class="col" hidden>
-          <p>
-            <label class="bold">HDMI-4</label>
-          </p>
-          <p>
-            <label>Enabled:</label>
-            <input type="checkbox" id="enabledScreen4"><br />
-          </p>
-          <p>
-            <label>Screen Rotation:</label>
-            <select id="rotationScreen4" disabled>
-              <option value="0">Landscape</option>
-              <option value="90">Portrait</option>
-              <option value="270">Portrait (270)</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Resolution:</label>
-            <select id="videomodeScreen4" disabled>
-              <option value="auto">Automatic (screen will detect)</option>
-              <option value="640x480x60p">640x480x60p</option>
-              <option value="720x480x60i">720x480x60i</option>
-              <option value="720x576x50i">720x576x50i</option>
-              <option value="848x480x60p">848x480x60p</option>
-              <option value="800x600x60p">800x600x60p</option>
-              <option value="800x600x75p">800x600x75p</option>
-              <option value="960x960x60p">960x960x60p</option>
-              <option value="1024x768x60p">1024x768x60p</option>
-              <option value="1024x768x75p">1024x768x75p</option>
-              <option value="1280x768x60p">1280x768x60p</option>
-              <option value="1280x800x60p">1280x800x60p</option>
-              <option value="1280x800x75p">1280x800x75p</option>
-              <option value="1360x768x60p">1360x768x60p</option>
-              <option value="800x1280x60p">800x1280x60p</option>
-              <option value="1200x1920x60p">1200x1920x60p</option>
-              <option value="1366x768x60p">1366x768x60p</option>
-              <option value="1280x960x60p">1280x960x60p</option>
-              <option value="1280x1024x60p">1280x1024x60p</option>
-              <option value="1280x1024x75p">1280x1024x75p</option>
-              <option value="1440x900x60p">1440x900x60p</option>
-              <option value="1440x900x75p">1440x900x75p</option>
-              <option value="1400x1050x60p">1400x1050x60p</option>
-              <option value="1400x1050x75p">1400x1050x75p</option>
-              <option value="1600x900x60p">1600x900x60p</option>
-              <option value="1600x1200x60p">1600x1200x60p</option>
-              <option value="1680x1050x60p">1680x1050x60p</option>
-              <option value="1920x540x60p">1920x540x60p</option>
-              <option value="1920x1200x60p">1920x1200x60p</option>
-              <option value="2048x1152x60p">2048x1152x60p</option>
-              <option value="2560x1080x60p">2560x1080x60p</option>
-              <option value="2560x1440x30p">2560x1440x30p</option>
-              <option value="2560x1440x60p">2560x1440x60p</option>
-              <option value="2560x1600x60p">2560x1600x60p</option>
-              <option value="3440x1440x30p">3440x1440x30p</option>
-              <option value="3440x1440x50p">3440x1440x50p</option>
-              <option value="3440x1440x60p">3440x1440x60p</option>
-              <option value="720x576x50p">720x576x50p</option>
-              <option value="720x480x59.94p">720x480x59.94p</option>
-              <option value="720x480x60p">720x480x60p</option>
-              <option value="1280x720x24p">1280x720x24p</option>
-              <option value="1280x720x23.976p">1280x720x23.976p</option>
-              <option value="1280x720x25p">1280x720x25p</option>
-              <option value="1280x720x50p">1280x720x50p</option>
-              <option value="1280x720x59.94p">1280x720x59.94p</option>
-              <option value="1280x720x60p">1280x720x60p</option>
-              <option value="1920x1080x50i">1920x1080x50i</option>
-              <option value="1920x1080x59.94i">1920x1080x59.94i</option>
-              <option value="1920x1080x60i">1920x1080x60i</option>
-              <option value="1920x1080x24p">1920x1080x24p</option>
-              <option value="1920x1080x23.976p">1920x1080x23.976p</option>
-              <option value="1920x1080x25p">1920x1080x25p</option>
-              <option value="1920x1080x29.97p">1920x1080x29.97p</option>
-              <option value="1920x1080x30p">1920x1080x30p</option>
-              <option value="1920x1080x50p">1920x1080x50p</option>
-              <option value="1920x1080x59.94p">1920x1080x59.94p</option>
-              <option value="1920x1080x60p">1920x1080x60p</option>
-              <option value="1920x1920x60p">1920x1920x60p</option>
-              <option value="3840x600x60p">3840x600x60p</option>
-              <option value="3840x1080x25p">3840x1080x25p</option>
-              <option value="3840x1080x30p">3840x1080x30p</option>
-              <option value="3840x2160x23.976p">3840x2160x23.976p</option>
-              <option value="3840x2160x24p">3840x2160x24p</option>
-              <option value="3840x2160x25p">3840x2160x25p</option>
-              <option value="3840x2160x29.97p">3840x2160x29.97p</option>
-              <option value="3840x2160x30p">3840x2160x30p</option>
-              <option value="3840x1080x50p">3840x1080x50p</option>
-              <option value="3840x1080x60p">3840x1080x60p</option>
-              <option value="3840x2160x50p">3840x2160x50p</option>
-              <option value="3840x2160x59.94p">3840x2160x59.94p</option>
-              <option value="3840x2160x60p">3840x2160x60p</option>
-              <option value="4096x2160x23.976p">4096x2160x23.976p</option>
-              <option value="4096x2160x24p">4096x2160x24p</option>
-              <option value="4096x2160x25p">4096x2160x25p</option>
-              <option value="4096x2160x29.97p">4096x2160x29.97p</option>
-              <option value="4096x2160x30p">4096x2160x30p</option>
-              <option value="4096x2160x50p">4096x2160x50p</option>
-              <option value="4096x2160x59.94p">4096x2160x59.94p</option>
-              <option value="4096x2160x60p">4096x2160x60p</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Color Space:</label>
-            <select id="colorspaceScreen4" disabled>
-              <option value="rgb">RGB</option>
-              <option value="420">YUV 420</option>
-              <option value="422">YUV 422</option>
-            </select>
-
-            <br />
-          </p>
-          <p>
-            <label>Bit Depth:</label>
-            <select id="bitdepthScreen4" disabled>
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12">12</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Screen X Co-ordinate:</label>
-            <input disabled type="number" id="screenXScreen4" min="0" max="99999" value="0" required><br />
-          </p>
-          <p>
-            <label>Screen Y Co-ordinate:</label>
-            <input disabled type="number" id="screenYScreen4" min="0" max="99999" value="0" required><br />
-          </p>
-        </div>
-        <div id="screen5" class="col" hidden>
-          <p>
-            <label class="bold">TypeC-1</label>
-          </p>
-          <p>
-            <label>Enabled:</label>
-            <input type="checkbox" id="enabledScreen5"><br />
-          </p>
-          <p>
-            <label>Screen Rotation:</label>
-            <select id="rotationScreen5" disabled>
-              <option value="0">Landscape</option>
-              <option value="90">Portrait</option>
-              <option value="270">Portrait (270)</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Resolution:</label>
-            <select id="videomodeScreen5" disabled>
-              <option value="auto">Automatic (screen will detect)</option>
-              <option value="640x480x60p">640x480x60p</option>
-              <option value="720x480x60i">720x480x60i</option>
-              <option value="720x576x50i">720x576x50i</option>
-              <option value="848x480x60p">848x480x60p</option>
-              <option value="800x600x60p">800x600x60p</option>
-              <option value="800x600x75p">800x600x75p</option>
-              <option value="960x960x60p">960x960x60p</option>
-              <option value="1024x768x60p">1024x768x60p</option>
-              <option value="1024x768x75p">1024x768x75p</option>
-              <option value="1280x768x60p">1280x768x60p</option>
-              <option value="1280x800x60p">1280x800x60p</option>
-              <option value="1280x800x75p">1280x800x75p</option>
-              <option value="1360x768x60p">1360x768x60p</option>
-              <option value="800x1280x60p">800x1280x60p</option>
-              <option value="1200x1920x60p">1200x1920x60p</option>
-              <option value="1366x768x60p">1366x768x60p</option>
-              <option value="1280x960x60p">1280x960x60p</option>
-              <option value="1280x1024x60p">1280x1024x60p</option>
-              <option value="1280x1024x75p">1280x1024x75p</option>
-              <option value="1440x900x60p">1440x900x60p</option>
-              <option value="1440x900x75p">1440x900x75p</option>
-              <option value="1400x1050x60p">1400x1050x60p</option>
-              <option value="1400x1050x75p">1400x1050x75p</option>
-              <option value="1600x900x60p">1600x900x60p</option>
-              <option value="1600x1200x60p">1600x1200x60p</option>
-              <option value="1680x1050x60p">1680x1050x60p</option>
-              <option value="1920x540x60p">1920x540x60p</option>
-              <option value="1920x1200x60p">1920x1200x60p</option>
-              <option value="2048x1152x60p">2048x1152x60p</option>
-              <option value="2560x1080x60p">2560x1080x60p</option>
-              <option value="2560x1440x30p">2560x1440x30p</option>
-              <option value="2560x1440x60p">2560x1440x60p</option>
-              <option value="2560x1600x60p">2560x1600x60p</option>
-              <option value="3440x1440x30p">3440x1440x30p</option>
-              <option value="3440x1440x50p">3440x1440x50p</option>
-              <option value="3440x1440x60p">3440x1440x60p</option>
-              <option value="720x576x50p">720x576x50p</option>
-              <option value="720x480x59.94p">720x480x59.94p</option>
-              <option value="720x480x60p">720x480x60p</option>
-              <option value="1280x720x24p">1280x720x24p</option>
-              <option value="1280x720x23.976p">1280x720x23.976p</option>
-              <option value="1280x720x25p">1280x720x25p</option>
-              <option value="1280x720x50p">1280x720x50p</option>
-              <option value="1280x720x59.94p">1280x720x59.94p</option>
-              <option value="1280x720x60p">1280x720x60p</option>
-              <option value="1920x1080x50i">1920x1080x50i</option>
-              <option value="1920x1080x59.94i">1920x1080x59.94i</option>
-              <option value="1920x1080x60i">1920x1080x60i</option>
-              <option value="1920x1080x24p">1920x1080x24p</option>
-              <option value="1920x1080x23.976p">1920x1080x23.976p</option>
-              <option value="1920x1080x25p">1920x1080x25p</option>
-              <option value="1920x1080x29.97p">1920x1080x29.97p</option>
-              <option value="1920x1080x30p">1920x1080x30p</option>
-              <option value="1920x1080x50p">1920x1080x50p</option>
-              <option value="1920x1080x59.94p">1920x1080x59.94p</option>
-              <option value="1920x1080x60p">1920x1080x60p</option>
-              <option value="1920x1920x60p">1920x1920x60p</option>
-              <option value="3840x600x60p">3840x600x60p</option>
-              <option value="3840x1080x25p">3840x1080x25p</option>
-              <option value="3840x1080x30p">3840x1080x30p</option>
-              <option value="3840x2160x23.976p">3840x2160x23.976p</option>
-              <option value="3840x2160x24p">3840x2160x24p</option>
-              <option value="3840x2160x25p">3840x2160x25p</option>
-              <option value="3840x2160x29.97p">3840x2160x29.97p</option>
-              <option value="3840x2160x30p">3840x2160x30p</option>
-              <option value="3840x1080x50p">3840x1080x50p</option>
-              <option value="3840x1080x60p">3840x1080x60p</option>
-              <option value="3840x2160x50p">3840x2160x50p</option>
-              <option value="3840x2160x59.94p">3840x2160x59.94p</option>
-              <option value="3840x2160x60p">3840x2160x60p</option>
-              <option value="4096x2160x23.976p">4096x2160x23.976p</option>
-              <option value="4096x2160x24p">4096x2160x24p</option>
-              <option value="4096x2160x25p">4096x2160x25p</option>
-              <option value="4096x2160x29.97p">4096x2160x29.97p</option>
-              <option value="4096x2160x30p">4096x2160x30p</option>
-              <option value="4096x2160x50p">4096x2160x50p</option>
-              <option value="4096x2160x59.94p">4096x2160x59.94p</option>
-              <option value="4096x2160x60p">4096x2160x60p</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Color Space:</label>
-            <select id="colorspaceScreen5" disabled>
-              <option value="rgb">RGB</option>
-              <option value="420">YUV 420</option>
-              <option value="422">YUV 422</option>
-            </select>
-
-            <br />
-          </p>
-          <p>
-            <label>Bit Depth:</label>
-            <select id="bitdepthScreen5" disabled>
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12">12</option>
-            </select>
-            <br />
-          </p>
-          <p>
-            <label>Screen X Co-ordinate:</label>
-            <input disabled type="number" id="screenXScreen5" min="0" max="99999" value="0" required><br />
-          </p>
-          <p>
-            <label>Screen Y Co-ordinate:</label>
-            <input disabled type="number" id="screenYScreen5" min="0" max="99999" value="0" required><br />
-          </p>
-        </div>
-      </div>
-
-      <p>
-        <input id="generate" type="button" value="Generate">
-      </p>
-    </fieldset>
-  </form>
-  <form id="networkForm">
-    <fieldset style="margin-top:35px;">
-      <legend>Networking</legend>
-      <p>
-        <label>Networking Mode:</label>
-        <select id="mode">
-          <option value="0">DHCP</option>
-          <option value="1">Static IP</option>
-        </select>
-      </p>
-      <p>
-        <label>IP Address:</label>
-        <input type="text" id="ipAddress" placeholder='192.168.0.2' value="" disabled><br />
-      </p>
-      <p>
-        <label>Subnet Mask:</label>
-        <input type="text" id="subnet" placeholder='255.255.255.0' value="" disabled><br />
-      </p>
-      <p>
-        <label>Default Gateway:</label>
-        <input type="text" id="gateway" placeholder='192.168.0.1' value="" disabled><br />
-      </p>
-      <p>
-        <label>DNS1:</label>
-        <input type="text" id="dns1" value="8.8.8.8" disabled><br />
-      </p>
-      <p>
-        <label>DNS2:</label>
-        <input type="text" id="dns2" value="8.8.4.4" disabled><br />
-      </p>
-      <p>
-        <label>Connection Type:</label>
-        <select id="connection">
-          <option value="0">Ethernet</option>
-          <option value="1">Wifi</option>
-        </select>
-      </p>
-      <p>
-        <label>SSID:</label>
-        <input type="text" id="ssid" value="" disabled><br />
-      </p>
-      <p>
-        <label>Passphrase:</label>
-        <input type="text" id="passphrase" value="" disabled><br />
-      </p>
-      <p>
-        <label>Proxy Server:</label>
-        <input type="text" id="proxy" value="" style="Width: 210px"><br />
-      </p>
-      <p>
-        <label>Time Server:</label>
-        <input type="text" id="timeserver" value="ntp://time.brightsignnetwork.com" style="Width: 210px"><br />
-      </p>
-      <p>
-        <input id="generateNetworkConfig" type="button" value="Generate">
-      </p>
-    </fieldset>
-  </form>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
-  <script src="./js/main.js"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
