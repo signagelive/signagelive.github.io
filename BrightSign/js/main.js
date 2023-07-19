@@ -316,14 +316,16 @@ $("#generate").click(function () {
   } else {
     settings.rotation = new Object();
     settings.rotation.displayName = "Custom rotation";
-    settings.rotation.angle = [];
+    settings.rotation.angle = 0;
 
     settings.screenConfig = new Array();
 
     if($('#multipleOutputDevice').val() == "XC4055") {
       self.screens = ["HDMI-1", "HDMI-2", "HDMI-3", "HDMI-4", "TypeC-1"];
-    } else {
+    } else if ($('#multipleOutputDevice').val() == "XC2055") {
       self.screens = ["HDMI-1", "HDMI-2"];
+    } else {
+      self.screens = ["HDMI-1"];
     }
 
     self.screens.forEach(function (screen, ind) {
@@ -336,7 +338,7 @@ $("#generate").click(function () {
           transform: $('#rotationScreen' + (ind + 1)).val(),
           videoMode: $('#videomodeScreen' + (ind + 1)).val(),
         };
-        settings.rotation.angle.push(Number(settings.screenConfig[ind].transform));
+        
         if(settings.screenConfig[ind].transform == 0) { settings.screenConfig[ind].transform = "normal"; };
       } else {
         settings.screenConfig[ind] = {
@@ -422,7 +424,12 @@ function loadMultiScreenConfigurationOptions() {
     $('#screen3').show();
     $('#screen4').show();
     $('#screen5').show();
+  } else if ($('#multipleOutputDevice').val() == "XC2055") {
+    $('#screen3').hide();
+    $('#screen4').hide();
+    $('#screen5').hide();
   } else {
+    $('#screen2').hide();
     $('#screen3').hide();
     $('#screen4').hide();
     $('#screen5').hide();
