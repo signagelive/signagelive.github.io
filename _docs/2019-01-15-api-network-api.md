@@ -126,7 +126,7 @@ The file should then be attached to the body of a PUT request, which is sent to 
 
 Once the file is uploaded, it will be processed in the background, a thumbnail created and this will then be marked as supported in Signagelive and will be usable.
 
-The NewMediaAssetResponseDTO will include the MediaAssetDTO of the created Media Asset.
+The NewMediaAssetResponseDTO will include the physical file name of the file uploaded. This physical file name is a GUID and is unique to reach upload request. 
 
 {% highlight javascript %}
 [
@@ -142,6 +142,13 @@ The NewMediaAssetResponseDTO will include the MediaAssetDTO of the created Media
 ]
 {% endhighlight %}
 
+To get the details of the created media asset, once it has been processed in the background, you need to make a request to the READY endpoint, passing the physical file name on the query string.
+
+|End Point                                                        |Type|Body                      |
+|-----------------------------------------------------------------|----|--------------------------|
+|/networks/{networkid}/mediaassets/ready?physicalFileName=        |Get |                           |
+
+While the asset is being processed in the background, this request will return a 404, once the asset has been processed and has been created a 200 response will be returned and the response body will contain a Media Asset DTO object, including the ID of the Media Asset.
 
 ### Non File Uploads
 When adding assets which are of the following types, a media asset DTO needs to be created in exactly the same way as you would have with the previous API method, but this needs to be sent as the media asset property of a NewMediaAssetRequestDTO.
