@@ -36,6 +36,14 @@
           </select>
         </p>
         <p>
+        <label>PTP Enabled:</label>
+        <input type="checkbox" id="ptpEnabled" checked><br />
+      </p>
+      <p>
+        <label>PTP Domain:</label>
+        <input type="number" id="ptpDomain" min="0" max="127" value="0" onkeyup="if(value<0 || value>127) value=0"><br />
+      </p>
+      <p>
           <label>Video Transparency (XT3/XT4 Series only):</label>
           <input type="checkbox" id="transparencyEnabled" /><br />
         </p>

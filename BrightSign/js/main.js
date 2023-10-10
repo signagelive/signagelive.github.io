@@ -449,7 +449,13 @@ $("#generate").click(function () {
   settings.interactiveKiosk.trigger.key = "t";
   settings.interactiveKiosk.trigger.type = "KeyboardEvent";
 
-  download("settings.json", JSON.stringify(settings));
+  settings.ptp = {
+    enabled: $('#ptpEnabled').is(":checked"),
+    domain: String(parseInt($('#ptpDomain').val()))
+  };
+  
+  download('settings.json', JSON.stringify(settings));
+
 });
 
 function download(filename, text) {
