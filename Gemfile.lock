@@ -271,6 +271,7 @@ DEPENDENCIES
   jekyll-archives
   jekyll-feed (~> 0.6)
   jekyll-paginate-v2
+  jekyll-redirect-from
   jekyll-seo-tag
   jekyll-tagging
   minima (~> 2.5)
