@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon"/>
     <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon"/>
     <!-- Add CSS File -->
-	<link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
+    <link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
 	<!-- Added in Signagelive Styles -->
 	<link rel="stylesheet" href="{{ '/assets/css/signagelive.css' | relative_url }}" type="text/css"" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
@@ -45,87 +45,16 @@
    <script src="{{ '/assets/js/build.min.js' | relative_url }}"></script>
    		<script>
 			$(function() {
-			$('a[href*=\\#]').not(".no-smooth").on('click', function(event){
-			var el = $(this.hash);
-			if (el.length > 0) {
-			// event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 500);
-			}
-			});
-
-			moveScroller();
-			setActiveSidebarLink();
-
-			function moveScroller() {
-				var st = $(window).scrollTop();
-				var ot = $("#main-content").offset().top - 30;
-				var s = $("#table-of-contents");
-				if(st > ot) {
-					s.css({
-						position: "fixed",
-						height: "95vh",
-						overflow: "hidden auto",
-						top: "30px",
-						"max-width": "280px"
-					});
-				} else {
-					if(st <= ot) {
-						s.css({
-							position: "relative",
-							top: "",
-							width: "",
-							overflow: "hidden",
-						});
+				$('a[href*=\\#]').not(".no-smooth").on('click', function(event){
+					var el = $(this.hash);
+					if (el.length > 0) {
+						// event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 500);
 					}
-				}
-			}
+				});
 
-			function setActiveSidebarLink() {
-				$('.sidebar a').removeClass('active');
-				var $closest = getClosestHeader();
-				$closest.addClass('active');
-			}
+				});
 
-			function getClosestHeader() {
-				var $links = $('.sidebar a'),
-				top = window.scrollY,
-				$last = $links.first(),
-				$content = $(".tutorial-content");
-				
-				if (top < 300) {
-					return $last;
-				}
-				
-				if (top + window.innerHeight >= $content.offset().top + $content.height()) {
-					return $links.last();
-				}
-
-				for (var i = 0; i < $links.length; i++) {
-					var $link = $links.eq(i),
-					href = $link.attr("href");
-
-					if (href !== undefined && href.charAt(0) === "#" && href.length > 1) {
-						var $anchor = $(href);
-
-						if ($anchor.length > 0) {
-							var offset = $anchor.offset();
-
-							if (top < offset.top - (window.innerHeight / 2)) {
-								return $last;
-							}
-
-							$last = $link;
-						}
-					}
-				}
-				return $last;
-			}
-
-			$(window).on("scroll", function() {
-				moveScroller()
-				setActiveSidebarLink()
-			});
-});
 
 		</script>
 </body>      

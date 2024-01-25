@@ -3,7 +3,7 @@
 # Welcome to Doxy Jekyll Template
 #
 # Product Link : https://themeix.com/product/doxy-documentation-website-jekyll-template/
-# Version : v4.1.0
+# Version : v4.3.0
 #
 ####################################################
 
@@ -33,9 +33,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate-v2
   - jekyll-archives
-  - jekyll-toc
   - jekyll-seo-tag  
-  - jekyll-redirect-from
 
 collections:
   team_members:

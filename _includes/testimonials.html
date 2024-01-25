@@ -13,7 +13,12 @@
                         <div class="testimonial-author"><img src="{{testimonial.image_url}}" alt="{{testimonial.name}}"></div>
                         <div class="testimonial-content">
                             <p>{{testimonial.desc}}</p>
-                            <input type="text" class="rating rating5" readonly value="{{testimonial.rating}}"/>
+                           
+                          
+                          	<div class="ef-rating ef-rating_small ef-rating_{{testimonial.rating}}">
+				<div class="ef-rating__value"></div>
+		</div>
+                          
                             <h4 class="testimonial-name heading-4"><a href="{{testimonial.url}}">{{testimonial.name}}</a></h4>
                             <h6 class="testimonial-subname heading-6">{{testimonial.designation}}</h6>
                         </div>
