@@ -4,7 +4,7 @@ Template URI: https://themeix.com/product/doxy-documentation-website-jekyll-temp
 Author Name: themeix
 Author uri:  https://themeix.com
 Tag: docs, documentation, knowledgebase, qa
-Verson: 2.2
+Verson: 2.3.0
 Description: Doxy is responsive docs template for the digital products authors
 ===========================
 INDEX SASS
@@ -97,6 +97,10 @@ INDEX SASS
         .header-logo{
             margin: 10px  0;
             display: block;
+            @include mobile{
+              margin: 8px 0;
+              width: 110px;
+            }
         }
         #navigation-menu{
           @include desktop{
@@ -921,6 +925,58 @@ transition:all 0.5s ease 0s;
           display: none;
       }
    }
+}
+
+ 
+
+.ef-rating,
+.ef-rating__value{
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAwCAYAAAACYxrZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYpJREFUeNrslsFtwyAUhnHVdA3TCcKh93iEjOBukBHoCNkgK2SD3NsD3QA2cK65JI/qJXIJyDxsqBoZ6YmIGD5+/J75K601I7QW+911oK5rynz2zGhNukBqeyKqqzHaEkAZ+J0F2KCy26vDsWxAGTk2CdAqWXnGVykqh4B8QIk0xnAKsMI6bHBxGwL7JXHz3xB2MYW9hho9+IAqYfHoTQBUuEfa4O4mh/nesQV2GaA/MFDXhZLmCjUTwEwI5mapfWANcRwBs3PXIZivLBQqPSbCrDJFrUOV+HFuh2DUj/ckLQQUCWuJfwXkCUA+BrgM1Nc7homcEwUUnnT/wPEdhsCxX+UDN4dIAfaPZtu7ojrnIyHxvy3lWEMK9xCvEBsH5LYOam+Dz+5jEqc6fy5G+VL2diJlFhWo746OCCzuSykKdc8qmpvKTApnX1rOl7KvF56SNFl8KSTUwQfM6ksB+sC+FNSV86U+WDZfGoJl8aUAK+dLh2CzL5196d/7Urg5HtCXQu2RfOlFgAEAk9OXr3nPc1wAAAAASUVORK5CYII=');
+	background-repeat: repeat-x;
+}
+
+.ef-rating_small,
+.ef-rating_small .ef-rating__value{
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAwCAYAAAACYxrZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqRJREFUeNrEmE9IFFEcx8dN92CHSio0qPEf1mVlBT1mhy08dAoKb0sJHRQvinch8GZ1C1EQwZOQePNUp8VDsIegS0SIW7CUSp1CWGnX75PvwmOa3Xm/92a2Bx9m5jfvzXfmvfm9951pq9VqXitL238TLJVKJvXnuH0dVdH3fWfBi+CA+73gj41gStAbs+AqmbXtUlPBdjCpHU8ylpjgY5DVjrOMJSY4o8ZbH3vGxCXYLRdAF7gBusF1cJcEi4qtggI4BD9AGfwCf03S4g02g+AauEVhSVFC38AR+Iq3dCbqCavggUNOd2k3+cVkDNWrvhDDZLLQLG2CL81LsOggtshriN7SF2DFQmyFba3SYhqsC8TW2cYpDzcFgptxJP6YQHAsDsGMQDATh+BASOyQmNQVCXaCvpBxmiDBMetjG2vB26CH+9vgIciDjyTP2Dbr9LCNtaBafj7wwk/AbkidXZ7Ls27WytOEWYNG9qORjbBeD5VQM69jaLwa2MRiOrr2aOXfuvVYzCt+AkbY5Ak9b4Pbp8a94SB4B3zSZpbPNoKSLp2nQ2jnfqK+VJmpnHacYywxweegXzvuZywRwUtgKiQ+xXNOvrT+7aCmkJvstvuBp9Ofcge84wryXc0F4JhEvqXvafOu0Ah3CG/+lEb497lHHa3koro0xQnYtxDz2MbnNVImYzihJbZL2eC1jBJf3cBb8MhSbIdfVVXTxK/SNRcsxApsW5WmRZkL655AbI9tyrZ5+BOsCQTX2MY68VV8WCA4bDprNXNtIwLBEVfXlg6xiapUiBdiE9Mugpf5L0YvRfCMFAPnetlGPJfWy5C2rxbdLfAKnGj5Ns/fJxmtzb7NE6o/FOP8Vl8G98CSJuZxf4nnlll3PPCnI2KmabmJalE5E2AAQpis4ONm358AAAAASUVORK5CYII=);
+	background-repeat: repeat-x;
+}
+
+.ef-rating_tiny,
+.ef-rating_tiny .ef-rating__value{
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAwCAYAAAACYxrZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAoFJREFUeNrsmM9LVFEUx59ltZlqFoEJTiORY23EYP4DEaKFSNCkmNImiGgR7aJ1tG0V/g0upI27BAV3CpKCZCW9oaACQY02jT+m76nvwO01c9+59/rc1IEP7937zrvn/jpvvnfa6vV6dJTW9m8FrFaraf4veL1vcyoWiy2fHXPoXAHcIwXfEboEHJcZIeNZBzwNJozyBOsyC3gb9BrlXtY5W7ulI2fAWdANHjXxkbo1EIMd8A0cuAZ8AjpBF+gBJUunLoE5sAfegnfgE/gMnmrT4k1i6nxsHWlxWbuGfWAmINgM21BvmhoYA4sewRb5bs11l8oGuCVT4zKNfGfHNy0+gGu8ppmLrzUPZbtvKtrYpG9w4vcxNdKsJ22jaAPKJz+vaCNP36AvjdiFRPk7eM77hyBn8fUKWOJ1F7wEz8Ay66bBYzAMThi+3lMqvb8KZsF1UDGCRbyv8NksfXOqiPJpaxDH8R/lJPI8zSeNdk2nktKjUbZJCa/fQ2nYpnMUGihFtS2dtHuXa3/7lWuZaZpDMX1AcySOo/Kf0iia4rWi7pxD4idNlMBN43492ymNojst7jMJeI6/5g0bY11mAe8m5H2BdYemS09Rk+YpB5sdXqTuNXgPtikvfrgGFD3ZwRGUKIJbWZeh8GJq04/gK/WtKi1ExJ4PzO0vSItO7RpeAQsBwRbYhnrTyFqMgg2PYBt8d9t1l8r54AavWlO/0yotVsDQr/XQrNlv35XQPFwFW4o2tugbnPhl5Vm+QN/ggBeVwihH32CZmEz6fTDJe/kn47jF12uE5sH0FRgAD8gA65r5egWU830/9ecIGATzxvN51o3Qp5/v/P+v7egD/hRgAAIm84Nu5VjwAAAAAElFTkSuQmCC);
+	background-repeat: repeat-x;
+}
+
+
+.ef-rating {
+	width:140px;
+	height: 1.5rem;
+  margin-bottom: 1rem;
+} 
+	.ef-rating__value {
+		height: 100%;
+		width: 0;
+		background-position: 0 -24px;
+	} 
+
+.ef-rating_1 .ef-rating__value {
+	width:28px;
+}
+
+.ef-rating_2 .ef-rating__value {
+	width: 56px;
+}
+
+.ef-rating_3 .ef-rating__value {
+	width: 84px;
+}
+
+.ef-rating_4 .ef-rating__value {
+	width: 112px;
+}
+
+.ef-rating_5 .ef-rating__value {
+	width: 140px;
 }
 
 /**

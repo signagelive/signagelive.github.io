@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon"/>
     <link rel="icon" href="{{ '/assets/images/favicon.png' | relative_url }}" type="image/x-icon"/>
     <!-- Add CSS File -->
-	<link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
+    <link rel="stylesheet" href="{{ '/assets/css/app.min.css' | relative_url }} "/>
 	<!-- Added in Signagelive Styles -->
 	<link rel="stylesheet" href="{{ '/assets/css/signagelive.css' | relative_url }}" type="text/css"" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
@@ -45,15 +45,15 @@
    <script src="{{ '/assets/js/build.min.js' | relative_url }}"></script>
    		<script>
 			$(function() {
-			$('a[href*=\\#]').not(".no-smooth").on('click', function(event){
-			var el = $(this.hash);
-			if (el.length > 0) {
-			// event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 500);
-			}
-			});
+				$('a[href*=\\#]').not(".no-smooth").on('click', function(event){
+					var el = $(this.hash);
+					if (el.length > 0) {
+						// event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top - 100}, 500);
+					}
+				});
 
-			moveScroller();
+				moveScroller();
 			setActiveSidebarLink();
 
 			function moveScroller() {
@@ -121,11 +121,12 @@
 				return $last;
 			}
 
-			$(window).on("scroll", function() {
-				moveScroller()
-				setActiveSidebarLink()
+				$(window).on("scroll", function() {
+					moveScroller()
+					setActiveSidebarLink()
+				});
+
 			});
-});
 
 		</script>
 </body>      
