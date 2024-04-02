@@ -439,6 +439,10 @@ $("#generate").click(function () {
     $("#inactivityTimeout").val()
   );
 
+  // Always Embed Webpages
+  settings.alwaysEmbedWebpages = new Object();
+  settings.alwaysEmbedWebpages.enabled = $("#alwaysEmbedWebpagesEnabled").is(":checked");
+
   if (
     isNaN(settings.interactiveKiosk.idleIntervalInSeconds) ||
     settings.interactiveKiosk.idleIntervalInSeconds < 1
