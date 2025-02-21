@@ -439,6 +439,9 @@ $("#generate").click(function () {
     $("#inactivityTimeout").val()
   );
 
+  // Gapless Widget Transitions
+  settings.gaplessWidgetTransitions = $("#gaplessWidgetTransitionsEnabled").is(":checked");
+
   // Always Embed Webpages
   settings.alwaysEmbedWebpages = new Object();
   settings.alwaysEmbedWebpages.enabled = $("#alwaysEmbedWebpagesEnabled").is(":checked");
