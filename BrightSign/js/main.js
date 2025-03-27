@@ -28,9 +28,9 @@ $("#multipleOutputEnabled").change(function () {
     $("#screen1AudioEnabledControl").attr("hidden", false);
     loadMultiScreenConfigurationOptions();
     
-    // Check if LG445 is selected and restrict resolution options if needed
-    if ($("#multipleOutputDevice").val() == "LG445") {
-      restrictResolutionForLG445();
+    // Check if LGUV5N is selected and restrict resolution options if needed
+    if ($("#multipleOutputDevice").val() == "LGUV5N") {
+      restrictResolutionForLGUV5N();
     }
   }
 });
@@ -44,9 +44,9 @@ $("#kioskModeEnabled").change(function () {
 $("#multipleOutputDevice").change(function () {
   loadMultiScreenConfigurationOptions();
   
-  // Handle LG445 device special case - restrict resolution options
-  if ($("#multipleOutputDevice").val() == "LG445") {
-    restrictResolutionForLG445();
+  // Handle LGUV5N device special case - restrict resolution options
+  if ($("#multipleOutputDevice").val() == "LGUV5N") {
+    restrictResolutionForLGUV5N();
   } else {
     resetResolutionOptions();
   }
@@ -524,7 +524,7 @@ function loadMultiScreenConfigurationOptions() {
     $("#screen3").hide();
     $("#screen4").hide();
     self.screens = ["HDMI-1", "HDMI-2"];
-  } else if ($("#multipleOutputDevice").val() == "LG445") {
+  } else if ($("#multipleOutputDevice").val() == "LGUV5N") {
     $("#screen2").hide();
     $("#screen3").hide();
     $("#screen4").hide();
@@ -532,7 +532,7 @@ function loadMultiScreenConfigurationOptions() {
   }
 }
 
-function restrictResolutionForLG445() {
+function restrictResolutionForLGUV5N() {
   for (let i = 1; i <= 4; i++) {
     const videomodeSelect = $(`#videomodeScreen${i}`);
     
