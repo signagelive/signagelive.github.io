@@ -293,7 +293,7 @@ See this <a target="_blank" href="https://developer.chrome.com/extensions/conten
 
 Due to the wide variety of vendor platforms supported by Signagelive it is not possible to have consistent support for the latest standards across them, so we recommend you test your widgets on as many platforms as possible and include polyfills for any ES6 features you are using.
 
-For an overview of ES6 features please see <a target="_blank" href="http://es6-features.org/">this</a> great resource. Don’t rely on simply testing in a desktop browser as results can vary quite widely to those obtained when running on a  media player.
+For an overview of ES6 features please see <a target="_blank" href="https://www.w3schools.com/js/js_es6.asp">this</a> great resource. Don’t rely on simply testing in a desktop browser as results can vary quite widely to those obtained when running on a  media player.
 
 We have found <a target="_blank" href="https://github.com/paulmillr/es6-shim">ES6 Shim</a> to be a useful shim if you need to use ES6 features in your code. However there may be situations we have not come across that don’t work so please test it for your specific use case before deploying your widget.
 
