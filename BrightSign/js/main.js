@@ -21,6 +21,7 @@ $("#multipleOutputEnabled").change(function () {
     $("#screen1AudioEnabledControl").attr("hidden", true);
     loadDefaultConfigurationOptions();
     resetResolutionOptions();
+    resetOutputOptions();
   } else {
     $("#audioChannelControl").attr("hidden", false);
     $("#audioEnabledControl").attr("hidden", true);
@@ -30,7 +31,8 @@ $("#multipleOutputEnabled").change(function () {
     
     // Check if LGUV5N is selected and restrict resolution options if needed
     if ($("#multipleOutputDevice").val() == "LGUV5N") {
-      restrictResolutionForLGUV5N();
+      restrictResolutionOptions();
+      restrictOutputOptions();
     }
   }
 });
@@ -46,9 +48,11 @@ $("#multipleOutputDevice").change(function () {
   
   // Handle LGUV5N device special case - restrict resolution options
   if ($("#multipleOutputDevice").val() == "LGUV5N") {
-    restrictResolutionForLGUV5N();
+    restrictResolutionOptions();
+    restrictOutputOptions();
   } else {
     resetResolutionOptions();
+    resetOutputOptions();
   }
 });
 
@@ -532,7 +536,7 @@ function loadMultiScreenConfigurationOptions() {
   }
 }
 
-function restrictResolutionForLGUV5N() {
+function restrictResolutionOptions() {
   for (let i = 1; i <= 4; i++) {
     const videomodeSelect = $(`#videomodeScreen${i}`);
     
@@ -549,6 +553,11 @@ function restrictResolutionForLGUV5N() {
       $(`#bitdepthScreen${i}`).prop('disabled', false);
     }
   }
+}
+
+function restrictOutputOptions() {
+    // Disable enabledScreen1 for LGUV5N
+    $("#enabledScreen1").prop("disabled", true).prop("checked", true);
 }
 
 function resetResolutionOptions() {
@@ -568,4 +577,10 @@ function resetResolutionOptions() {
       $(`#bitdepthScreen${i}`).prop('disabled', true);
     }
   }
+}
+
+function resetOutputOptions() {
+  // Restore output options for screen 1
+    $("#enabledScreen1").prop("disabled", false);
+    $("#enabledScreen1").prop("checked", true);
 }
