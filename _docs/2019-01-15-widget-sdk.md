@@ -630,6 +630,63 @@ Signagelive.clearDownloadedFiles(Signagelive.FileStorageLocation.PRIVATE)
     });
 {% endhighlight %}
 
+## Signagelive.sendWidgetEvent(payload, delay, skipLatencyChecks)
+
+|  |  |  |
+|---|---|---|
+| Description | This method allows the widget developer to send a JSON payload message to all other Signagelive players within the same Sync or Takeover group that are rendering a widget within the same widget group. <br><br> Widget events can be sent from any player within the Sync or Takeover group and you can optionally specify a delay in milliseconds before sending the message. <br><br> By default, the master player will track slave latencies and take this into account when sending messages to try and improve the reliability of the sync but this can be disabled by specifying skipLatencyChecks = true; |  |
+| Parameters | payload - JSON payload to send. <br><br> delay - (Optional) the delay in ms before sending the messages from the master to the slaves. Default Value: 0. <br><br> skipLatencyChecks - (Optional) whether or not to skip latency checks. Default Value: false. |  |
+| Returns | The promise resolves on success. On error it is rejected with an error object and error message - for example, if a JSON payload is not valid. |  |
+| Example |  |  |
+{% highlight javascript %}
+var payload = { "name": "MY_CUSTOM_WIDGET_EVENT" };
+Signagelive.sendWidgetEvent(payload, delay, skipLatencyChecks)
+    .then(function() {
+        console.log('Data sent successfully');
+     })
+     .catch(function(error) {
+        console.log(error);
+     });
+{% endhighlight %}
+
+## Signagelive.onWidgetEvent(callbackFunction)
+
+|  |  |  |
+|---|---|---|
+| Description | This method allows the widget developer to fire a specified callback function when a widget event is received by a widget. |  |
+| Parameters | callbackFunction(event) - A reference to a callback function which is fired when an event is received. The original event message is passed as the first parameter. |  |
+| Returns | The promise resolves when a message has been received via the sendWidgetEvent() logic. |  |
+| Example |  |  |
+{% highlight javascript %}
+Signagelive.onWidgetEvent(function(event) {
+    console.log(event.name);
+    // Handle your event here
+});
+{% endhighlight %}
+
+## Signagelive.getLatencyFromMaster()
+
+|  |  |  |
+|---|---|---|
+| Description | This method allows the widget developer access to the recorded latency information for the current Slave and the max latency of all connected Slaves. <br><br> Latencies are updated every 1 second. |  |
+| Parameters |None. |  |
+| Returns | The promise resolves on success with the latency information from the media player. |  |
+| Example |  |  |
+{% highlight javascript %}
+Signagelive.getLatencyFromMaster()
+    .then(function(latencyInfo) {
+        console.log('Latency: ' + JSON.stringify(latencyInfo, undefined, 2));
+        // Example output:
+        // {
+        //     slaveLatency: 2
+        //     maxSlaveLatency: 3.5
+        // }
+    })
+    .catch(function (error) {
+        logError(error);
+    });
+{% endhighlight %}
+
 ## Signagelive.getExternalData(dataSource, integrationId, objectId, callback)
 
 |              |                                                                                                                                                                                                                       |
@@ -686,6 +743,9 @@ window.addEventListener('widget-init', function (e) {
 | Signagelive.listDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.removeDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.clearDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.sendWidgetEvent() | *Coming soon* | *Coming soon* | ✘ | *Coming soon* | ✘ | ✘ | ✘ | ✘ | *Coming soon* | ✘ | ✘ | ✘ |
+| Signagelive.onWidgetEvent() | *Coming soon* | *Coming soon* | ✘ | *Coming soon* | ✘ | ✘ | ✘ | ✘ | *Coming soon* | ✘ | ✘ | ✘ |
+| Signagelive.getLatencyFromMaster() | *Coming soon* | *Coming soon* | ✘ | *Coming soon* | ✘ | ✘ | ✘ | ✘ | *Coming soon* | ✘ | ✘ | ✘ |
 | **Data Sync Services Support** |  |  |  |  |  |  |  |  |  |  |  |  |
 | Signagelive.getExternalData(dataSource, integrationId, objectId, callback) | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 
