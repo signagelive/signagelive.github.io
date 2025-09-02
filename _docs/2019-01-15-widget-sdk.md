@@ -495,36 +495,6 @@ Signagelive.onWidgetClosing(function(resolve, timeInfo) {
 });
 {% endhighlight %}
 
-## Signagelive.checkSupportedHTML5Features(featuresToCheck)
-
-|              |                                                                                                                                                                     |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Description      | Check HTML5 feature support on the player using Modernizr.                                                                                                                                                                                                                                               |
-| Parameters       | featuresToCheck - (Array of strings) representing the features to check.<br>The full list of available features to check are defined in the Modernizr documentation.                                                                                                                                        |
-| Returns          | A promise that resolves to a JSON object that contains results for the features that were requested to be tested. Each feature that was tested will be returned as a boolean property of the results object with the feature name and "_supported" appended to it (see example below). Example response: |
-
-{% highlight javascript %}
-{
-    "cssanimations_supported": true,
-    "flexbox_supported": false,
-    "es6collections_supported": false,
-    "arrow_supported": false
-}
-{% endhighlight %}
-
-| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-checkSupportedHTML5Features){:target="_blank"} |
-| Example |  |
-
-{% highlight javascript %}
-Signagelive.checkSupportedHTML5Features(['cssanimations', 'flexbox', 'es6collections', 'arrow'])
-    .then(function(results) {
-        console.log(JSON.stringify(results, undefined, 2));
-    })
-    .catch(function(error) {
-        console.error(error.message);
-    });
-{% endhighlight %}
-
 ## Signagelive.requestMediaPlayerMoveToNextAsset()	
 
 |              |                                                                                                                                                                                                                       |
@@ -729,20 +699,19 @@ window.addEventListener('widget-init', function (e) {
 | Signagelive.clearStorage() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.log(message) | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
 | Signagelive.sendReadyToDisplay() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.playVideo() | ✔ | ✔ | ✘ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.stopVideo() | ✔ | ✔ | ✘ | ✔ | ✔ | *Coming soon* | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.playVideo() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
+| Signagelive.stopVideo() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | *Coming soon* | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.getPlayerDetails() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.getDisplayProperties() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.getTLSSupportInfo() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.getOnlineStatus() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.onWidgetClosing(callback) | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.checkSupportedHTML5Features(featuresToCheck) | ✔ | ✘ | ✘ | ✔ | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.requestMediaPlayerMoveToNextAsset() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.downloadFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
-| Signagelive.getDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
-| Signagelive.listDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
-| Signagelive.removeDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
-| Signagelive.clearDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.downloadFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.getDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.listDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.removeDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.clearDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.sendWidgetEvent() | *Coming soon* | *Coming soon* | ✘ | *Coming soon* | ✘ | ✘ | ✘ | ✘ | *Coming soon* | ✘ | ✘ | ✘ |
 | Signagelive.onWidgetEvent() | *Coming soon* | *Coming soon* | ✘ | *Coming soon* | ✘ | ✘ | ✘ | ✘ | *Coming soon* | ✘ | ✘ | ✘ |
 | Signagelive.getLatencyFromMaster() | *Coming soon* | *Coming soon* | ✘ | *Coming soon* | ✘ | ✘ | ✘ | ✘ | *Coming soon* | ✘ | ✘ | ✘ |
