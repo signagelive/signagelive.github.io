@@ -44,7 +44,7 @@ Currently the Network API also contains the previous methods, so that it is back
 
 This notice is to let you know that in a future release the existing methods will be retired and will no longer be usable. 
 
-The expected timescales for the retirement of these endpoints 3rd January 2024 you will be notified again before this occurs and if this date changes, but if you do not update the methods being used, after this point Media Asset Uploads will no longer work.
+The expected timescales for the retirement of these endpoints 1st August 2024 you will be notified again before this occurs and if this date changes, but if you do not update the methods being used, after this point Media Asset Uploads will no longer work.
 
 If you have any questions regarding these changes please contact the Signagelive Team.
 

@@ -152,7 +152,7 @@ a.btn-style2.btn.small {
   color: #FFF;
 }
 
-a.btn-style2.btn.small:hover {
+a.btn-style2.btn.small:hover, a.btn-style2.btn.small:focus {
   color: #26ACD9;
 }
 

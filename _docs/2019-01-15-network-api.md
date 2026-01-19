@@ -38,13 +38,13 @@ At Signagelive we use a tool named Postman, to be able to interact with our APIâ
 
 Once we have an understanding of your requirements and you are granted access we will provide a custom Postman collection to simplify the development of your application.
 
-## Application Authorisation
+## Application Authorization
 
-Once you are provided with your credentials, your application will then have to be authorised against a Network, this process does not link to a specific User, the users of that Network will be giving your application permissions to access their network.
+Once you are provided with your credentials, your application will then have to be authorized against a Network, this process does not link to a specific User, the users of that Network will be giving your application permissions to access their network.
 
 This is something that you will need to provide a mechanism for Signagelive users to do, within your application.
 
-[Partner App Authorisation Process](/api/partner-app-authorization){: .btn-style2 .btn .small}
+[Partner App Authorization Process](/api/partner-app-authorization){: .btn-style2 .btn .small}
 
 ## Signagelive Media Ingress to Publication
 

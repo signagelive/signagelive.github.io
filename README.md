@@ -18,3 +18,11 @@ You will then need to add it to the navigation menu under docs/_data/navigation.
 
 Open up command prompt and navigate to the /docs subfolder
 Run "bundle exec jekyll serve"
+
+# Important Note
+
+If you are using a later version of Ruby (>=v3), you will need to run
+
+```bundle add webrick```
+
+in the terminal in order to build the project locally

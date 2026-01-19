@@ -26,7 +26,7 @@ Which of our developer tools you need to use, really depends on what you are loo
 
     When saving/rendering the image, you need to take into account the Signagelive player you are producing content for, and the file types which are supported.
 
-{% include button.html name="Which file types are supported?" url="https://docs.google.com/spreadsheets/d/1xQ5ev5ZT_mDiDA1jPtzwl3ThqF9GF5ClrZdjj5Bt1A4/edit#gid=0" %}
+{% include button.html name="Which file types are supported?" url="https://docs.google.com/spreadsheets/d/e/2PACX-1vQbuAssybgK3bf5f5v03pni1Hx8ITpU1zvYmwgY5176Lhj84B7XzAhlKjpXGjTlD9XEpHCnOCo57l44/pubhtml" %}
 
 <br>
 
@@ -49,7 +49,7 @@ All standard video creation tools can be used to create video content to be usin
 
 When rendering the video, you need to take into account the Signagelive player you are producing content for, and the file types which are supported.
 
-{% include button.html name="Which file types are supported?" url="https://docs.google.com/spreadsheets/d/1xQ5ev5ZT_mDiDA1jPtzwl3ThqF9GF5ClrZdjj5Bt1A4/edit#gid=0" %}
+{% include button.html name="Which file types are supported?" url="https://docs.google.com/spreadsheets/d/e/2PACX-1vQbuAssybgK3bf5f5v03pni1Hx8ITpU1zvYmwgY5176Lhj84B7XzAhlKjpXGjTlD9XEpHCnOCo57l44/pubhtml" %}
 
 </div>
 
