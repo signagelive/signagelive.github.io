@@ -11,6 +11,9 @@ $(document).ready(function () {
   }
   $("#timezoneList").append(option);
   $("#timezoneList > option").eq(32).attr("selected", "selected");
+
+  $("#multipleOutputEnabled").val("Yes").trigger("change"); // Default to Series 5/6
+  $("#multipleOutputDevice").val("other").trigger("change"); // Default to other (LS5, LS6, HD5, HD6, XD5, XD6)
 });
 
 $("#multipleOutputEnabled").change(function () {
@@ -20,12 +23,20 @@ $("#multipleOutputEnabled").change(function () {
     $("#globalAudioEnabledControl").attr("hidden", false);
     $("#screen1AudioEnabledControl").attr("hidden", true);
     loadDefaultConfigurationOptions();
+    resetResolutionOptions();
+    resetOutputOptions();
   } else {
     $("#audioChannelControl").attr("hidden", false);
     $("#audioEnabledControl").attr("hidden", true);
     $("#globalAudioEnabledControl").attr("hidden", true);
     $("#screen1AudioEnabledControl").attr("hidden", false);
     loadMultiScreenConfigurationOptions();
+    
+    // Check if LGUV5N is selected and restrict resolution options if needed
+    if ($("#multipleOutputDevice").val() == "LGUV5N") {
+      restrictResolutionOptions();
+      restrictOutputOptions();
+    }
   }
 });
 
@@ -37,6 +48,15 @@ $("#kioskModeEnabled").change(function () {
 
 $("#multipleOutputDevice").change(function () {
   loadMultiScreenConfigurationOptions();
+  
+  // Handle LGUV5N device special case - restrict resolution options
+  if ($("#multipleOutputDevice").val() == "LGUV5N") {
+    restrictResolutionOptions();
+    restrictOutputOptions();
+  } else {
+    resetResolutionOptions();
+    resetOutputOptions();
+  }
 });
 
 $("#mode").change(function () {
@@ -500,16 +520,70 @@ function loadMultiScreenConfigurationOptions() {
   $("#screen1 .title").show();
   $("#screen1 .Screen1Coords").show();
   $("#outputDevice").show();
-  $("#screen2").show();
+  
   if ($("#multipleOutputDevice").val() == "XC4055") {
+    $("#screen2").show();
     $("#screen3").show();
     $("#screen4").show();
+    self.screens = ["HDMI-1", "HDMI-2", "HDMI-3", "HDMI-4"];
   } else if ($("#multipleOutputDevice").val() == "XC2055" || $("#multipleOutputDevice").val() == "XT2145") {
+    $("#screen2").show();
     $("#screen3").hide();
     $("#screen4").hide();
+    self.screens = ["HDMI-1", "HDMI-2"];
   } else {
     $("#screen2").hide();
     $("#screen3").hide();
     $("#screen4").hide();
+    self.screens = ["HDMI-1"];
   }
+}
+
+function restrictResolutionOptions() {
+  for (let i = 1; i <= 4; i++) {
+    const videomodeSelect = $(`#videomodeScreen${i}`);
+    
+    // Store the video mode options if not already stored
+    if (!videomodeSelect.data('original-options')) {
+      videomodeSelect.data('original-options', videomodeSelect.html());
+    }
+    
+    // Replace with only the 3840x2160x60p option
+    videomodeSelect.html('<option value="3840x2160x60p">3840x2160x60p</option>');
+    
+    if ($(`#enabledScreen${i}`).is(":checked")) {
+      $(`#colorspaceScreen${i}`).prop('disabled', false);
+      $(`#bitdepthScreen${i}`).prop('disabled', false);
+    }
+  }
+}
+
+function restrictOutputOptions() {
+    // Disable enabledScreen1 for LGUV5N
+    $("#enabledScreen1").prop("disabled", true).prop("checked", true);
+}
+
+function resetResolutionOptions() {
+  // Restore original resolution options for screens 1-4
+  for (let i = 1; i <= 4; i++) {
+    const videomodeSelect = $(`#videomodeScreen${i}`);
+    
+    // Restore original options if they were stored
+    if (videomodeSelect.data('original-options')) {
+      videomodeSelect.html(videomodeSelect.data('original-options'));
+    }
+    
+    // Reset disabled state based on selected item
+    const selectedItem = videomodeSelect[0].selectedIndex;
+    if (selectedItem == 0) {
+      $(`#colorspaceScreen${i}`).prop('disabled', true);
+      $(`#bitdepthScreen${i}`).prop('disabled', true);
+    }
+  }
+}
+
+function resetOutputOptions() {
+  // Restore output options for screen 1
+    $("#enabledScreen1").prop("disabled", false);
+    $("#enabledScreen1").prop("checked", true);
 }
