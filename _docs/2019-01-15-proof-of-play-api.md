@@ -12,7 +12,7 @@ Before continuing with this guide, please make sure you have reviewed the Signag
 
 To interact with the Proof of Play API you will be provided with credentials for your Application. To request these credentials, please sign up for access.
 
-[Sign Up for Access](https://docs.google.com/forms/d/e/1FAIpQLScbomALViAsRf3gT562utIXbcLWP17JcLYaJhhnvDQLvrQOCQ/viewform){:target="_blank" .btn-style2 .btn .small}
+[Sign Up for Access](https://wkf.ms/4cTq5ew){:target="_blank" .btn-style2 .btn .small}
 
 ## Development Environment
 
