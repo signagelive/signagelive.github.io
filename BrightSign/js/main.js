@@ -14,6 +14,14 @@ $(document).ready(function () {
 
   $("#multipleOutputEnabled").val("Yes").trigger("change"); // Default to Series 5/6
   $("#multipleOutputDevice").val("other").trigger("change"); // Default to other (LS5, LS6, HD5, HD6, XD5, XD6)
+
+  $('#proxy').on('blur', function () {
+    var val = $(this).val().trim();
+
+    if (val !== '' && !/^https?:\/\//i.test(val)) {
+      $(this).val('http://' + val);
+    }
+  });
 });
 
 $("#multipleOutputEnabled").change(function () {
