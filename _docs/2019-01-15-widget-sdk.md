@@ -44,7 +44,7 @@ toc: true
 
 This document describes the Signagelive Widget SDK methods available and their purpose. Currently the SDK has not been rolled out on all devices so some features are limited to: Samsung, LG, Chrome OS or Brightsign players only.
 
-The SDK is available <a href="https://drive.google.com/file/d/1RyA_Z7Zvr6Zl31EwL1YxQL06IxWgdnsy/view">here</a>.
+The SDK is available <a href="https://navori.sharepoint.com/:u:/s/Public/IQDBgp3TAGgGQZ3D1qn5whEAAYTyTIQjFDwKrZkSXtz-U8Y?e=plFZdV">here</a>.
 
 <h4 class="no_toc"> Include the Javascript File </h4>
 
@@ -53,6 +53,41 @@ Copy the javascript file into your project and include it in your HTML page as s
 {% highlight javascript %}
 <script src="js/signagelive.js"></script>
 {% endhighlight %}
+
+# Best Practices
+
+## Widget Synchronization
+
+To utilize widget synchronization, the following prerequisites and recommended implementation workflows should be
+adhered to:
+<ol>
+  <li><strong>Media Player Configuration:</strong> All media players must be assigned to the same synchronization group.
+    If takeover features are used, players must belong to both the same synchronization group and the same takeover group.</li>
+  <li><strong>Widget Group Identifiers:</strong> Each widget must include a “group” identifier configured within its <a class="post-link" href="https://navori.sharepoint.com/:u:/s/Public/IQC_tAPEJmi2R6FcuYTQ5G7bAUlPDAPPymko4OHT7R2JFR8?e=He8LBp">config.xml </a> file:
+  </li>
+  <ol>
+    <li>For a single widget, this functions as the unique identifier when deployed across all media players
+      simultaneously.</li>
+    <li>If deploying multiple widgets designed to play across media players simultaneously (via conditional tagging)
+      then these must share an identical group identifier.</li>
+    <li>Other synchronized widgets in the same playlist require distinct, unique identifiers.</li>
+  </ol>
+  <li><strong>Mandatory Synchronization Methods:</strong> Integration of both <strong>onWidgetEvent(callback)</strong>
+    and <strong>sendWidgetEvent(payload, delay, skipLatencyChecks)</strong> is required.</li>
+  <li><strong>Recommended SDK Implementation Workflow:</strong> Integration methods vary depending on the use case. For
+    synchronized video playback, the following SDK methods are recommended:</li>
+  <ol>
+    <li><strong>playVideo()</strong> – A wrapper method to initiate video playback, enabling native video playback on
+      Tizen platforms.
+    </li>
+    <li><strong>sendReadyToDisplay()</strong> – To be called inside the <strong>playVideo()</strong> success method-
+      which signals that the widget content is ready for presentation.</li>
+    <li><strong>onWidgetClosing(callback)</strong> – Triggered prior to playlist transitions, allowing developers to
+      manage element behavior (e.g., hiding text for smooth visual transitions).</li>
+  </ol>
+</ol>
+
+<em>Note: Instructions regarding non-SDK operations including external API requests, video optimizations, and data persistence are outside the scope of these recommendations.</em>
 
 # Methods
 
@@ -495,36 +530,6 @@ Signagelive.onWidgetClosing(function(resolve, timeInfo) {
 });
 {% endhighlight %}
 
-## Signagelive.checkSupportedHTML5Features(featuresToCheck)
-
-|              |                                                                                                                                                                     |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Description      | Check HTML5 feature support on the player using Modernizr.                                                                                                                                                                                                                                               |
-| Parameters       | featuresToCheck - (Array of strings) representing the features to check.<br>The full list of available features to check are defined in the Modernizr documentation.                                                                                                                                        |
-| Returns          | A promise that resolves to a JSON object that contains results for the features that were requested to be tested. Each feature that was tested will be returned as a boolean property of the results object with the feature name and "_supported" appended to it (see example below). Example response: |
-
-{% highlight javascript %}
-{
-    "cssanimations_supported": true,
-    "flexbox_supported": false,
-    "es6collections_supported": false,
-    "arrow_supported": false
-}
-{% endhighlight %}
-
-| Github | [Repository](https://github.com/signagelive/signagelive-widget-sdk/tree/main/signagelive-checkSupportedHTML5Features){:target="_blank"} |
-| Example |  |
-
-{% highlight javascript %}
-Signagelive.checkSupportedHTML5Features(['cssanimations', 'flexbox', 'es6collections', 'arrow'])
-    .then(function(results) {
-        console.log(JSON.stringify(results, undefined, 2));
-    })
-    .catch(function(error) {
-        console.error(error.message);
-    });
-{% endhighlight %}
-
 ## Signagelive.requestMediaPlayerMoveToNextAsset()	
 
 |              |                                                                                                                                                                                                                       |
@@ -630,6 +635,63 @@ Signagelive.clearDownloadedFiles(Signagelive.FileStorageLocation.PRIVATE)
     });
 {% endhighlight %}
 
+## Signagelive.sendWidgetEvent(payload, delay, skipLatencyChecks)
+
+|  |  |  |
+|---|---|---|
+| Description | Send a JSON payload message to all other Signagelive players within the same Sync or Takeover group that are rendering a widget within the same widget group. <br><br> Widget events can be sent from any player within the Sync or Takeover group and you can optionally specify a delay in milliseconds before sending the message. <br><br> By default, the master player will track slave latencies and take this into account when sending messages to try and improve the reliability of the sync but this can be disabled by specifying skipLatencyChecks = true; |  |
+| Parameters | payload - JSON payload to send. <br><br> delay - (Optional) the delay in ms before sending the messages from the master to the slaves. Default Value: 0. <br><br> skipLatencyChecks - (Optional) whether or not to skip latency checks. Default Value: false. |  |
+| Returns | The promise resolves on success. On error it is rejected with an error object and error message. |  |
+| Example |  |  |
+{% highlight javascript %}
+var payload = { "name": "MY_CUSTOM_WIDGET_EVENT" };
+Signagelive.sendWidgetEvent(payload, 0, false)
+    .then(function() {
+        console.log('Data sent successfully');
+     })
+     .catch(function(error) {
+        console.log(error);
+     });
+{% endhighlight %}
+
+## Signagelive.onWidgetEvent(callbackFunction)
+
+|  |  |  |
+|---|---|---|
+| Description | Fires the specified callback function when a widget event is received by a widget. |  |
+| Parameters | callbackFunction(event) - A reference to a callback function which is fired when an event is received. The original event message is passed as the first parameter. |  |
+| Returns | The promise resolves when a message has been received via the sendWidgetEvent() logic. |  |
+| Example |  |  |
+{% highlight javascript %}
+Signagelive.onWidgetEvent(function(event) {
+    console.log(event.name);
+    // Handle your event here
+});
+{% endhighlight %}
+
+## Signagelive.getLatencyFromMaster()
+
+|  |  |  |
+|---|---|---|
+| Description | Returns the last measured latency for the current slave and the max latency of all connected slaves. <br><br> Latencies are updated every 1 second. |  |
+| Parameters |None. |  |
+| Returns | The promise resolves on success with the latency information from the media player. |  |
+| Example |  |  |
+{% highlight javascript %}
+Signagelive.getLatencyFromMaster()
+    .then(function(latencyInfo) {
+        console.log('Latency: ' + JSON.stringify(latencyInfo, undefined, 2));
+        // Example output:
+        // {
+        //     slaveLatency: 2
+        //     maxSlaveLatency: 3.5
+        // }
+    })
+    .catch(function (error) {
+        logError(error);
+    });
+{% endhighlight %}
+
 ## Signagelive.getExternalData(dataSource, integrationId, objectId, callback)
 
 |              |                                                                                                                                                                                                                       |
@@ -679,13 +741,15 @@ window.addEventListener('widget-init', function (e) {
 | Signagelive.getTLSSupportInfo() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.getOnlineStatus() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.onWidgetClosing(callback) | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
-| Signagelive.checkSupportedHTML5Features(featuresToCheck) | ✔ | ✘ | ✘ | ✔ | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.requestMediaPlayerMoveToNextAsset() | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 | Signagelive.downloadFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.getDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.listDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.removeDownloadedFile() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | Signagelive.clearDownloadedFiles() | ✘ | ✘ | ✘ | ✔ | ✔ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.sendWidgetEvent() | ✘ | LG 3.0+ | ✘ | Tizen 3.0+ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.onWidgetEvent() | ✘ | LG 3.0+ | ✘ | Tizen 3.0+ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
+| Signagelive.getLatencyFromMaster() | ✘ | LG 3.0+ | ✘ | Tizen 3.0+ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ | ✘ |
 | **Data Sync Services Support** |  |  |  |  |  |  |  |  |  |  |  |  |
 | Signagelive.getExternalData(dataSource, integrationId, objectId, callback) | ✔ | ✔ | ✘ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✘ | ✘ | ✘ |
 
